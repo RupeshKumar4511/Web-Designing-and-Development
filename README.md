@@ -14,8 +14,7 @@ HTML files are saved with .html or .htm extension.
 combination of html tags and contents are called html elements .
 <br>
 HTML is called as language of the browser because browser understands html .
-<br>
-Html comments are represented in <!-- comments -->
+
 <br>
 ASP : Active server pages
 MDN : Mozilla developer network
@@ -31,11 +30,11 @@ attributes provide the additional information about the tags .
 # Types of HTML elements :
 1. Block elements 
 <br>
-HTML Block elements, are used to structure the main content of a webpage. They typically start on a new line and take up the full width of their container examples <div>, <p>, <h1> to <h6>, and <ul>, etc.
+HTML Block elements, are used to structure the main content of a webpage. They typically start on a new line and take up the full width of their container examples div, p, h1 to h6, and ul, etc.
 <br>
 2. Inline elements 
 <br>
-It does not start on a new line and takes up only the necessary width.examples : <br>,<span></span> etc
+It does not start on a new line and takes up only the necessary width.examples : br,span etc
 
 # head tag 
 It is used to write scripting(both client and server) to make dynamic web pages.
@@ -76,15 +75,17 @@ Attributes of Video tag :
 2. controls : It is used to provide extra functionality like play ,download, resize of video etc.
 <br> 
 
-3. height and width  : used for size.
+3. height and width attributes:
+It is  used for size.
 
 <br>
 
-4. loop : It is used when we want to restart the video after complete once.
+4. loop :
+ It is used when we want to restart the video after complete once.
 
 <br>
 5 . autoplay :
-
+It makes video autoplay when the webpage opens.
 
 
 
