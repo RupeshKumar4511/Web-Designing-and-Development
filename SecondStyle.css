@@ -1,0 +1,57 @@
+pre{
+    background-color:orangered;
+    color: white;
+    font-size: xx-large;
+    line-height:50px;
+}
+
+span{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: large;
+       
+}
+
+pre span:hover {
+    background-color: orange;
+}
+  
+
+.t{
+    text-align:center;
+    padding:4px;
+}
+
+#oranged{
+    color:orangered;
+}
+
+#black{
+    background-color:#555;
+    color:white;
+
+}
+
+*{
+    padding:0;
+    margin:0;
+}
+
+marquee{
+    background-image: url('RCollege.jpeg');
+    background-size:100% 100%;
+    
+  }
+
+#para{
+    margin-left:300px;
+}
+
+#footer{
+    
+    background-color:#333;
+    height:130px;
+    text-align:center;
+    color:white;
+}
+
+
