@@ -1,32 +1,39 @@
-pre{
-    background-color:orangered;
+.header{
+    background-color:rgb(24,150,355);
+    
     color: white;
-    font-size: xx-large;
-    line-height:50px;
+
 }
 
 span{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: large;
-       
+        font-size: medium;
+        display:inline-block;
+        padding:16px;
+            
 }
 
-pre span:hover {
-    background-color: orange;
+
+p span:hover {
+   
+    background-color: #b1ddff;
+    
 }
   
 
-.t{
+.center{
     text-align:center;
-    padding:4px;
+    padding-bottom:8px;
 }
 
-#oranged{
-    color:orangered;
+#heading{
+    color:rgb(24,150,355);
+    
 }
 
 #black{
-    background-color:#555;
+    /* background-color:#b1ddff; */
+    background-color:#C0C0C0;
     color:white;
 
 }
@@ -39,19 +46,55 @@ pre span:hover {
 marquee{
     background-image: url('RCollege.jpeg');
     background-size:100% 100%;
+    display:block;
     
   }
 
-#para{
-    margin-left:300px;
+
+*{
+    padding:0;
+    margin:0;
 }
 
-#footer{
+
+.box1{
+    display:inline-block;
+    width:24%;
+    height:420px;
+    padding-left:3%;
+
+}
+
+
+li {
+
+    text-decoration:none;
+    color : black;
+    list-style-type:none;
+    background-color:#C0C0C0;
+    padding-left :5px;
+    width : 280px;
+    font-size:large;
+    height:35px;
+    padding-top:12px; 
+    padding-left:35px;   
+
+}
+.box2{
+    display:inline-block;
+    padding-left:3%;
+    width:67%;
+    height:260px;
+    font-size: 21px;
+  
+}
+
+
+.footer{
     
     background-color:#333;
     height:130px;
     text-align:center;
     color:white;
+    text-decoration:none;
 }
-
-
