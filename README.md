@@ -6,7 +6,7 @@ structure and format to the webpages.
 # Hypertext :
 It is a text which contains links to other texts.
 # Why Markup language :
-It is used to defines the text documents within the tags to structure webpages.
+It is used to defines the text documents within the tags to structure webpages. Here tags are also called Markup.
 
 # Note :
 HTML files are saved with .html or .htm extension.
@@ -36,8 +36,8 @@ HTML Block elements, are used to structure the main content of a webpage. They t
 <br>
 It does not start on a new line and takes up only the necessary width.examples : br,span etc
 
-# head tag 
-It is used to write scripting(both client and server) to make dynamic web pages.
+# head tag in Boilerplate code
+It is used to write scripting(both client and server) to make dynamic web pages.It also contains page metadata.
 
 # title tag
 It is the subtag of head tag. It is used to show the title of webpages.
@@ -63,25 +63,24 @@ In form tag , action attribute is used to defines what actions need to be perfor
 
 # Iframe tag
 Iframe tag is used to provide link of another website in one website.
-There are some websites which we cannot use to as a part of our website like google.
+There are some websites link which we cannot use to as a part of our website like google.
 
 
 # Video tag 
 Video tag is used to show the Video on our websites.
-<br>br>
+<br><br>
 Attributes of Video tag :
+<br>
 1. src : It is used to provide relative or absolute url.
 <br>
 2. controls : It is used to provide extra functionality like play ,download, resize of video etc.
 <br> 
-
-3. height and width attributes:
-It is  used for size.
+3. height and width attributes  :  It is  used for size.
 
 <br>
 
 4. loop :
- It is used when we want to restart the video after complete once.
+It is used when we want to restart the video after complete once.
 
 <br>
 5 . autoplay :
@@ -95,6 +94,8 @@ CSS is a language which is used to provide styling to a website.
 # How to link a html with css files
 <link rel="stylesheet" href= "style.css">
 
+# There is a id element selector in css:
+#main div{background-color:white;}
 
 # padding :
 It is used to fit text in a container properly.
@@ -134,3 +135,25 @@ In border attribute 1px is width, solid is style and black is color . THis is sh
 The CSS overflow property controls what happens to content that is too big to fit into an area.
 It works for only Block elements.
 
+# font-varients :
+The font-variant property in CSS is used to control the usage of different font variants in a text. It allows you to enable or disable the use of alternative glyphs within a font, like small caps or old-style numerals.
+
+
+# height : 90 vh and width : 1wh
+here vh means viewport height.
+<br>
+1 vh is equal to 1% of the height of the viewport and same as in vw.
+
+# position: sticky;
+when the two elements are overlapping then with the use of z -index ,we can specify which element will be show in  upper layer or lower layer .Basically whose z -index is maximum,that will show in upper layer.
+
+
+# flex-wrap :
+The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+
+# display :grid;
+Grid display provides a grid-based layout system with rows and columns. Bydefault it provides a single row and column.
+
+
+# transform : matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY())
+Here we can 6 properties in matrix method.
