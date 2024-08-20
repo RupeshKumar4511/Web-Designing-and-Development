@@ -58,7 +58,13 @@ ex- div tag etc
 In radio button id and name are same.
 
 <br>
-In form tag , action attribute is used to defines what actions need to be performed when the form is submitted. 
+
+In form tag , **action** attribute is used to defines what actions need to be performed when the form is submitted.
+
+<br>
+
+The **fieldset** element is used to group related data in a form, and the **legend** element defines a caption for the fieldset element.
+<br>
 
 
 # Iframe tag
