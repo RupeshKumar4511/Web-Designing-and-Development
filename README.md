@@ -85,7 +85,7 @@ Iframe tag is used to provide link of another website in one website.
 There are some websites link which we cannot use to as a part of our website like google.
 
 
-# Video tag 
+# Video tag and audio tag
 Video tag is used to show the Video on our websites.
 <br><br>
 Attributes of Video tag :
@@ -105,7 +105,21 @@ It is used when we want to restart the video after complete once.
 5 . autoplay :
 It makes video autoplay when the webpage opens.
 
+<br>
 
+6 . muted : for the muted video plays.
+
+# canvas :
+The <b>beginPath()</b> method begins a path or resets the current path.
+<br>
+ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+<br>
+Here (95,50) is the position of center and 40 is the radius and 0 is the starting angle and 2*Math.PI is the ending angle.
+<br>
+
+
+
+# difference b/w svg and canvas:
 
 # CSS : Cascading style sheet
 CSS is a language which is used to provide styling to a website.
