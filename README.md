@@ -58,28 +58,9 @@ ex- div tag etc
 In radio button id and name are same.
 
 <br>
-In form tag , <b>action<b> attribute is used to defines what actions need to be performed when the form is submitted. 
-
-<br>
-
-<b>method attribute in form :<b>
-<br>
-<b>method="GET"<b>This method is used when we want to retrieve data, make a search, or when the form data is not sensitive and can be included in the URL.
-
-<b>method ="POST"<b> It is used when the form data is sensitive, when the form submission will change server-side data, or when you need to send a large amount of data.
-
-<b>for attribute in label in form :<b> is used to associate the label with a specific form control such as input , textarea, select.
+In form tag , action attribute is used to defines what actions need to be performed when the form is submitted. 
 
 
-<b>name attribute in input form :<b>It is used for server side processing.
-<br>
-When a form is submitted, the browser sends a key-value pair for each input. The name attribute provides the key, and the value is whatever the user has entered or selected.
-
-
-<b>id attribute in input form :<b>
-The id attribute is commonly used to associate a label with an input field using the for attribute in the label element. This association allows users to click on the label to focus the corresponding input field.
-<br>
-For this purpose value of  for and id attribute same.
 # Iframe tag
 Iframe tag is used to provide link of another website in one website.
 There are some websites link which we cannot use to as a part of our website like google.
