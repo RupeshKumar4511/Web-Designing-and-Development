@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="/admissionstyle.css">
+</head>
+<body>
+    <form action="">
+        <label for="sname">Student Name :  </label>
+        <input type="text" name="sname" id="sname" size="30px" width="18px" required><br><br>
+
+        <label for="fname">Father Name :  </label>
+        <input type="text" name="fnae" id="fnae" required><br><br>
+
+        <label for="mname">Mother Name :  </label>
+        <input type="text" name="mname" id="mname" required><br><br>
+
+        <label for="dob">Date of Birth :  </label>
+        <input type="date" name="dob" id="dob" required><br><br>
+
+        <label for="gender">Gender :  </label>
+        <label for="male">Male </label>
+        <input type="radio" name="gender" id="gender">
+        <label for="male">Female</label>
+        <input type="radio" name="gender" id="gender"><br><br>
+
+        <label for="email">Email :   </label>
+        <input type="email" name="email" id="email"><br><br>
+
+        <label for="epassword">Password :  </label>
+        <input type="password" name="epassword" id="epassword"><br><br>
+
+        <label for="subjects">Choose Your Subjects  :   </label><br>
+        <label for="dsa">DSA</label>
+        <input type="checkbox" name="dsa" id="dsa"><br>
+        <label for="web-design">Web Design and Development</label>
+        <input type="checkbox" name="web-design" id="web-design"><br>
+        <label for="os">Operating System </label>
+        <input type="checkbox" name="os" id="os"><br>
+        <label for="dbms">Advance DBMS </label>
+        <input type="checkbox" name="dbms" id="dbms"><br><br>
+
+        <label for="department">Choose Department  :</label>
+        <select name="department" id="department">
+            <option value="Computer Socience">Computer Science</option>
+            <option value="Math">Mathematics</option>
+            <option value="B.Voc">B.Voc </option>
+        </select><br><br>
+
+        <input type="submit" name="submit" value="submit">
+        <input type="reset" name="reset" value="Reset">
+
+
+        
+    </form>
+</body>
+</html>
