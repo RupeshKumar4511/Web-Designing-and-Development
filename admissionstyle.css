@@ -1,9 +1,10 @@
 form{
-    font-size :x-large;
+    font-size :20px;
     padding:20px;
     margin-left:380px;
     margin-right:380px;
-    background-color:yellow;
+    background-color:rgb(237,232,208);
+    border-radius:8px;
     
 }
 form input{
