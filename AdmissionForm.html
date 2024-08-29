@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="/admissionstyle.css">
+</head>
+<body>
+    <form action="">
+        <label for="sname" ><b>Student Name </b>  </label>
+        <input type="text" name="sname" id="sname" size="30px" width="18px"   required><br>
+
+        <label for="fname"> <b>Father Name</b>    </label>
+        <input type="text" name="fnae" id="fnae" size="30px" width="18px"  required><br>
+
+        <label for="mname"> <b>Mother Name </b>  </label>
+        <input type="text" name="mname" id="mname" size="30px" width="18px" required><br>
+
+        <label for="dob"> <b>Date of Birth</b>   </label>
+        <input type="date" name="dob" id="dob" required><br>
+
+        <label for="gender"><b>Gender</b>    </label> <br>
+        <label for="male" >Male </label>
+        <input type="radio" name="gender" id="gender">
+        <label for="male">Female</label>
+        <input type="radio" name="gender" id="gender"><br>
+
+
+        
+        <label for="Category"> <b>Applicant Category</b>  </label>
+        <select name="Category" id="Category">
+            <option value="Unreserved">Unreserved</option>
+            <option value="obv">OBC</option>
+            <option value="sc/st">SC/ST</option>
+        </select><br>
+
+
+
+        <label for="adharnumber"> <b>Aadhar Number </b>  </label>
+        <input type="password" name="adharnumber" id="adharnumber" size="30px" width="18px" required><br>
+
+
+        <label for="phoneno"> <b>Phone Number </b>  </label>
+        <input type="password" name="phoneno" id="phoneno" size="30px" width="18px"><br>
+
+
+        <label for="address"> <b>Address </b>  </label>
+        <input type="text" name="address" id="address" size="30px" width="18px" ><br>
+
+        <label for="email"><b> Email ID   </b> </label>
+        <input type="email" name="email" id="email" size="30px" width="18px"><br>
+
+        
+
+
+        <label for="course"> <b>Course </b>   </label>
+        <input type="text" name="course" id="course" value="B.Voc. Software Development " size="30px" width="18px" disabled><br>
+
+        <label for="fee"> <b>Course Fee </b>   </label>
+        <input type="text" name="fee" id="fee" value="28000.00" size="30px" width="18px" disabled ><br>
+
+
+        <label for="subjects"> <b>Choose Your Subjects</b>     </label><br>
+        <label for="dsa">DSA</label>
+        <input type="checkbox" name="dsa" id="dsa"><br>
+        <label for="web-design">Web Design and Development</label>
+        <input type="checkbox" name="web-design" id="web-design"><br>
+        <label for="os">Operating System </label>
+        <input type="checkbox" name="os" id="os"><br>
+        <label for="dbms">Advance DBMS </label>
+        <input type="checkbox" name="dbms" id="dbms"><br>
+
+
+
+        <label for="intro"><b>Brief Introduction</b></label><br>
+        <textarea name="intro" id="introl" rows="10" cols="50" placeholder="Brief introduction in 200-300 words."></textarea><br>
+
+        <input type="submit" name="submit" value="submit" class="submit">
+        <input type="reset" name="reset" value="Reset" class="clear">
+
+
+        
+    </form>
+</body>
+</html>
