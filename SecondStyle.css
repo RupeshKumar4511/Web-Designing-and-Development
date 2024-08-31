@@ -1,6 +1,9 @@
 .header{
     background-color:rgb(24,150,355); 
     color: white;
+    position:sticky;
+    top:0px;
+    z-index:2;
 
 }
 
@@ -8,8 +11,8 @@ span{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: medium;
         display:inline-block;
-        padding:1.25vw;
-            
+        padding:1.24vw;
+       
 }
 
 
@@ -49,6 +52,7 @@ marquee{
     background-image: url('RCollege.jpeg');
     background-size:100% 100%;
     display:block;
+    z-index:1;
     
   }
 

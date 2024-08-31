@@ -11,22 +11,80 @@ form{
 
 form label{
     display:inline-block;
-    padding-right:30px;
+    padding-right:50px;
     padding-bottom:25px;
 }
 form input{
     display:inline-block;
     height:25px;
     font-size:13px;
+    
+}
+.template{
+    padding-right:92px;
+}
+.template1{
+    padding-right:58px;
+  
+}
+.template2{
+    padding-right:30px;
+}
+.template3{
+    padding-right:40px;
+}
+.template4{
+    padding-right:100px;
+}
+.template5{
+    padding-right:90px;
+}
+.template6{
+    padding-right:108px;
+}
+.template7{
+    padding-right:72px;
+}
+.template8{
+    position:relative;
+    top:7px;
+    right:18px;
+}
+.template9{
+    position:relative;
+    width:20px;
+    top:7px;
+  
 }
 
+.template10{
+    position:relative;
+    width:20px;
+    top:7px;
+    left:108px;
+}
+.template11{
+    position:relative;
+    width:20px;
+    top:7px;
+    left:120px;
+}
+
+.width-template{
+    width:230px;
+}
+
+.width-template2{
+    height:30px;
+    width:235px;
+}
 textarea{
     display:inline-block;
     margin-bottom:50px;
 }
 .submit{
     display:inline-block;
-    margin-left:130px;
+    margin-left:140px;
     margin-right:25px;
     background-color:Yellow;
         

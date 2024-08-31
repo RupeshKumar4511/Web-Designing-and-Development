@@ -122,14 +122,19 @@ Here (95,50) is the position of center and 40 is the radius and 0 is the startin
 
 # difference b/w svg and canvas:
 
+
+
 # CSS : Cascading style sheet
 CSS is a language which is used to provide styling to a website.
 
 # How to link a html with css files
 <link rel="stylesheet" href= "style.css">
 
-# There is a id element selector in css:
+# There is id element and element id selector in css:
 #main div{background-color:white;}
+div#main{color:white;}
+
+
 
 # padding :
 It is used to fit text in a container properly.
@@ -189,10 +194,49 @@ The flex-wrap CSS property sets whether flex items are forced onto one line or c
 Grid display provides a grid-based layout system with rows and columns. Bydefault it provides a single row and column.
 
 
+# gap property of grid :
+Use the gap property to specify the size of the gap between the rows and the columns.like : gap:30px;
+
+
+# Some transform properties of grid for 2d:
+# translate(x-axis , y-axis);
+Here element move right acc. to x-axis and move down acc. to y-axis.
+<br>
+It can also done by this way.
+<br>
+translateX();
+translateY();
+
+# rotate(20deg);
+here deg can be negative.
+
+# scale(width_times,height_times);
+scale(2,3);
+Here the elements width becomes 2 times and height becomes 3time of its original height.
+<br>
+It can also done by this way:
+<br>
+scaleX(2); 
+scaleY(3);
+
+# skewX(20deg) and skewY(30deg);
+The skewX() method skews an element along the X-axis by the given angle.
+<br>
+The skewY() method skews an element along the Y-axis by the given angle.
+<br>
+It can also done by this way:
+skew(20deg,30deg);
+
+
 # transform : matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY())
 Here we can 6 properties in matrix method.
 
-
+# Some transform properties of grid for 3d:
+rotateX(); // rotate along x-axis
+<br>
+rotateY(); // rotate along Y-axis
+<br>
+rotateX(); // rotate along Z-axis.
 
 
 
