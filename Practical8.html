@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical7</title>
+</head>
+<body>
+    <script>
+        
+        let input = prompt("enter the name");
+        let character = prompt("enter the the character you want to delete");
+        let new_String = "";
+        for (let i of input){
+            if(i === character){
+                input.replace(i,"");
+            }
+         
+        }
+       
+        console.log(input);
+    </script>
+     
+</body>
+</html>

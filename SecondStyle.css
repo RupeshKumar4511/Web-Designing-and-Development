@@ -12,6 +12,7 @@ span{
         font-size: medium;
         display:inline-block;
         padding:1.24vw;
+        cursor:pointer;
        
 }
 
@@ -34,7 +35,7 @@ p span:hover {
 }
 
 #black{
-    /* background-color:#b1ddff; */
+    
     background-color:#C0C0C0;
     color:white;
     height:60px;
@@ -50,6 +51,7 @@ p span:hover {
 
 marquee{
     background-image: url('RCollege.jpeg');
+    background-blend-mode:darken; 
     background-size:100% 100%;
     display:block;
     z-index:1;

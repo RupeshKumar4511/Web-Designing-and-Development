@@ -1,0 +1,43 @@
+
+table, th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+table tr td{
+
+
+width: 150px;
+padding-left:1% ;
+padding-right:1% ;
+padding-top: 2%;
+padding-bottom: 2%;
+
+margin:50px 40px auto auto;
+text-align: center ;
+
+
+}
+.heading1{
+color: orangered;
+ text-align: center;
+ padding-bottom: 2px;
+}
+
+#h2{
+color:black;
+}
+
+.aec{
+background-color: green;
+}
+
+.ge{
+background-color: aqua;
+}
+.sec{
+background-color: yellow;
+}
+
+.vac{
+background-color: beige;
+}

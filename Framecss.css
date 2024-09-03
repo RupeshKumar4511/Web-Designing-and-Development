@@ -1,18 +1,27 @@
-.box1{
-   width:93%;
-   height :15%;
-   background-color:yellow;
-   padding:1%;
-   margin-left:2.2%;
-   margin-right:2.1%;
+.box1 {
+  width: 93%;
+  height: 15%;
+  background-color: yellow;
+  padding: 1%;
+  margin-left: 2.2%;
+  margin-right: 2.1%;
 }
 
-.link{
-    padding-right:3%;
+.link {
+  padding-right: 3%;
+}
+.page1 {
+  height: 200vh;
 }
 
-.frame1{
-    margin-left :2.2%;
-    border:1px solid black; 
-    position: fixed;
+.frame1 {
+  margin-left: 2.2%;
+  border: 1px solid black;
+  position: fixed;
+}
+body::webkit-scrollbar {
+  background-color: transparent;
+}
+body::webkit-scrollbar-thumb {
+  background-color: linear-gradient(red, yellow, green);
 }
