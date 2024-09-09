@@ -1,11 +1,10 @@
-
 table, th, td{
     border: 2px solid black;
     border-collapse: collapse;
 }
+
+
 table tr td{
-
-
 width: 150px;
 padding-left:1% ;
 padding-right:1% ;
@@ -29,15 +28,32 @@ color:black;
 
 .aec{
 background-color: green;
+
 }
+.aec:hover{
+    transform:scale(1.2);
+   }
 
 .ge{
 background-color: aqua;
 }
+
+.ge:hover{
+    transform:scale(1.2);
+   }
+
 .sec{
 background-color: yellow;
 }
 
+.sec:hover{
+    transform:scale(1.2);
+}
+
 .vac{
 background-color: beige;
+}
+
+.vac:hover{
+ transform:scale(1.2);
 }

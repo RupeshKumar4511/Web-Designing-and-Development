@@ -192,8 +192,9 @@ The flex-wrap CSS property sets whether flex items are forced onto one line or c
 
 # display :grid;
 Grid display provides a grid-based layout system with rows and columns. Bydefault it provides a single row and column.
-
-
+<br>
+Note : A responsive grid-view often has 12 columns, and has a total width of 100%, and will shrink and expand as you resize the browser window
+<br>
 # gap property of grid :
 Use the gap property to specify the size of the gap between the rows and the columns.like : gap:30px;
 
@@ -236,7 +237,7 @@ rotateX(); // rotate along x-axis
 <br>
 rotateY(); // rotate along Y-axis
 <br>
-rotateX(); // rotate along Z-axis.
+rotateZ(); // rotate along Z-axis.
 
 
 

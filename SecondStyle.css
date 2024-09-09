@@ -50,7 +50,7 @@ p span:hover {
 }
 
 marquee{
-    background-image: url('RCollege.jpeg');
+    background-image:url('RCollege.jpeg');
     background-blend-mode:darken; 
     background-size:100% 100%;
     display:block;

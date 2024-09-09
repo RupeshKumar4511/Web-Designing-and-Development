@@ -5,6 +5,9 @@
   padding: 1%;
   margin-left: 2.2%;
   margin-right: 2.1%;
+  border:1px solid black;
+  position:sticky;
+  top:10px;
 }
 
 .link {
