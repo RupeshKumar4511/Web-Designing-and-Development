@@ -14,12 +14,19 @@ form label{
     padding-right:50px;
     padding-bottom:25px;
 }
+
+
 form input{
     display:inline-block;
     height:25px;
     font-size:13px;
     
 }
+
+.bottom-gap{
+    padding-bottom:25px;
+}
+
 .template{
     padding-right:92px;
 }

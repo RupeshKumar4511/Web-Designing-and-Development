@@ -6,19 +6,35 @@
     <title>Practical7</title>
 </head>
 <body>
+
+
+
+    <label for="name">Enter Your Name </label>
+    <input type="text">
+    <br><br>
+
+    <label for="name">Enter the character which you want to delete </label>
+    <input type="text"> <br> <br>
+
+    document.write()
+ 
+    <button>ChangeCase</button>
+
     <script>
+        
         
         let input = prompt("enter the name");
         let character = prompt("enter the the character you want to delete");
         let new_String = "";
         for (let i of input){
-            if(i === character){
-                input.replace(i,"");
+            if(i == character){
+                continue
             }
+            new_String += i;
          
         }
-       
-        console.log(input);
+        document.write(new_String + "<br>") ;
+        document.write(input.toUpperCase());
     </script>
      
 </body>
