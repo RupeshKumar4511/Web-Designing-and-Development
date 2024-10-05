@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="fullname" id="fullname" placeholder="Enter your fullname"/><br />
+    <button id="button" onclick="myFunction();" >Click Me</button><br>
+    <label for="firstname" id="firstname" ></label> <br />
+    <label for="middlename" id="middlename"></label> <br />
+    <label for="lastname" id="lastname"></label> 
+
+    <script>
+       
+      function myFunction(){
+      let fullname = document.getElementById("fullname").value;
+      let  a = fullname.trim();
+
+      let firstName ;
+      let lastName;
+      let middleName;
+      if ((a.length !== 0 ) &&  Array.from(a.matchAll(" ")).length === 0) {
+        firstName = a;
+        middleName = NaN;
+        lastName = NaN;
+       
+      }
+      else if (Array.from(a.matchAll(" ")).length === 1) {
+        let firstIndex = a.indexOf(" ");
+        firstName = a.slice(0,firstIndex);
+        middleName = NaN;
+        lastName = a.slice(firstIndex+1);
+       
+      }else if(Array.from(a.matchAll(" ")).length >= 2){
+        let firstIndex = a.indexOf(" ");
+        let lastIndex = a.lastIndexOf(" ") ;
+        firstName = a.slice(0,firstIndex);
+        middleName = a.slice(firstIndex+1,lastIndex);
+        lastName = a.slice(lastIndex+1);
+      }else{
+        firstName = NaN;
+        middleName = NaN;
+        lastName = NaN;
+      }
+    
+      document.getElementById("firstname").innerText = "your Firstname is  " + firstName ;
+      document.getElementById("middlename").innerText = "your middlename is  " + middleName;
+      document.getElementById("lastname").innerText = "your lastname is  " + lastName;
+
+    }
+    </script>
+  </body>
+</html>
