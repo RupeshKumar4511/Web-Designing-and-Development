@@ -1118,9 +1118,102 @@ AJAX : Asynchronous javascript XML
 <br>
 AJAJ : Asynchronous javascript json
 
+# REST api 
+1. It follows client-server archietecture.
+<br>
+2. It respects all http method.
+<br>
+If we are sure that client can be a browser,a mobile or we can say cross palteform then server should send the data in the form of json 
+and then in the client side firstly json  converts  into html code and it is called Client side rendering(CSR).
+
+# SSR  
+If we are sure that client is always a browser then server should send 
+the data in the form of html document. It is also called
+server side rendering because html code is formed at server side.
+
+
+# Form Validation :
+
+parse() : This function is used to convert the json data into javascript object.
+<br>
+```bash
+oninput(this); => Here this refers to current html element.
+```
+
+<img src="./Image/formjs1.png" alt="js notes">
+<br>
+<img src="./Image/formjs2.png" alt="js notes">
+<br>
+<img src="./Image/formjs3.png" alt="js notes">
+<br>
+<img src="./Image/formjs4.png" alt="js notes">
+<br>
+<img src="./Image/formjs5.png" alt="js notes">
+
+
+<br>
+Email Validation:
+const emailRegex = /^[a-zA-Z0-9]+(?:[.+%_][a-zA-Z0-9]+)*@[A-Za-z]+\.[a-zA-Z]{2,}$/;
+Explanation:
+^:
+Anchors the pattern to the start of the string. This means the email must match from the beginning.
+[a-zA-Z0-9]+:
+<br>
+[a-zA-Z0-9]: Allows any letter (uppercase or lowercase) and any digit.
++: Requires at least one or more of the preceding characters (letters or numbers). This part matches the initial part of the email address, before any special characters like dots, plus signs, or underscores.
+(?:[.+%_][a-zA-Z0-9]+)*:
+<br>
+(?: ... ): This is a non-capturing group, which means it groups the enclosed pattern but does not capture it for later use.This means that the matched content is not saved as part of the results or accessible through references like \1, \2, etc.
+<br>
+[.+%_]: This allows one of the characters: . (dot), + (plus), % (percent), or _ (underscore).
+<br>
+[a-zA-Z0-9]+: After the special character, there must be one or more letters or digits.
+<br>
+*: This means the non-capturing group can occur zero or more times. Essentially, this part of the regex allows for multiple segments separated by . or other allowed characters, such as user.name+alias@example.com.
+<br>
+@:
+
+Matches the @ symbol, separating the username part of the email from the domain part.
+<br>
+[A-Za-z]+:
+
+[A-Za-z]: This matches any letter, either uppercase or lowercase.
++: Requires one or more letters. This matches the domain name part before the . (e.g., example in example.com).
+\.:
+
+The \. matches a literal dot (.). The backslash \ is used to escape the dot, as a dot normally means "any character" in regex.
+[a-zA-Z]{2,}:
+
+[a-zA-Z]: Matches any uppercase or lowercase letter.
+{2,}: Requires at least 2 or more letters. This ensures that the domain's top-level domain (TLD) part is at least 2 characters long, like .com, .org, or .net.
+$:
+
+Anchors the pattern to the end of the string. This means that no other characters can be present after the domain part.
 
 # Bootstrap 
 It is a frontend framework which helps to make the website responsive .
 
 # How it works :
 It works on grid system.
+
+
+# PHP : preprocessing hypertext 
+It is a scripting language which is mostly used in backend.
+# variables 
+# Operator
+
+# New line 
+New line can be made by using '<br>' tag.
+
+# var_dump() : 
+var_dump(4== 5)  : It returns false;
+
+# logical operator :
+and (&&) , or(||) , xor, not (!)
+
+# constants :
+we can make php constants by : define(Pi, 3.14);
+<br>
+and now we can use Pi anywhere.
+
+# if_else condition
