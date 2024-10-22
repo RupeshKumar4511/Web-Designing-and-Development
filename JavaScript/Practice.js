@@ -732,3 +732,22 @@ const { resolve } = require("path");
 // console.log(a*b);
 // console.log(typeof (a*b));
 
+
+/* Output
+Infinity
+number
+number
+number
+number
+0
+number
+*/
+
+// const a = 'the' ;
+// const b = 'number';
+// const c = { a, b};
+// console.log(c);
+
+// output 
+
+// { a: 'the', b: 'number' }
