@@ -709,6 +709,18 @@ The image or video will fill the container completely.
 Parts of the content may be cropped if its aspect ratio doesn't match that of the container.
 The content will not be stretched; it will scale proportionally.
 
+
+# element::after 
+
+The h1::after selector in CSS is a pseudo-element that is used to insert content after an h1 element. It allows you to add content or apply additional styles without modifying the actual HTML.
+```bash
+h1::after {
+  content: "";
+  /* Additional styles here */
+}
+
+```
+
 # JavaScript
 
 JavaScript is a scripting language that does not require compilation.
@@ -1219,7 +1231,7 @@ employee2.__proto__ = employee1;
 
 ```
 
-# Classes and object
+# Classes and Object
 
 ```bash
 class Car{
@@ -2858,13 +2870,275 @@ Pagination in Bootstrap is used to create a series of buttons or links that allo
 
 ```
 
+# Tabs and Pills :
+```bash 
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+```
+
+<br> 
+
+```bash 
+ for Pills 
+
+ <ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+```
+
+# Card layout : 
+```bash 
+<div class="card" style="width: 20rem;">
+  <img src="./Images/computer.jpg" class="card-img-top" alt>
+  <div class="card-body">
+    
+    <h1 class="card-title">Product 1</h1>
+    <p class="card-text">IT is good to write about product
+      details</p>
+    <button class="btn btn-success">Click to View </button>
+  </div>
+</div>
+
+```
+# display classes : 
+Read at https://getbootstrap.com/docs/5.3/utilities/display/
+
+
+# Form Classes :
+1. Form Layout Classes
+.form-group: Wraps form elements (input, label, etc.) to create a nice vertical space.
+
+```bash
+<div class="form-group">
+  <label for="exampleInputEmail">Email address</label>
+  <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter email">
+</div>
+
+```
+
+.form-control: Used to style inputs, textareas, and select elements to give them a consistent look.
+
+
+```bash
+<input type="text" class="form-control" placeholder="Enter name">
+
+```
+.form-check: Used to style checkbox and radio buttons.
+```bash
+<div class="form-check">
+  <input type="checkbox" class="form-check-input" id="exampleCheck">
+  <label class="form-check-label" for="exampleCheck">Check me out</label>
+</div>
+
+```
+2. Form Control Sizing
+.form-control-lg: Adds large size to inputs.
+
+```bash
+<input type="text" class="form-control form-control-lg" placeholder="Large input">
+.form-control-sm: Adds small size to inputs.
+```
+
+```bash
+<input type="text" class="form-control form-control-sm" placeholder="Small input">
+
+```
+
+3. Form Grid Layout
+.row and .col-* classes: Used to create form layouts with rows and columns.
+
+```bash
+<div class="form-group row">
+  <label for="email" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control" id="email" placeholder="Email">
+  </div>
+</div>
+.col-form-label: Used to align labels in a grid system.
+```
+
+4. Horizontal Forms
+<br>
+.form-inline: Makes form controls display inline (horizontally).
+```bash
+<form class="form-inline">
+  <label for="email" class="sr-only">Email</label>
+  <input type="email" class="form-control mb-2 mr-sm-2" id="email" placeholder="Enter email">
+  
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
+```
+
+5. Input Groups
+.input-group: Wraps inputs with extra elements like buttons, labels, or icons.
+```bash
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">@</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+```
+
+6. Validation States
+<br>
+.is-valid: Indicates valid input.
+```bash
+<input type="text" class="form-control is-valid" placeholder="Valid input">
+.is-invalid: Indicates invalid input.
+```
+```bash
+<input type="text" class="form-control is-invalid" placeholder="Invalid input">
+<div class="invalid-feedback">
+  Please provide a valid input.
+</div>
+
+```
+
+7. Disabled and Readonly Fields
+.disabled: Disables form controls.
+
+```bash
+<input type="text" class="form-control" placeholder="Disabled input" disabled>
+.form-control-plaintext: Used to make input fields read-only but still stylable.
+```
+
+```bash
+<input type="text" readonly class="form-control-plaintext" value="Read only">
+```
+
+
+# Sass :
+It is a css processor.
+<br>
+when we use css then it is called saas.
+<br>
+when we use css3 then it is called scss.
+
+# Operator :
+we can use all mathematical operator in scss.
+
+# Variables :
+we can make variables in scss.
+```bash 
+$bg-color = #fff;
+
+/* Now we can use this variables anywhere in css */
+
+background:$bg-color;
+```
+
+# nesting :
+we can insert child css selector inside parent css selectors . 
+
+# mixin :
+we can reuse the property which is frequently used by mixin.
+<br>
+we can also pass parameters in mixin.
+
+```bash 
+*{
+    margin:0;
+    padding:0;
+}
+
+$fav-color:yellow;
+
+@mixin flex-layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@mixin flex-layout-with-parameter($para1){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size:$para1;
+}
+
+.container{
+    margin-left: 20px;
+    margin-right: 30px;
+    // @include flex-layout;
+    @include flex-layout-with-parameter(40px);
+
+    // nesting
+    h1{
+        color:blue;
+        &:hover{
+            color:red;
+        }
+    }
+    p{
+        color:$fav-color;
+        &::after{
+            content: "this is paragraph"
+        }
+    }
+}
+
+```
+
+
+# partials
+we can separate  sass variables ,mixin and other property in seprate file and then import whenever we rquired.
+<br>
+Note : The file name of properties of sass file starts with underscore(_) to tell sass compiler that dont compile this file and with extension ".scss" . 
+<br>
+Now we can import using : import "filename without extension";
+  
+
+
+
+
+
+
+
+
 # PHP : preprocessing hypertext
 
 It is a scripting language which is mostly used in backend.
+<br>
+It is also a dynamically typed language.
 
 # variables
 
 # Operator
+Arithmetic operators 
+Assignment operators
+Comparison operators
+Increment/Decrement operators
+Logical operators
+String operators
+Array operators
 
 # New line
 
@@ -2872,7 +3146,7 @@ New line can be made by using '<br>' tag.
 
 # var_dump() :
 
-var_dump(4== 5) : It returns false;
+var_dump(4 == 5) : It returns false;
 
 # logical operator :
 
@@ -2885,3 +3159,238 @@ we can make php constants by : define(Pi, 3.14);
 and now we can use Pi anywhere.
 
 # if_else condition
+
+# loops:
+
+```bash 
+
+// for loops
+
+for($i = 1;$i<11;$i++){
+    echo "<br>";
+    echo $i;
+}
+
+// foreach loop :
+
+$array_item = array("Python", "Java", "php");
+foreach($array_item as $i){
+  echo "<br>";
+  echo $i;
+}
+
+
+
+// while loops :
+
+  $count = 1;
+  while($count <11){
+    echo "<br>";
+    echo $count;
+    $count += 1;
+  }
+
+
+// do while loops :
+  $count = 1;
+  do{
+    echo "<br>";
+    echo $count;
+    $count += 1;
+  }while($count <11);
+
+```
+
+
+
+
+
+
+# Functions :
+
+``` bash 
+function myfunction($number){
+  echo "This is a function code <br>";
+  echo "your number is " ;
+  echo $number;
+}
+
+myfunction(4);
+```
+
+# String :
+
+```bash 
+$var1 = "hello php world";
+$var2 = "I am coming soon";
+//concatenation of two string
+$var3 =  $var1.$var2;
+echo $var3;
+
+
+echo "<br>";
+$var1 .=$var2; // append the var2 to var1
+echo $var1;
+
+echo "<br>";
+
+echo strlen($var3); // length of the string 
+echo "<br>";
+echo strrev($var3); // this will reverse the string
+echo "<br>";
+echo strpos($var3 , "world"); // this will returns the index of the string.
+
+echo "<br>";
+echo str_replace("I am", " I'm",$var3);
+
+
+```
+
+# Explode Function :
+The explode(separator,string) function breaks a string into an array.
+<br>
+Note: The "separator" parameter cannot be an empty string.
+<br>
+Note: This function is binary-safe.
+
+# implode function :
+The implode(separator,array) function returns a string from the elements of an array.
+<br>
+Note: The separator parameter of implode() is optional. However, it is recommended to always use two parameters for backwards compatibility.
+<br>
+Note: This function is binary-safe.
+
+# Binary Safe :
+In PHP, Some functions are marked as binary safe functions. It means that the functions works correctly even when you pass binary data. Ex: A string containing non-ascii bytes, null bytes etc.To say more cleanly, A non binary safe function might be based on null terminated strings, When it sees any null character in the strings these functions ignores anything after it.
+
+```bash 
+  $str1="web";
+  $str2="webx00Development";
+
+  echo strcoll($str1,$str2); // gives 0, treats both strings are equal ( Non-binary safe functions )
+
+  echo strcmp($str1,str2); // gives less than 0, which means $str1 less than $str2 ( Binary safe function )
+
+```
+# addslashes function 
+The addslashes() function returns a string with backslashes in front of predefined characters.
+<br>
+The predefined characters are:
+<br>
+single quote (')
+double quote (")
+backslash (\)
+NULL
+<br>
+Tip: This function can be used to prepare a string for storage in a database and database queries.
+<br>
+```bash 
+$str = addslashes('What does "yolo" mean?');
+echo($str);  //o/p =>  What does \"yolo"\ mean?
+```
+
+
+# stripslashes function :
+The stripslashes() function removes backslashes added by the addslashes() function.
+<br>
+Tip: This function can be used to clean up data retrieved from a database or from an HTML form.
+<br>
+```bash 
+echo stripslashes("Who\'s Peter Griffin?");  // Who's Peter Griffin?
+
+```
+# htmlentities and html_entity_decode function :
+The htmlentities() function converts characters to HTML entities.
+<br>
+Tip: To convert HTML entities back to characters, use the html_entity_decode() function.
+```bash 
+$str = '<a href="https://www.w3schools.com">Go to w3schools.com</a>';
+echo htmlentities($str);
+
+```
+# htmlspecialchars function :
+The htmlspecialchars(string) function converts some predefined characters to HTML entities.
+<br>
+```bash
+The predefined characters are:
+
+& (ampersand) becomes &amp;
+" (double quote) becomes &quot;
+' (single quote) becomes &#039;
+< (less than) becomes &lt;
+> (greater than) becomes &gt;
+
+```
+<br>
+Tip: To convert special HTML entities back to characters, use the htmlspecialchars_decode() function.
+
+# strip_tags function :
+strip_tags(string,allow) : function strips a string from HTML, XML, and PHP tags.
+here allow parameter is optional.
+<br>
+Note: HTML comments are always stripped. This cannot be changed with the allow parameter.
+<br>
+Note: This function is binary-safe.
+<br>
+```bash 
+echo strip_tags("Hello <b>world!</b>"); // Hello world!
+```
+
+# strcmp() function: 
+The strcmp(string1 , string2) function compares two strings.
+It returns 0 if equal and less than 0 if string1 is less than string2 and greater than 0 if string1 is greater than string2.
+```bash 
+echo strcmp("Hello world!","Hello world!");  // 0 
+
+```
+# strcasecmp() function :
+The strcasecmp() function compares two strings.
+<br>
+Tip: The strcasecmp() function is binary-safe and case-insensitive.
+
+
+# strstr or strchr function : 
+Find the first occurrence of "world" inside "Hello world!" and return the rest of the string:
+```bash 
+echo strstr("Hello world!","Hello");   // Hello world!
+
+```
+# shell_exec() function :
+```bash
+  // Use ls command with shell_exec function
+  $output = shell_exec('ls');
+
+  // Display the list of all files and directories
+  echo "<pre>$output</pre>";
+
+
+  // we can also shell execution using bactic
+  echo `ls`;
+```
+
+
+
+# Array :
+array is a collection of data of different type in php.
+
+```bash 
+
+  $array_item = array("Python","Java","php");
+  echo array_item[0];
+  echo "<br>";
+
+  echo count(array_item); // this returns the length of the array .
+
+  // Note: we can directly print the whole array by " print_r() " function in php.
+  // so we need to iterate over each element to print it .
+
+```
+
+
+# Array Function : 
+Most of the array function does not changes in the existing array.
+
+
+# _POST[] :
+In PHP, the $_POST[] superglobal is used to collect data from an HTML form that has been submitted using the POST method. It holds key-value pairs where the keys are the names of the form fields, and the values are the user inputs.
+
