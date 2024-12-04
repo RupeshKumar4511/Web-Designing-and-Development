@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>Select your Data of Birth : <input type="date" name="dob" id="dob" /><br /><br>
+    <button id="button" onclick="myFunction();" >Click Me</button><br>
+     <p class="result"></p>
+
+    </center>
+    <script>
+
+    function myFunction() {
+    let dateInput = document.getElementById("dob").value;
+
+    if (!dateInput) {
+        document.querySelector(".result").innerText = "Please enter a valid date.";
+        return;
+    }
+
+    let dateOfBirth = new Date(dateInput);
+  
+    let currentDate = new Date();
+
+
+    let year = dateOfBirth.getFullYear() -  currentDate.getFullYear();
+    let month = dateOfBirth.getMonth() - currentDate.getMonth();
+    let day =  dateOfBirth.getDate()- currentDate.getDate() ;
+
+    
+    if (day < 0) {
+        month -= 1;
+        day += new Date(
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            0   // This sets the day to the last day of the previous month.
+        ).getDate(); 
+    }
+    if (month < 0) {
+        year -= 1;
+        month += 12;
+    
+    }
+
+    
+    document.querySelector(".result").innerText = `Your next birthday will be after : ${year} years, ${month} months, and ${day} days.`;
+}
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text {
+        font-size: 5px;
+      }
+
+      @keyframes font_increase {
+        0% {
+          font-size: 5px;
+        }
+        25% { 
+          font-size: 20px;
+        }
+        50% {
+          font-size: 30px;
+        }
+        75% {
+          font-size: 40px;
+        }
+        100% {
+          font-size: 50px;
+        }
+      }
+
+      @keyframes font_decrease {
+        0% {
+          font-size: 50px;
+        }
+        25% {
+          font-size: 40px;
+        }
+        50% {
+          font-size: 30px;
+        }
+        75% {
+          font-size: 20px;
+        }
+        100% {
+          font-size: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <center><p class="text"></p></center>
+    </div>
+
+    <script>
+      let text = document.querySelector(".text");
+
+      function display() {
+        text.innerHTML = "Bigger Text";
+        text.style.color = "red";
+        text.style.animation = "font_increase 5s ease";
+
+        
+      }
+      display();
+
+      let another_display = setTimeout(()=>{
+        text.innerHTML = "Smaller Text";
+        text.style.color = "green";
+        text.style.animation = "font_decrease 5s ease";
+      },5000);
+
+      another_display();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// font_size =10;
+// function display(){
+//     if(forward && font_size < 50){
+//         text.innerHTML = "Bigger Text";
+//         text.style.color = "red";
+//         font_size += 5;
+//         text.style.fontSize = font_size;
+
+//     }else if(font_size > 5){
+//         forward = false;
+//         text.innerHTML = "Smaller Text";
+//         text.style.color = "green";
+//         font_size -= 5;
+//         text.style.fontSize = font_size;
+//     }
+
+// }
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

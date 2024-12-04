@@ -773,7 +773,7 @@ var a = 'This is valid outer in "single Quote " and inner in double quote';
 
 ```bash
 // some rarely used primitive datatypes
-let bigintValue = BigInt(3435);
+let bigintValue = BigInt(3435); // using BigInt() function
 console.log(bigintValue);
 
 // use for the sentences.
@@ -792,6 +792,12 @@ console.log(sym1 === sym2); // false, because every Symbol is unique
 console.log(typeof symbolValue);
 
 ```
+
+# Non Primitive Datatypes :
+objects, array
+
+# Conditional Statements :
+when we want to execute a block of code based on certain conditions then we use conditional statements.
 
 # String
 
@@ -812,7 +818,8 @@ To replace all matches, use a regular expression with a /g flag (global match):
 var n = str.replace(/Microsoft/g, “IBM");
 
 # Escape Sequence characters:
-
+Escape sequence characters in JavaScript are special combinations of characters that start with a backslash (\).
+<br>
 A character escape represents a character that may not be able to be conveniently represented in its literal form.
 
 # Arrays
@@ -3123,7 +3130,7 @@ Now we can import using : import "filename without extension";
 
 
 
-# PHP : preprocessing hypertext
+# PHP :  hypertext preprocessor
 
 It is a scripting language which is mostly used in backend.
 <br>

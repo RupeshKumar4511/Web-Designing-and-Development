@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="./Practical5.css">
+</head>
+<body>
+    <form id="form">
+        <center><h1>Admission Form </h1></center>
+        <div class="form-control">
+        <label for="sname" ><b>Student Name </b>  </label>
+        <input type="text" name="sname" id="sname" size="30px" width="18px" required  ><br>
+        <small></small>
+        </div>
+
+        <div class="form-control">
+        <label for="fname" class="template1"> <b>Father Name</b>    </label>
+        <input type="text" name="fname" id="fname" size="30px" width="18px"  required><br>
+        <small></small>
+        </div>
+
+        <div class="form-control"><label for="mname"> <b>Mother Name </b>  </label>
+        <input type="text" name="mname" id="mname" size="30px" width="18px" required><br>
+        <small></small>
+        </div>
+
+        <div class="form-control">
+        <label for="dob" class="template1"> <b>Date of Birth</b>   </label>
+        <input type="date" name="dob" id="dob" class="width-template" required><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="gender" class="mingap" ><b>Gender</b> </label> <br>
+        <label for="male" >Male </label>
+        <input type="radio" name="gender" id="male" class="template8" value="Male">
+        <label for="male" >Female</label>
+        <input type="radio" name="gender" id="female" class="template8" value="Female"><br>
+        <small></small> 
+    </div>
+    
+
+    <div class="form-control">
+
+        <label for="Category" class="template"> <b>Category</b>  </label>
+        <select name="Category" id="Category" class="width-template2" >
+            <option value="Unreserved">Unreserved</option>
+            <option value="obc">OBC</option>
+            <option value="sc/st">SC/ST</option>
+        </select><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="adharnumber" class="template2"> <b>Aadhar Number </b>  </label>
+        <input type="password" name="adharnumber" id="adharnumber" size="30px" width="18px" required ><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+
+        <label for="phoneno" class="template3"> <b>Phone Number </b>  </label>
+        <input type="text" name="phoneno" id="phoneno" size="30px" width="18px"  required><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+        <label for="address" class="template4"> <b>Address </b>  </label>
+        <input type="text" name="address" id="address" size="30px" width="18px" required><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+        <label for="email" class="template5"><b> Email ID   </b> </label>
+        <input type="email" name="email" id="email" size="30px" width="18px" required ><br>
+        <small></small>
+    </div>
+
+
+    <div class="form-control">
+        <label for="10th"><b>Upload 10th Markssheet</b> </label>
+        <input type="file" name="tenth" id="tenth" size="30px" width="18px" class="bottom-gap" required><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="12th"><b>Upload 12th Markssheet</b> </label>
+        <input type="file" name="twelfth" id="twelfth" size="30px" width="18px" class="bottom-gap" required ><br>
+        <small></small>
+    </div>
+
+
+        <label for="course" class="template6"> <b>Course </b>   </label>
+        <input type="text" name="course" id="course" value="B.Voc. Software Development " size="30px" width="18px" disabled><br>
+
+        <label for="fee" class="template7"> <b>Course Fee </b>   </label>
+        <input type="text" name="fee" id="fee" value="28000.00" size="30px" width="18px" disabled ><br>
+
+    </div>
+
+    <div class="form-control">
+        <label for="subjects" class="mingap" > <b>Choose Your Subjects</b>     </label><br>
+        <label for="dsa">Data Structures and Algorithms</label>
+        <input type="checkbox" name="subjects" id="dsa" class="template9"><br>
+        <label for="web-design">Web Design and Developments</label>
+        <input type="checkbox" name="subjects" id="web-design" class="template9"><br>
+        <label for="os">Operating System </label>
+        <input type="checkbox" name="subjects" id="os" class="template10"><br>
+        <label for="dbms">Advance DBMS </label>
+        <input type="checkbox" name="subjects" id="dbms" class="template11"><br>
+        <small></small>
+    </div>
+
+ 
+
+
+        <label for="intro"><b>Brief Introduction</b></label><br>
+        <textarea name="intro" id="introl" rows="10" cols="50" placeholder="Brief introduction in 200-300 words."></textarea><br>
+
+        <input type="submit" name="submit" value="Submit" class="submit">
+        <input type="reset" name="reset" value="Reset" class="clear">
+        
+
+        
+    </form>
+
+    <script src="./Admission.js"></script>
+</body>
+</html>

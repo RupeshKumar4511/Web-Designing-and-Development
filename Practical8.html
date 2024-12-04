@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practical7</title>
-</head>
-<body>
-
-
-
- 
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical8</title>
+  </head>
+  <body>
     <script>
-        
-        
-        let input = prompt("enter the name");
-        let character = prompt("enter the the character you want to delete");
-        let new_String = "";
-        for (let i of input){
-            if(i == character){
-                continue
-            }
-            new_String += i;
-         
+      let input = prompt("enter a string ");
+      let index = parseInt(
+        prompt("enter index of character you want to delete")
+      );
+      let new_String = "";
+      for (let i = 0; i < input.length; i++) {
+        if (i === index) {
+          continue;
         }
-        document.write(new_String + "<br>") ;
-        document.write(input.toUpperCase());
+        new_String += input[i];
+      }
+      document.write("Your input is " + input + "<br>");
+      document.write("After removal of a character : " + new_String + "<br>");
+
+      function swapcase(name) {
+        if (name === name.toUpperCase()) {
+          document.write("In Lowercase " + name.toLowerCase());
+        } else if (name === name.toLowerCase()) {
+          document.write("In Uppercase " + name.toUpperCase());
+        }
+        document.write("mixed case");
+      }
+      swapcase(input);
     </script>
-     
-</body>
+  </body>
 </html>

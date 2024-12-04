@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="./Practical11.css">
+</head>
+<body>
+    <form id="form">
+        <center><h1>Admission Form </h1></center>
+        <div class="form-control">
+        <label for="sname" ><b>Student Name </b>  </label>
+        <input type="text" name="sname" id="sname" size="30px" width="18px"   ><br>
+        <small></small>
+        </div>
+
+        <div class="form-control">
+        <label for="fname" class="template1"> <b>Father Name</b>    </label>
+        <input type="text" name="fname" id="fname" size="30px" width="18px"  ><br>
+        <small></small>
+        </div>
+
+        <div class="form-control"><label for="mname"> <b>Mother Name </b>  </label>
+        <input type="text" name="mname" id="mname" size="30px" width="18px" ><br>
+        <small></small>
+        </div>
+
+        <div class="form-control">
+        <label for="dob" class="template1"> <b>Date of Birth</b>   </label>
+        <input type="date" name="dob" id="dob" class="width-template" ><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="gender" class="mingap" ><b>Gender</b> </label> <br>
+        <label for="male" >Male </label>
+        <input type="radio" name="gender" id="male" class="template8" value="Male">
+        <label for="male" >Female</label>
+        <input type="radio" name="gender" id="female" class="template8" value="Female"><br>
+        <small></small> 
+    </div>
+    
+
+    <div class="form-control">
+
+        <label for="Category" class="template"> <b>Category</b>  </label>
+        <select name="Category" id="Category" class="width-template2" >
+            <option value="Unreserved">Unreserved</option>
+            <option value="obc">OBC</option>
+            <option value="sc/st">SC/ST</option>
+        </select><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="adharnumber" class="template2"> <b>Aadhar Number </b>  </label>
+        <input type="password" name="adharnumber" id="adharnumber" size="30px" width="18px" ><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+
+        <label for="phoneno" class="template3"> <b>Phone Number </b>  </label>
+        <input type="text" name="phoneno" id="phoneno" size="30px" width="18px" ><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+        <label for="address" class="template4"> <b>Address </b>  </label>
+        <input type="text" name="address" id="address" size="30px" width="18px" ><br>
+        <small></small>
+
+    </div>
+
+    <div class="form-control">
+        <label for="email" class="template5"><b> Email ID   </b> </label>
+        <input type="email" name="email" id="email" size="30px" width="18px" ><br>
+        <small></small>
+    </div>
+
+
+    <div class="form-control">
+        <label for="10th"><b>Upload 10th Markssheet</b> </label>
+        <input type="file" name="tenth" id="tenth" size="30px" width="18px" class="bottom-gap" ><br>
+        <small></small>
+    </div>
+
+    <div class="form-control">
+        <label for="12th"><b>Upload 12th Markssheet</b> </label>
+        <input type="file" name="twelfth" id="twelfth" size="30px" width="18px" class="bottom-gap" ><br>
+        <small></small>
+    </div>
+
+
+        <label for="course" class="template6"> <b>Course </b>   </label>
+        <input type="text" name="course" id="course" value="B.Voc. Software Development " size="30px" width="18px" disabled><br>
+
+        <label for="fee" class="template7"> <b>Course Fee </b>   </label>
+        <input type="text" name="fee" id="fee" value="28000.00" size="30px" width="18px" disabled ><br>
+
+    </div>
+
+    <div class="form-control">
+        <label for="subjects" class="mingap" > <b>Choose Your Subjects</b>     </label><br>
+        <label for="dsa">Data Structures and Algorithms</label>
+        <input type="checkbox" name="subjects" id="dsa" class="template9"><br>
+        <label for="web-design">Web Design and Developments</label>
+        <input type="checkbox" name="subjects" id="web-design" class="template9"><br>
+        <label for="os">Operating System </label>
+        <input type="checkbox" name="subjects" id="os" class="template10"><br>
+        <label for="dbms">Advance DBMS </label>
+        <input type="checkbox" name="subjects" id="dbms" class="template11"><br>
+        <small></small>
+    </div>
+
+ 
+
+
+        <label for="intro"><b>Brief Introduction</b></label><br>
+        <textarea name="intro" id="introl" rows="10" cols="50" placeholder="Brief introduction in 200-300 words."></textarea><br>
+
+        <input type="submit" name="submit" value="Submit" class="submit">
+        <input type="reset" name="reset" value="Reset" class="clear">
+        
+
+        
+    </form>
+
+    <script >const form = document.getElementById("form");
+        const fullname = document.getElementById("sname");
+        const fname = document.getElementById("fname");
+        const mname = document.getElementById("mname");
+        const dob = document.getElementById("dob");
+        const adharnumber = document.getElementById("adharnumber");
+        const phoneno = document.getElementById("phoneno");
+        const address = document.getElementById("address");
+        const email = document.getElementById("email");
+        const Category = document.getElementById("Category");
+        const tenth = document.getElementById("tenth");
+        const twelfth = document.getElementById("twelfth");
+        const dbms = document.getElementById("dbms");
+        const gender = document.getElementsByName("gender");
+        const gender_value = document.getElementById("female");
+        const subjects = document.getElementsByName("subjects");
+        
+        
+        
+        
+        function errorMsg(input, message) {
+            const form_control = input.parentElement;
+            form_control.className = "form-control error";
+            const small = form_control.querySelector("small");
+            input.style.border = "2px solid red";
+            small.innerText = message;
+        
+        }
+        
+        function successMsg(input) {
+            const form_control = input.parentElement;
+            // form_control.className = "form-control success";
+            const small = form_control.querySelector("small");
+            small.innerText = "";
+            input.style.border = "2px solid green";
+        }
+        
+        function errorMsg2(input, message) {
+            const form_control = input.parentElement;
+            form_control.className = "form-control error";
+            const small = form_control.querySelector("small");
+            small.innerText = message;
+        
+        }
+        
+        
+        function successMsg2(input) {
+            const form_control = input.parentElement;
+            form_control.className = "form-control success";
+            const small = form_control.querySelector("small");
+            small.innerText = "";
+            
+        }
+        
+        
+        
+        
+        
+        document.querySelector("#form").addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+            if (fullname.value.trim().length === 0) {
+                errorMsg(fullname, "Student Name cannot be blank");
+                isValid = false;
+            }
+            else {
+                const nameRegex = /^[a-zA-Z]{3,14}(?:[\s]{0,2})$/;
+                if (nameRegex.test(fullname.value)) {
+                    successMsg(fullname);
+                }
+                else {
+                    errorMsg(fullname, "Name must contains atleast 3 characters and maximum 16 \n characters(including: alphabets,space and underscore)");
+                    isValid= false;
+        
+                }
+            }
+        
+        
+            
+        
+            if (fname.value.trim().length === 0) {
+                errorMsg(fname, "Father Name cannot be blank");
+                isValid = false;
+            }
+            else {
+                const nameRegex = /^[a-zA-Z]{3,14}(?:[\s]{0,2})$/;
+                if (nameRegex.test(fname.value)) {
+                    successMsg(fname);
+                }
+                else {
+                    errorMsg(fname, "Name must contains atleast 3 characters and maximum 16 \n characters(including: alphabets,space and underscore)");
+                    isValid= false;
+        
+                }
+            }
+        
+            if (mname.value.trim().length === 0) {
+                errorMsg(mname, "Mother Name cannot be blank");
+                isValid = false;
+            }
+            else {
+                const nameRegex = /^[a-zA-Z]{3,14}(?:[\s]{0,2})$/;
+                if (nameRegex.test(mname.value)) {
+                    successMsg(mname);
+                }
+                else {
+                    errorMsg(mname, "Name must contains atleast 3 characters and maximum 16 \n characters(including: alphabets,space and underscore)");
+                    isValid= false;
+        
+                }
+            }
+        
+            let check = false;
+            for (i = 0; i < gender.length; i++) {
+                if (gender[i].checked){
+                    check = true; 
+                    break;
+                }else{
+                    check = false;
+                }
+                    
+            }
+        
+            if (check === false){
+                errorMsg2(gender_value,"Please select your gender");
+            }else {
+                successMsg2(gender_value);
+                
+            }
+        
+            if (Category.value.trim().length === 0) {
+                errorMsg2(Category, "Please Select your category");
+                isValid = false;
+            }
+            else {
+                successMsg2(Category);
+                
+                
+            }
+        
+            if (tenth.value.length === 0 ) {
+                errorMsg2(tenth, "Please Upload 10th certificate");
+                isValid = false;
+            }
+            else {
+                successMsg2(tenth);
+                
+                
+            }
+         
+            if (twelfth.value.length === 0 ) {
+                errorMsg2(twelfth, "Please Upload 12th certificate");
+                isValid = false;
+            }
+            else {
+                
+                successMsg2(twelfth);
+                
+                
+            }
+        
+         
+        
+            if (email.value.trim().length === 0) {
+        
+                errorMsg(email, "Email ID cannot be blank");
+                isValid = false;
+            }
+            else {
+                const emailRegex = /^[a-zA-Z0-9]+(?:[.+%_][a-zA-Z0-9]+)*@[A-Za-z]+\.[a-zA-Z]{2,}$/;
+                if (emailRegex.test(email.value)) {
+                    successMsg(email);
+                } else {
+                    errorMsg(email, "This is not a valid email id");
+                    isValid = false;
+                }
+            }
+            if (address.value.trim().length === 0) {
+                errorMsg(address, "Address cannot be blank");
+                isValid = false;
+            }
+            else {
+                const nameRegex = /^[a-zA-Z0-9\s]$/;
+                if (nameRegex.test(address.value)) {
+                    successMsg(address);
+                }
+                else {
+                    errorMsg(address, "Address has following characters(including: alphabets,underscore and numbers)");
+                    isValid= false;
+        
+                }
+            }
+            if (adharnumber.value.trim().length === 0) {
+        
+                errorMsg(adharnumber, "Aadhaar No cannot be blank");
+                isValid = false;
+            }
+            else {
+                const adharnumberRegex = /^[0-9]{12}$/;
+                if (adharnumberRegex.test(adharnumber.value)) {
+                    successMsg(adharnumber);
+                } else {
+                    errorMsg(adharnumber, "This is not a valid Aadhaar No");
+                    isValid = false;
+                }
+        
+            }
+        
+        
+            if (phoneno.value.trim().length === 0) {
+        
+                errorMsg(phoneno, "Phone No cannot be blank");
+                isValid = false;
+            }
+            else {
+                const phonenoRegex = /^[0-9]{10}$/;
+                if (phonenoRegex.test(phoneno.value)) {
+                    successMsg(phoneno);
+                } else {
+                    errorMsg(phoneno, "This is not a valid Phone No");
+                    isValid = false;
+                }
+        
+            }
+        
+            let check2 = false;
+            for (i = 0; i < subjects.length; i++) {
+                if (subjects[i].checked){
+                    check2 = true; 
+                    break;
+                }else{
+                    check2 = false;
+                }
+                    
+            }
+        
+            if (!check2){
+                errorMsg2(dbms,"Please Select your Subjects");
+            }else {
+                successMsg2(dbms);
+                
+            }
+        
+        
+            if(isValid){
+               
+        
+        
+                const formData = new FormData(document.getElementById('form'));
+        
+                
+                fetch('../PHP/admissionform.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text()) 
+                .then(() => {
+                    alert("form data submitted Succesfully."); 
+                    document.getElementById('form').reset(); 
+                     
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    
+                });
+            }  
+                
+                
+            
+        
+        });
+        
+        
+        </script>
+</body>
+</html>
