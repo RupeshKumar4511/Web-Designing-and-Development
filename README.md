@@ -73,7 +73,7 @@ In form tag , action attribute is used to defines what actions need to be perfor
 <br>
 <b>method="GET"</b>This method is used when we want to retrieve data, make a search, or when the form data is not sensitive and can be included in the URL.
 
-<b>method ="POST"</b> It is used when the form data is sensitive, when the form submission will change server-side data, or when you need to send a large amount of data.
+<b>method ="POST"</b> It is used when the  form data is sensitive, when the form submission will change server-side data, or when you need to send a large amount of data.
 
 <b>for attribute in label in form :</b> is used to associate the label with a specific form control such as input , textarea, select.
 
@@ -117,7 +117,238 @@ It makes video autoplay when the webpage opens.
 
 6 . muted : for the muted video plays.
 
+# HTML5 Data Storage:
+HTML5 provides two main mechanisms for data storage on the client side:
+
+<h1>1. Web Storage:</h1>
+
+Web Storage consists of localStorage and sessionStorage. These allow key-value pair storage in a more efficient and structured way compared to cookies.
+
+<b>localStorage</b>
+Localstorage is web storage object which are not sent to server with each request .
+This store the data in the form of key value pairs and did not gone after refresh.
+It allows data to persist even after the browser is closed.
+<br>
+Key Features:
+
+
+Stores up to ~5MB of data.
+Stored data is domain-specific.(It means If you store data using localStorage on https://example.com:
+
+The data is available only to pages on https://example.com.
+It will not be accessible to:
+A different subdomain like https://sub.example.com.
+)
+Accessible via the localStorage object.
+<br>
+Several Methods provided by the Localstorage:
+<br>
+```bash
+1. setItem(key, value)
+Description: Stores a key-value pair in localStorage.
+Example:
+localStorage.setItem('username', 'JohnDoe');
+
+2. getItem(key)
+Description: Retrieves the value associated with the given key.
+Example:
+
+const username = localStorage.getItem('username'); // Returns 'JohnDoe'
+
+
+3. removeItem(key)
+Description: Removes the key-value pair associated with the given key.
+Example:
+
+localStorage.removeItem('username');
+
+4. clear()
+Description: Removes all key-value pairs from localStorage.
+Example:
+localStorage.clear();
+
+5. key(index)
+Description: Retrieves the key at the specified index (keys are stored in insertion order).
+Example:
+const firstKey = localStorage.key(0); // Returns the first key
+
+6. Length Property (localStorage.length)
+Description: Returns the number of key-value pairs stored in localStorage.
+Example:
+const itemCount = localStorage.length; // Number of stored items
+
+Notes:
+Data stored in localStorage is stored as strings. To store objects or arrays, you need to stringify them using JSON.stringify and parse them back using JSON.parse:
+
+const user = { name: 'John', age: 30 };
+localStorage.setItem('user', JSON.stringify(user));
+
+const storedUser = JSON.parse(localStorage.getItem('user'));
+console.log(storedUser.name); // Outputs: John
+
+localStorage is synchronous and available in all modern browsers. It shares storage across all tabs and windows of the same origin.
+
+
+```
+
+<br>
+<br>
+
+<b>sessionStorage</b>
+Description: Stores data for the duration of a session.Data remains persist after refresh the same tab but Data is cleared when the browser tab is closed.
+<br>
+Key Features:
+Similar to localStorage, but temporary.
+Accessible via the sessionStorage object.
+<br>
+Several methods provided by sessionStorage (sessionStorage has also same methods that localStorage has):
+```bash
+// Save data
+sessionStorage.setItem('username', 'JaneDoe');
+
+// Retrieve data
+const username = sessionStorage.getItem('username');
+
+// Clear data
+sessionStorage.clear();
+```
+<br>
+
+<b>onstorage Event :</b>
+<br>
+The onstorage event is triggered when changes are made to the localStorage of a web page. However, there are specific conditions and behaviors associated with this event.
+<br>
+```bash 
+window.onstorage=(e) =>{
+  alert("Changed");
+}
+
+```
+<br>
+When Does the onstorage Event Trigger?
+<br>
+It triggers when a key in localStorage is added, modified, or removed.
+It only fires for other windows or tabs from the same origin. This means:
+If you modify localStorage in one browser tab, the onstorage event will fire in other tabs or windows of the same origin.
+It does not trigger in the same tab where the change was made.
+Note: onstorage does not work for sessionStorage.
+<br>
+
+<h1>2. IndexedDB</h1>
+A low-level API for storing large amounts of structured data, including files and blobs(Binary Large Object) like videos,images etch. Ideal for web applications needing complex queries and high performance.
+<br>
+Key Features:
+<br>
+Stores large amounts of data (more than 50MB in most browsers).
+<br>
+Allows transactions and indexed searches.
+(Transactions in IndexedDB are used to group multiple read and write operations into a single atomic operation, ensuring data integrity.
+IndexedDB allows you to create indexes on specific fields in your object stores, enabling quick and efficient searches.)
+<br>
+Example of Transaction :
+```bash 
+// Open a database
+const request = indexedDB.open("MyDatabase", 1);
+
+request.onsuccess = function (event) {
+  const db = event.target.result;
+
+  // Create a transaction
+  const transaction = db.transaction(["users"], "readwrite");
+
+  // Access the object store
+  const store = transaction.objectStore("users");
+
+  // Add data to the object store
+  const addRequest = store.add({ id: 1, name: "John Doe", age: 30 });
+
+  addRequest.onsuccess = () => {
+    console.log("Data added successfully!");
+  };
+
+  transaction.oncomplete = () => {
+    console.log("Transaction completed successfully.");
+  };
+
+  transaction.onerror = (err) => {
+    console.log("Transaction failed: ", err);
+  };
+};
+```
+
+Supports asynchronous operations.
+
+Accessible via the indexedDB object.
+<br>
+Example:
+```bash
+const request = indexedDB.open('myDatabase', 1);
+
+request.onsuccess = function (event) {
+  const db = event.target.result;
+  console.log('Database opened successfully');
+};
+
+request.onupgradeneeded = function (event) {
+  const db = event.target.result;
+  const objectStore = db.createObjectStore('users', { keyPath: 'id' });
+  objectStore.createIndex('name', 'name', { unique: false });
+};
+
+```
+Note : IndexedDB is primarily designed for persistent storage, meaning that data stored in IndexedDB remains available even after the browser is closed or the device is restarted.
+<br>
+<br>
+
+<b>3. Cookies (Legacy)</b>
+Cookies store small strings of data (up to 4KB) and are often used for session management, user tracking, and maintaining state between server and client. It is also stored in the form of key value pairs.
+Example : unique id is given by each user by the web server stores in the cookies and when the same user visited the same website the cookie data will be send to server.
+
+<br>
+Key Features:
+<br>
+Data can be sent automatically to the server with every HTTP request.
+Accessible via document.cookie.
+Can have expiration times.
+<br>
+Example:
+<br>
+```bash
+// Set a cookie
+document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/a";
+
+Note : This does not override the cookie but only add this cookie to the previous cookies.
+Here cookie also provides several options after key= value to a set call.
+path= /a :  means cookies is visible at /a .
+expires set the expiration date.
+
+
+Note : If we update the same key with different key then value associated with that key will be upated and no new key-value will be formed.
+
+Note : when we want to set specialcharacters(like =,!) as key then it will not set then in this case we need to encode them :
+document.cookie = encodeURIComponent("@3=;") + '=' + encodeURIComponent("234#4=");
+
+The key = value after encodeURIComponent should not exceed 4KB.
+Total No of Cookies per domain is limited to around 20+ (browser dependent).
+
+If we want to decode it then we can also decode it.
+decodeURIComponent("@3=;");
+
+
+// Retrieve cookies
+console.log(document.cookie);
+
+
+
+```
 # Canvas :
+The getContext("2d") method is used to create a drawing context on the canvas.
+The "2d" parameter specifies that the context is for 2D graphics.
+This context provides methods and properties to draw shapes, text, images, and other graphics on the canvas.
+
+<br>
+The stroke() method in the HTML5 Canvas API is used to draw the outline of a shape or path. It renders the visible stroke (or border) based on the current stroke style, width, and other properties defined in the CanvasRenderingContext2D object.
+<br>
 
 The <b>beginPath()</b> method begins a path or resets the current path.
 <br>
@@ -129,6 +360,8 @@ ctx.fillText("Hello World", 10, 50);
 <br>
 Here (10,50) represents x and y coordinates.
 <br>
+
+
 Explanation of createLinearGradient(0, 0, 200, 0);:
 <br>
 (0, 0): This is the starting point of the gradient at the top-left corner of the canvas.
@@ -156,7 +389,7 @@ Here (10,10) represents the x and y coordinates.
 <br>
 
 ```bash
-Explanation of createRadialGradient(75, 50, 5, 90, 60, 100);:
+Explanation of createRadialGradient(75, 50, 5, 90, 60, 100);  
 
 75, 50: The center of the inner circle (starting point) is at (75, 50).
 
@@ -401,11 +634,11 @@ It is a one-dimensional layout method for arranging items in rows or columns.
 
 It sets how flex items are placed in the flex container, along which axis and direction.
 <br>
-flex-drection:flex-start;
+flex-drection:row;
 <br>
 It means the starts of main axis in the flex container.
 <br>
-flex-drection:flex-end;
+flex-drection:row-reverse;
 It means the end of main axis in the flex container.
 
 <br>
@@ -533,7 +766,7 @@ Assign grid items to areas with the grid-area property.
   'menu footer footer footer footer footer';
   grid-gap: 10px;
   background-color: #2196F3;
-  padding: 10px;
+  padding: 10px; 
 }
 
 .grid-container > div {
@@ -621,7 +854,7 @@ The first column gets 1 part (1/3 of the available space).
 <br>
 The second column gets 2 parts (2/3 of the available space).
 
-# Some transform properties of grid for 2d:
+# Some transform properties for 2d:
 
 # translate(x-axis , y-axis);
 
