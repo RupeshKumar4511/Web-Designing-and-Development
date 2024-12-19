@@ -924,8 +924,7 @@ ease-in-out - specifies a transition effect with a slow start and end
 ```
 @media (min-width:200px) and (max-width:400px){}
 
-It means when the screen size is between 200px and 400px.
-```
+It means when the screen size is between 200px and 400px.```
 
 # aspect-ratio:
 
@@ -1952,7 +1951,7 @@ It is used to add padding between the column using gx-_ (_ can be 0, 1 = 2px fro
 <br>
 and margin top and bottom between the columns using gy-\*.(0, 1= 2px from top and 2px from bottom and others are same as previous.)
 <br>
-if we use <b>g=3</b> then it will apply both padding and margin.
+if we use <b>g- 3</b> then it will apply both padding and margin.
 
 ```bash
 <div class="container-fluid">
@@ -3224,33 +3223,67 @@ Read at https://getbootstrap.com/docs/5.3/utilities/display/
 4. Horizontal Forms
 <br>
 .form-inline: Makes form controls display inline (horizontally).
+<br>
 ```bash
-<form class="form-inline">
-  <label for="email" class="sr-only">Email</label>
-  <input type="email" class="form-control mb-2 mr-sm-2" id="email" placeholder="Enter email">
-  
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+<form class="row row-cols-lg-auto g-3 align-items-center">
+  <div class="col-12">
+    <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+    <div class="input-group">
+      <div class="input-group-text">@</div>
+      <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+    </div>
+  </div>
+
+  <div class="col-12">
+    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+    <select class="form-select" id="inlineFormSelectPref">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+      <label class="form-check-label" for="inlineFormCheck">
+        Remember me
+      </label>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 ```
 
 5. Input Groups
 .input-group: Wraps inputs with extra elements like buttons, labels, or icons.
+<br>
 ```bash
+ 
 <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">@</span>
-  </div>
+  <label for="username" class="input-group-text">Username</label>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
+
 ```
 
 6. Validation States
 <br>
 .is-valid: Indicates valid input.
+<br>
 ```bash
 <input type="text" class="form-control is-valid" placeholder="Valid input">
 .is-invalid: Indicates invalid input.
+
 ```
+
+<br>
+<br>
+
 ```bash
 <input type="text" class="form-control is-invalid" placeholder="Invalid input">
 <div class="invalid-feedback">
@@ -3261,11 +3294,13 @@ Read at https://getbootstrap.com/docs/5.3/utilities/display/
 
 7. Disabled and Readonly Fields
 .disabled: Disables form controls.
-
+<br>
 ```bash
 <input type="text" class="form-control" placeholder="Disabled input" disabled>
 .form-control-plaintext: Used to make input fields read-only but still stylable.
 ```
+<br>
+<br>
 
 ```bash
 <input type="text" readonly class="form-control-plaintext" value="Read only">
@@ -3278,6 +3313,9 @@ It is a css processor.
 when we use css then it is called saas.
 <br>
 when we use css3 then it is called scss.
+
+# Note :
+If you are working with vs code then you should install "Live Sass Compiler" to compile the scss files.
 
 # Operator :
 we can use all mathematical operator in scss.
@@ -3358,9 +3396,14 @@ Now we can import using : import "filename without extension";
 
 
 
-
-
-
+# Types of Language :
+Statically Strongly Typed Language : data types will be checked at compile time. like JAVA , C++,C etc
+<br>
+Dynamically Strongly Typed Language : data types will be checked at runtime . like Python 
+<br>
+Dynamically Weakly Typed Language : data types will be checked at 
+runtime and these languages allows implicit type coercion, meaning it automatically converts one type to another when performing operations.
+like javascript, php etc
 
 
 # PHP :  hypertext preprocessor
@@ -3368,7 +3411,8 @@ Now we can import using : import "filename without extension";
 It is a scripting language which is mostly used in backend.
 <br>
 It is also a dynamically typed language.
-
+<br>
+<img src="./Image/php_case.jpg" alt="">
 # variables
 
 # Operator
@@ -3382,7 +3426,7 @@ Array operators
 
 # New line
 
-New line can be made by using '<br>' tag.
+New line can be made by using br tag.
 
 # var_dump() :
 
@@ -3489,7 +3533,7 @@ echo str_replace("I am", " I'm",$var3);
 # Explode Function :
 The explode(separator,string) function breaks a string into an array.
 <br>
-Note: The "separator" parameter cannot be an empty string.
+Note: The "separator" parameter cannot be an empty string. But it can be a space.
 <br>
 Note: This function is binary-safe.
 
@@ -3631,6 +3675,123 @@ array is a collection of data of different type in php.
 Most of the array function does not changes in the existing array.
 
 
-# _POST[] :
+# List of PHP Superglobals
+Here is a comprehensive list of PHP superglobal variables and their purposes:
+
+1. $_GLOBALS
+Purpose: Access global variables from anywhere in the script.
+Example:
+```bash
+$x = 5;
+$y = 10;
+
+function sum() {
+    $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y'];
+}
+
+sum();
+echo $z; // Outputs: 15
+
+```
+<br>
+2. $_SERVER
+Purpose: Contains information about headers, paths, and script locations provided by the web server.
+<br>
+Common Keys:
+$_SERVER['HTTP_HOST']: Host name.
+$_SERVER['PHP_SELF']: Path of the executing script.
+$_SERVER['REQUEST_METHOD']: Request method (GET, POST, etc.).
+Example:
+```bash
+echo $_SERVER['PHP_SELF']; // Outputs: /example.php
+echo $_SERVER['REQUEST_METHOD']; // Outputs: GET
+```
+<br>
+3. $_GET
+Purpose: Collects data sent via URL parameters (query string).
+Example:
+```bash
+// URL: http://example.com/index.php?name=John
+echo $_GET['name']; // Outputs: John
+```
+<br>
+4. $_POST
 In PHP, the $_POST[] superglobal is used to collect data from an HTML form that has been submitted using the POST method. It holds key-value pairs where the keys are the names of the form fields, and the values are the user inputs.
+<br>
+```bash
+// HTML form
+// <form method="POST" action="submit.php">
+//   <input type="text" name="username">
+//   <button type="submit">Submit</button>
+// </form>
+echo $_POST['username'];
+
+```
+<br>
+5. $_FILES
+Purpose: Handles file uploads.
+Keys:
+$_FILES['file']['name']: Original file name.
+$_FILES['file']['tmp_name']: Temporary file location.
+<br>
+```bash
+// HTML form
+// <form method="POST" action="upload.php" enctype="multipart/form-data">
+//   <input type="file" name="file">
+//   <button type="submit">Upload</button>
+// </form>
+
+echo $_FILES['file']['name']; // Outputs: uploaded_file.jpg
+```
+<br>
+6. $_COOKIE
+Purpose: Contains data stored in cookies sent by the client to the server.
+<br>
+```bash
+// Set a cookie
+setcookie("user", "John", time() + 3600);
+
+// Access the cookie
+echo $_COOKIE['user']; // Outputs: John
+```
+<br>
+7. $_SESSION
+Purpose: Used to store data that persists across multiple pages.
+<br>
+```bash
+session_start();
+$_SESSION['user'] = "John";
+
+echo $_SESSION['user']; // Outputs: John
+```
+<br>
+8. $_REQUEST
+Purpose: Combines the contents of $_GET, $_POST, and $_COOKIE.
+<br>
+```bash
+// URL: http://example.com/index.php?name=John
+echo $_REQUEST['name']; // Outputs: John
+```
+<br>
+9. $_ENV
+Purpose: Contains environment variables provided by the operating system.
+<br>
+```bash
+echo $_ENV['HOME']; // Outputs the home directory on some systems.
+```
+
+
+#Practical Example With htmlspecialchars
+Form Code:
+```bash 
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+
+URL Manipulated by Attacker:
+http://example.com/form.php"><script>alert('Hacked!')</script>
+
+
+Rendered HTML (Safe):
+<form method="post" action="form.php&quot;&gt;&lt;script&gt;alert('Hacked!')&lt;/script&gt;">
+The malicious input is displayed as text and does not execute.
+```
 

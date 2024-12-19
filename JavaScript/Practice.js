@@ -199,19 +199,25 @@
 
 
 // function compareFn(a, b) {
-//     if (a >b) {
-//       return -1;
-//     } else if (a <b) {
-//       return 1;
+//         if (a > b) {
+//             return -1; // Place `a` before `b`
+//         } else if (a < b) {
+//             return 1; // Place `b` before `a`
+//         }
+//         return 0; // Keep `a` and `b` in their current order
 //     }
-//     // a must be equal to b
-//     return 0;
-//   }
   
 
 // let array = [100,200,300,400,500];
 // array.sort(compareFn);
 // console.log(array);
+
+// Execution Steps
+// Initial Array: [100, 200, 700, 400, 500]
+// Sorting Steps (using the comparator):
+// Compare 100 and 200: compareFn(100, 200) → 1 → Swap them: [200, 100, 700, 400, 500]
+// Compare 100 and 700: compareFn(100, 700) → 1 → Keep 700 before 100.
+// Continue pairwise comparisons until all elements are sorted.
 
 
 // const multiplication = (a,b)=>{
