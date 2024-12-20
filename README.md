@@ -117,6 +117,12 @@ It makes video autoplay when the webpage opens.
 
 6 . muted : for the muted video plays.
 
+# Frames
+A frame is a layout-defining element that splits a browser window into multiple frames, each with its own contents. Frames are no longer supported by HTML 5 and are unlikely to be used unless working with a pre-HTML5 webapp. 
+
+# IFrames
+An iframe is a content-adding element that embeds another HTML page within the current document. IFrames are commonly used to insert content from external sources, such as advertisements, embedded videos, and interactive content. IFrames can float within the webpage and be positioned at a specific location. 
+
 # HTML5 Data Storage:
 HTML5 provides two main mechanisms for data storage on the client side:
 
@@ -274,8 +280,9 @@ request.onsuccess = function (event) {
     console.log("Transaction failed: ", err);
   };
 };
-```
 
+```
+<br>
 Supports asynchronous operations.
 
 Accessible via the indexedDB object.
@@ -296,6 +303,7 @@ request.onupgradeneeded = function (event) {
 };
 
 ```
+<br>
 Note : IndexedDB is primarily designed for persistent storage, meaning that data stored in IndexedDB remains available even after the browser is closed or the device is restarted.
 <br>
 <br>
@@ -313,7 +321,9 @@ Can have expiration times.
 <br>
 Example:
 <br>
+
 ```bash
+
 // Set a cookie
 document.cookie = "username=JohnDoe; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/a";
 
@@ -338,9 +348,9 @@ decodeURIComponent("@3=;");
 // Retrieve cookies
 console.log(document.cookie);
 
-
-
 ```
+
+
 # Canvas :
 The getContext("2d") method is used to create a drawing context on the canvas.
 The "2d" parameter specifies that the context is for 2D graphics.
@@ -3795,3 +3805,20 @@ Rendered HTML (Safe):
 The malicious input is displayed as text and does not execute.
 ```
 
+# Database connectivity
+Database connectivity in PHP with MySQL involves establishing a connection between a PHP script and a MySQL database to perform operations such as creating, reading, updating, and deleting data. PHP provides multiple ways to connect to a MySQL database, with the most commonly used methods being MySQLi (MySQL Improved).
+<br>
+Steps to Connect PHP with MySQL:
+<br>
+Setup the MySQL Database:
+Create a database and table using a tool like phpMyAdmin or MySQL commands.
+<br>
+Use PHP to Connect:
+Use MySQLi 
+
+# Difference b/w Server side and client side scripting
+
+<img src="./Image/sl.jpg" alt="">
+
+# Dynamic and static web page
+<img src="./Image/wp.jpg" alt="">
