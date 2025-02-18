@@ -1036,7 +1036,14 @@ console.log(typeof symbolValue);
 ```
 
 # Non Primitive Datatypes :
-objects, array
+objects, array,function which is also an object
+
+# Stack and Heap memory : 
+All the primitive datatypes are stored in Stack memory and in the stack memory copy of the variables values are used. 
+<br>
+All the non primitive datatypes are stored in the Heap memory and a reference is passed to variables which use it.
+<br>
+<img src="./Image/sh.jpg" alt=""> 
 
 # Conditional Statements :
 when we want to execute a block of code based on certain conditions then we use conditional statements.
@@ -1542,7 +1549,10 @@ class Engineer extends Person{
 let enObj1 = new Engineer("David","cs");
 console.log(enObj1.name,enObj1.branch);
 ```
-
+# JS Engine and Web api 
+<img src="./Image/js.jpg" alt="">
+<br>
+<img src="./Image/fetch.jpg" alt="">
 # API
 
 An API (Application Programming Interface) is a set of rules, protocols, and tools that allows one software application to communicate with another. It defines the methods and data formats that programs can use to interact with each other, enabling them to share functionality or data.
@@ -1571,7 +1581,7 @@ let promise = fetch(url or endpoints, [options]);
         console.log(response);// JSON format
 
         let data = await response.json();
-        console.log(data )
+        console.log(data)
         }
 
         getFacts();
@@ -1680,6 +1690,33 @@ server side rendering because html code is formed at server side.
 
 parse() : This function is used to convert the json data into javascript object.
 <br>
+```bash 
+const jsonString = '{"name": "Alice", "age": 25, "city": "Wonderland"}';
+const obj = JSON.parse(jsonString);
+
+console.log(obj.name); // Output: Alice
+console.log(obj.age);  // Output: 25
+
+```
+<br>
+
+stringify() : This function is used to convert object to json. 
+<br>
+```bash 
+
+const person = {
+  name: "Bob",
+  age: 30,
+  city: "Builderland"
+};
+
+const jsonStr = JSON.stringify(person);
+
+console.log(jsonStr); // Output: '{"name":"Bob","age":30,"city":"Builderland"}'
+
+```
+
+
 
 ```bash
 oninput(this); => Here this refers to current html element.
@@ -1737,6 +1774,27 @@ The \. matches a literal dot (.). The backslash \ is used to escape the dot, as 
 $:
 
 Anchors the pattern to the end of the string. This means that no other characters can be present after the domain part.
+
+<br>
+<br>
+
+Password Regex:
+<br>
+```bash 
+
+const enhancedPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@#$_!%*?&])[A-Za-z\d@#$_!%*?&]{8,16}$/;
+Breakdown of the regex:
+^ and $: These anchor the regex to the start and end of the string, ensuring the entire string is validated.
+(?=.*[a-z]): This requires at least one lowercase letter.
+(?=.*[A-Z]): This requires at least one uppercase letter.
+(?=.*\d): This requires at least one digit.
+(?=.*[.@#$_!%*?&]): This requires at least one special character (you can adjust the list of special characters to suit your needs).
+[A-Za-z\d@#$_!%*?&]{8,16}: This defines the allowed characters (letters, digits, and selected special characters) and limits the length to a minimum of 8 and a maximum of 16 characters.
+Example Use in JavaScript:
+
+```
+
+
 
 # Event Handling Concept :
 

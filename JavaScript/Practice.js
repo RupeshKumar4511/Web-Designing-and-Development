@@ -44,13 +44,31 @@
 
 
 //how to create non primitive datatype (objects)
+// There are two  ways to declare an object. 
+// I) Using Constructor : It is called singleton.
+// const newUser = new Object();
+// newUser.id = 53;
+// console.log(newUser);
+
+
+// II) Object literals
 // const product ={name :"Pencil",
 //     Rating :4,
 //     isDeal :true,
-//     MRP : 223
+//     MRP : 223,
+//     [symbolValue]:"This is the correct syntax to write symbol inside object"
 // };
 // console.log(product["Rating"]);
 // console.log(product.name);
+// // symbol in object is accessed by :
+// console.log(product[symbolValue])
+// console.log(product)
+
+
+// we can freeze the object for not change further. 
+// Object.freeze(product);
+// product.name = "Pen";// this will not be overrided. 
+// console.log(product)
 
 
 
@@ -60,6 +78,39 @@
 //     MRP : 223
 // };
 // console.log(product["fullname"]["Pencil"])
+
+// const a = 'the' ;
+// const b = 'number';
+// const c = { a, b};
+// console.log(c);
+
+// output 
+
+// { a: 'the', b: 'number' }
+
+
+
+// const obj = {a:1,b:3};
+// const {a,b}= obj;
+// console.log(typeof a);
+// console.log(b);
+
+
+
+// const obj = {a:1,b:3};
+// const obj2 = {c:43,d:23};
+// const obj4 = Object.assign({},obj,obj2);
+// const obj3 = {...obj,...obj2}
+// console.log(obj3);
+
+
+// console.log(Object.keys(obj4)); // gives the array of all keys.
+// console.log(Object.values(obj4));  // gives the array of all values.
+// console.log(Object.entries(obj4));  // gives the array of each entry combined in a separate array.
+
+// console.log(obj4.hasOwnProperty('b')); // check whether the following property in object exist or not.
+
+
 
 // console.log(123 + "re"); // here concatenation is done
 
@@ -700,15 +751,8 @@
 
 
 
-// const obj = {a:1,b:3};
-// const {a,b}= obj;
-// console.log(typeof a);
-// console.log(b);
 
-// const a = "the" ;
-// const b = "no";
-// const c = {a,b};
-// console.log(c);
+
 
 
 
@@ -716,8 +760,7 @@
         // const url = 'https://cat-fact.herokuapp.com/facts';
         // const getFacts = async ()=>{
         // let response =  await fetch(url);
-
-        // //console.log(response);// JSON format 
+        // console.log(response);// JSON format 
         
         // let data = await response.json();
         // console.log(data[3].text);
@@ -748,11 +791,3 @@ number
 number
 */
 
-// const a = 'the' ;
-// const b = 'number';
-// const c = { a, b};
-// console.log(c);
-
-// output 
-
-// { a: 'the', b: 'number' }
