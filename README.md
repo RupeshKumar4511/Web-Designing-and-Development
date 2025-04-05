@@ -721,6 +721,20 @@ Default value is 0. Items with lower order values appear first.
 
 The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
 
+# flex:flex-grow flex-shrink flex-basis
+flex-grow : A number specifying how much the item will grow relative to the rest of the flexible items
+<br>
+flex-shrink : A number specifying how much the item will shrink relative to the rest of the flexible items
+<br>
+flex-basis : This property specifies the initial length of a flexible item. Legal values: "auto", "inherit", or a number followed by "%", "px", "em" or any other length unit
+
+# Object: cover 
+The CSS object-fit property is used to specify how an image or video should be resized to fit its container.
+<br>
+contain - The image keeps its aspect ratio, but is resized to fit within the given dimension
+<br>
+cover - The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit.
+
 # display :grid;
 
 Grid display provides a grid-based layout system with rows and columns. Bydefault it provides a single row and column.

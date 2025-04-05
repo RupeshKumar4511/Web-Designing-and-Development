@@ -759,10 +759,11 @@
 
         // const url = 'https://cat-fact.herokuapp.com/facts';
         // const getFacts = async ()=>{
-        // let response =  await fetch(url);
-        // console.log(response);// JSON format 
+        // let response =  await fetch(url);  // return promise and if promise is fullfilled then returns response
+        // console.log(response);// JSON format(can be objects or array of objects) 
         
-        // let data = await response.json();
+        // let data = await response.json();  //return promise and if promise is fullfilled then returns response's data in the proper json format(array of objects);
+
         // console.log(data[3].text);
         // }
 
