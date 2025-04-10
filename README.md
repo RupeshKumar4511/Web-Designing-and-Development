@@ -607,17 +607,36 @@ here vh means viewport height.
 <br>
 1 vh is equal to 1% of the height of the viewport and same as in vw.
 
-# position: sticky;
+# z-index;
 
 when the two elements are overlapping then with the use of z -index ,we can specify which element will be show in upper layer or lower layer . Basically whose z -index is maximum,that will show in upper layer.
 
+# position : static ;
+Elements follow the normal document flow.
+<br>
+Ignores top, right, bottom, left, and z-index.
+
+# position:relative;
+The element is positioned relative to the browser window(normal position).
+
 # position:absolute;
 
-An element with position: absolute is positioned relative to its nearest ancestor that has a position value other than static (e.g., relative, absolute, fixed, sticky).
+An element with position: absolute is positioned relative to its nearest parent that has a position value other than static (e.g., relative, absolute, fixed, sticky).
 <br>
 If there is no such ancestor, it will be positioned relative to the initial containing block, which is typically the browser window or viewport.
 <br>
 Offset properties (top, right, bottom, left) determine how far the element is positioned from its containing block's edges.
+
+# position:fixed;
+Positioned relative to the viewport (browser window).
+<br>
+Stays fixed even when scrolling.
+
+# position:sticky;
+Acts like relative until a scroll threshold is reached, then behaves like fixed.
+<br>
+Requires top, right, bottom, or left to define the sticking point.
+
 
 # list-style-position:
 
@@ -687,7 +706,7 @@ baseline: Items are aligned such that their baselines align.
 
 # align-content:
 
-Aligns the flex lines (when there are multiple lines due to wrapping or more space ) along the cross axis.
+Aligns the flex lines (when there are multiple lines due to wrapping or more space between the components) along the cross axis.
 <br>
 stretch (default): Lines stretch to fill the container.
 <br>
@@ -713,13 +732,18 @@ Other values: flex-start, flex-end, center, baseline, stretch.
 
 # order
 
-Controls the order in which flex items appear.
+Controls the order in which flex items appear when multiple items are aligned in a line .
 <br>
 Default value is 0. Items with lower order values appear first.
 
 # flex-wrap :
-
-The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
+```bash
+flex-wrap:wrap;
+// it can be no-wrap (default)
+// it can be wrap-reverse
+```
+<br>
+The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, flex-items goes to next line if space is not available.
 
 # flex:flex-grow flex-shrink flex-basis
 flex-grow : A number specifying how much the item will grow relative to the rest of the flexible items
@@ -728,12 +752,7 @@ flex-shrink : A number specifying how much the item will shrink relative to the 
 <br>
 flex-basis : This property specifies the initial length of a flexible item. Legal values: "auto", "inherit", or a number followed by "%", "px", "em" or any other length unit
 
-# Object: cover 
-The CSS object-fit property is used to specify how an image or video should be resized to fit its container.
-<br>
-contain - The image keeps its aspect ratio, but is resized to fit within the given dimension
-<br>
-cover - The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit.
+
 
 # display :grid;
 
@@ -945,10 +964,22 @@ ease-in-out - specifies a transition effect with a slow start and end
 
 # media query:
 
-```
+```bash
 @media (min-width:200px) and (max-width:400px){}
 
-It means when the screen size is between 200px and 400px.```
+// It means when the screen size is between 200px and 400px.
+
+@media only screen and (max-width:200px){
+    body{
+    background-color:blue;
+    }
+}
+
+//  only : This is a keyword that prevents older browsers that don't support media queries from applying the styles. It's optional and used mostly for browser compatibility.
+
+//  screen : It tells the browser you want to apply styles when the media type is a screen . 
+
+```
 
 # aspect-ratio:
 
