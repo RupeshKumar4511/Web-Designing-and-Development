@@ -1244,9 +1244,31 @@ a(9);
 
 Window object is automatically created by the browser.
 
-# DOM (Document object model)
+# DOM (Document object model):
 
-when a html page is loaded then browser create window object and dom of the the page and bom(browser object model). Document object is a suboject of window. Basically it is a model of html code in the form of objects.
+```bash
+When an HTML page is loaded in a browser:
+
+The browser creates a window object, which acts as the global object in client-side JavaScript.
+
+Inside the window object:
+
+document object is created, representing the DOM (Document Object Model) — a tree-like structure of all the HTML elements on the page.
+
+The BOM (Browser Object Model) is also available, giving access to browser features like:
+
+navigator (browser info)
+
+location (URL info)
+
+history (browsing history)
+
+screen (display properties)
+
+alert, confirm, prompt dialogs, etc.
+
+```
+
 
 <br>
 Advantages:
@@ -1296,6 +1318,22 @@ console.dir(element1.children);
 
 // here it prints all the child elements of body.
 ```
+<br>
+
+
+```bash 
+document.documentElement.parentNode
+// This returns the document object. Because the <html> element is a child of document, so its parent is document
+
+
+
+document.documentElement.parentElement
+//This returns null.
+
+//Because document is not an element, it's a document node.
+
+// parentElement only returns something if the parent is an Element node — and document isn't.
+```
 
 <br>
 Note : space is considered as text node by default.
@@ -1321,6 +1359,7 @@ element.dataset.player;
 
 <br>
 
+
 # Dom manipulation:
 
 document.querySeletor("we can pass tag name or #id or .class");
@@ -1340,6 +1379,7 @@ It removes the child node which is inside the parent node.
 <br>
 We can insertAdjacentHTML/Text/Element with the help of id attributes also and by target the element also.
 <br>
+
 ```bash
 box4.insertAdjacentHTML("beforebegin","<p>THis is a paragraph</p>");
 
@@ -1347,7 +1387,7 @@ box4.insertAdjacentElement("beforebegin",new_el);
 
 box4.insertAdjacentText("afterend","hello JavaScript");
 
-````
+```
 
 # className and ClassList
 
@@ -1362,11 +1402,14 @@ element2.className = "text-black red";
 element2.classList.toggle("red");
 //The classList.toggle() method in JavaScript is used to add or remove a class from an element's class list. If the class is present on the element, it removes it; if it’s not present, it adds it.
 
-````
+```
 
 # event Handling :
 
 When you click anywhere on the page, the click event is triggered.
+<br>
+event.currentTarget:
+Returns the element on which the event listener was attached — not necessarily the one that triggered the event.
 <br>
 The event.clientX and event.clientY properties return the X and Y coordinates of the mouse pointer relative to the viewport.
 
@@ -1594,10 +1637,52 @@ class Engineer extends Person{
 let enObj1 = new Engineer("David","cs");
 console.log(enObj1.name,enObj1.branch);
 ```
+
 # JS Engine and Web api 
+
 <img src="./Image/js.jpg" alt="">
 <br>
+```bash 
+Here global stands for global execution context.
+
+fn stands for function execution stack. 
+
+Here function can be of different types(like function related to DOM API, Set Interval, fetch()).
+
+All functions are stored in stack and executed by JS Engine. 
+
+Fetch related functions are executed first and Micro task queue is only for fetch related functions.
+
+setTimeout is special funtion which requires register and firstly these are stored in task queue and Event loop always check that whether the task is empty or not and also check callstack is empty or not and also check whether execution time of function comes or not and if not then they remains in task queue and if yes then function are placed in stack on the top.
+
+
+```
+<br>
+
 <img src="./Image/fetch.jpg" alt="">
+<br>
+```bash 
+response = fetch('api/endpoint')
+when we hit any api endpoint using fetch then two things happens : 
+
+1. Network request : Network request can be made by browser and Node js also. 
+
+2. Memory Reserves : 
+To Reserve some private variable: 
+
+Data variable to store the response from api. In place data, it can be any other name.  
+
+onfullfilled [] : array which actually stores the response in the form of function,status of api response and then response are transfered to data variable. 
+Remember that all the request which are successfull even request with response status 404 will be stored in onfullfilled array. 
+
+onRejection [] : array which stores the error of api request in the form of function 
+which fails to hit the endpoint and  then response are transfered to data variable. 
+
+After then response stored in the data will be transfered to the response variable which 
+are available in global memory.
+```
+
+
 # API
 
 An API (Application Programming Interface) is a set of rules, protocols, and tools that allows one software application to communicate with another. It defines the methods and data formats that programs can use to interact with each other, enabling them to share functionality or data.
@@ -1633,7 +1718,7 @@ let promise = fetch(url or endpoints, [options]);
 
 ```
 
-# Types of HTTP request methods w:
+# Types of HTTP request methods:
 
 1.GET Api request :
 
@@ -1701,12 +1786,12 @@ ex: deleting a user.
 # status code :
 
 200 : success
+<br> 
+201 :  Resource successfully created (user in post/put request)
 <br>
-400 : url not found
+400 : something missing (like required filled missing in the form)
 <br>
-201 : something missing in the form like in form.
-<br>
-404 : page not found(api error)
+404 : url not found(api error)
 <br>
 504 : server error
 
@@ -1717,17 +1802,24 @@ AJAX : Asynchronous javascript XML
 AJAJ : Asynchronous javascript json
 
 # REST api
+REST stands for Representational State Transfer.
+<br>
+```bash 
 
 1. It follows client-server archietecture.
-   <br>
+ 
 2. It respects all http method.
-   <br>
-   If we are sure that client can be a browser,a mobile or we can say cross palteform then server should send the data in the form of json
-   and then in the client side firstly json converts into html code and it is called Client side rendering(CSR).
+  
+3. Cross-Platform Clients & JSON
+A REST API can serve any client: browser, mobile app, desktop app, etc.
+
+Data is usually returned in JSON format for platform-neutrality.
+
+If servers knows that client can be a browser, a mobile app, desktop app or we can say cross palteform then server should send the data in the form of json and then in the client side firstly json converts into html code and it is called Client side rendering(CSR).
 
 # SSR
 
-If we are sure that client is always a browser then server should send
+If serever knows that client is always a browser then server send
 the data in the form of html document. It is also called
 server side rendering because html code is formed at server side.
 
@@ -1781,30 +1873,42 @@ oninput(this); => Here this refers to current html element.
 
 <br>
 
+
+
 Email Validation:
 <br>
-const emailRegex = /^[a-zA-Z0-9]+(?:[.+%\_][a-zA-Z0-9]+)_@[A-Za-z]+\.[a-zA-Z]{2,}$/;
+```bash 
+const emailRegex = /^[a-zA-Z0-9]+(?:[.+%\_][a-zA-Z0-9])*@[A-Za-z]+\.[a-zA-Z]{2,}$/;
 Explanation:
+
 ^:
 Anchors the pattern to the start of the string. This means the email must match from the beginning.
 [a-zA-Z0-9]+:
-<br>
+
 [a-zA-Z0-9]: Allows any letter (uppercase or lowercase) and any digit.
+
 +: Requires at least one or more of the preceding characters (letters or numbers). This part matches the initial part of the email address, before any special characters like dots, plus signs, or underscores.
+
+
 (?:[.+%\_][a-zA-Z0-9]+)_:
-<br>
+
 (?: ... ): This is a non-capturing group, which means it groups the enclosed pattern but does not capture it for later use.This means that the matched content is not saved as part of the results or accessible through references like \1, \2, etc.
-<br>
+
+
 [.+%_]: This allows one of the characters: . (dot), + (plus), % (percent), or \_ (underscore).
-<br>
+
+
 [a-zA-Z0-9]+: After the special character, there must be one or more letters or digits.
-<br>
-\*: This means the non-capturing group can occur zero or more times. Essentially, this part of the regex allows for multiple segments separated by . or other allowed characters, such as user.name+alias@example.com.
-<br>
+
+
+*: This means the non-capturing group can occur zero or more times. Essentially, this part of the regex allows for multiple segments separated by . or other allowed characters, such as user.name+alias@example.com.
+
+
 @:
 
 Matches the @ symbol, separating the username part of the email from the domain part.
-<br>
+
+
 [A-Za-z]+:
 
 [A-Za-z]: This matches any letter, either uppercase or lowercase.
@@ -1815,10 +1919,12 @@ The \. matches a literal dot (.). The backslash \ is used to escape the dot, as 
 [a-zA-Z]{2,}:
 
 [a-zA-Z]: Matches any uppercase or lowercase letter.
+
 {2,}: Requires at least 2 or more letters. This ensures that the domain's top-level domain (TLD) part is at least 2 characters long, like .com, .org, or .net.
 $:
 
 Anchors the pattern to the end of the string. This means that no other characters can be present after the domain part.
+```
 
 <br>
 <br>
@@ -1828,14 +1934,17 @@ Password Regex:
 ```bash 
 
 const enhancedPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@#$_!%*?&])[A-Za-z\d@#$_!%*?&]{8,16}$/;
+
 Breakdown of the regex:
 ^ and $: These anchor the regex to the start and end of the string, ensuring the entire string is validated.
 (?=.*[a-z]): This requires at least one lowercase letter.
 (?=.*[A-Z]): This requires at least one uppercase letter.
 (?=.*\d): This requires at least one digit.
 (?=.*[.@#$_!%*?&]): This requires at least one special character (you can adjust the list of special characters to suit your needs).
-[A-Za-z\d@#$_!%*?&]{8,16}: This defines the allowed characters (letters, digits, and selected special characters) and limits the length to a minimum of 8 and a maximum of 16 characters.
-Example Use in JavaScript:
+[A-Za-z\d@#$_!%*?&]{8,16}: This defines the allowed characters 
+(letters, digits, and selected special characters) and limits the length 
+to a minimum of 8 and a maximum of 16 characters.
+
 
 ```
 
@@ -1848,14 +1957,15 @@ Event: An action or occurrence detected by JavaScript in the browser (e.g., mous
 Event Handler: A function that gets executed when an event is triggered.
 <br>
 Event Listener: A method that registers the event handler and listens for a specific event.
-<br> 2. Types of Event Handlers in JavaScript
+<br>
+2. Types of Event Handlers in JavaScript
 There are several ways to define and attach event handlers in JavaScript:
-
+<br>
 A. Inline Event Handlers (HTML Event Attributes)
 This method directly attaches an event handler to an HTML element's attribute, such as onclick, onmouseover, etc.
-
+<br>
 Example: Inline onclick event handler
-
+<br>
 ```bash
 <button onclick="alert('Button clicked!')">Click Me</button>
 In this example, the alert() function is called when the button is clicked.
@@ -1863,9 +1973,9 @@ In this example, the alert() function is called when the button is clicked.
 
 B. Event Handlers via DOM Properties
 This method assigns a JavaScript function to an element’s event property (e.g., onclick, onmouseover) using the DOM.
-
+<br>
 Example: Setting an onclick event using a DOM property
-
+<br>
 ```bash
 <button id="myButton">Click Me</button>
 
@@ -1877,8 +1987,9 @@ Example: Setting an onclick event using a DOM property
 </script>
 Here, the onclick property of the button element is set to an anonymous function that displays an alert when the button is clicked.
 ```
-
+<br>
 C. Event Listeners (addEventListener Method)
+<br>
 The addEventListener() method is a modern and preferred way to register event handlers. It allows you to:
 
 Add multiple event handlers for the same event.
@@ -1906,12 +2017,14 @@ Example: Using addEventListener for a click event
   });
 </script>
 
-````
+```
 
 D. Removing Event Listeners (removeEventListener)
+<br>
 The removeEventListener() method removes an event handler that was attached using addEventListener().
-
+<br>
 Example: Removing an event listener
+<br>
 ```bash
 <button id="myButton">Click Me</button>
 <button id="removeHandler">Remove Click Event</button>
@@ -1929,8 +2042,24 @@ Example: Removing an event listener
     button.removeEventListener("click", handleClick);
   });
 </script>
+
 In this example, clicking the "Remove Click Event" button removes the event handler from the "Click Me" button, preventing further clicks from triggering the alert.
-````
+```
+
+# Debouncing : 
+Debouncing is a programming pattern used to limit how often a function runs — especially when it's called frequently in quick succession (like typing, resizing, scrolling, etc.).
+<br>
+```bash 
+function handleSearchInput(e) {
+  console.log("Searching for:", e.target.value);
+}
+
+const debouncedSearch = debounce(handleSearchInput, 300);
+
+document.getElementById("search").addEventListener("input", debouncedSearch);
+
+```
+
 
 # Bootstrap
 
