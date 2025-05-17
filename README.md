@@ -425,9 +425,58 @@ User Experience (UX) design is about creating a seamless, efficient, and satisfy
 
 CSS is a language which is used to provide styling to a website.
 
-# How to link a html with css files
+# Specificity : 
+!important > internal css > id selector > class selector > attribute selector > element selector 
+<br>
+```bash 
+// specificity value 
+!important = Infinity
+internal style = 1000
+id = 100
+class = 10
+element = 1 
 
+```
+
+# Cascading Rule : 
+
+```bash 
+Order of precedence (from lowest to highest):
+
+Browser default styles
+
+External stylesheets (linked)
+
+Internal styles
+
+Inline styles
+
+!important declarations override all others (use with caution)
+
+
+// If the two elements have same specificity value then css which has written firstly will be overrided by the last one. 
+
+```
+# Inheritance : 
+All the text related property are inheritable.  
+<br>
+Some property is not inherit by default because browser apply some properties on it. 
+<br>
+But we can inherit property. 
+<br>
+```bash 
+
+body{
+  font-style:italic
+}
+font-style: inherit;
+
+```
+
+# How to link a html with css files
+```bash 
 <link rel="stylesheet" href= "style.css">
+```
 
 # There is id element and element id selector in css:
 
@@ -466,6 +515,11 @@ background-size: cover; /* Resize the background image to cover the entire conta
 
 
 Note we can add more than one images to background But first image wil apply first and other image will apply behind the first one.
+
+```
+# To prevent overflow : 
+```bash 
+//use max-width and min-height 
 
 ```
 
@@ -511,6 +565,18 @@ In border attribute 1px is width, solid is style and black is color. This is sho
 # display
 
 if display is block , we can set width,height,padding and margin.
+<br>
+If display is inline , padding,border and margin works in left-right direction. 
+
+# Inline Element: 
+There are two types of inline element : 
+<br>
+1. Non Replaced Inline Element : Element which have some general content . like : anchor, span etc. 
+Here height and width does not work. They are auto . 
+
+<br>
+2. Replaced Inline Element : Element which does not have some general content. like : img,iframe,video,object etc. 
+Here height,width,padding,border and margin works. 
 
 # text-align and text-decoration and text-transform
 
@@ -523,7 +589,7 @@ It means the line over the text.
 
 text-decoration : line-through;
 
-It means the there is a line on the text.
+It means that there is a line on the text.
 
 
 text-transform : upercase,lowercase,capitalize,none;
@@ -1018,6 +1084,110 @@ ECMAScript is a standard for a scripting language. It specifies the core feature
 <br>
 for the convention of variables and methods , we use camel case.
 
+# Important Point from JS Execution:
+
+```bash 
+
+// when we run any js code then two things happen :
+1. Reserve Memory for variables and function in Global Execution Context. 
+Intially in the Global Execution Context , all the variable stored with undefined value
+and Functions are stored with function body. 
+
+2. Code phase in which by code is executed by js engine. 
+
+
+```
+<br>
+<br>
+
+```bash 
+// Important Point : 
+
+const John = {
+  name : "John"
+  sayName: function(){
+    console.log(this.name)
+  }
+}
+
+const David = {
+  name : "David"
+  sayName: function(){
+    console.log(this.name)
+  }
+}
+
+David.sayName.call(John) ;
+// O/P => John  
+
+It is because "David.sayName" uses the Global Execution Stack of John. 
+
+
+
+
+
+
+
+
+// Another Important Que : 
+for(var i =0 ;i < 10 ; i++){
+  setTimeout(()=>{console.log(i)},0);
+}
+
+// Here It will print ten times 10 because var is globally scoped. 
+In this case, first complete for loop runs and 3 setTimeout function will be stored in Execution stack which will be executed later. 
+
+
+
+// Another Important Ques : 
+const Rohan = {
+  name:"Rohan",
+  sayName : function(){
+    console.log(this.name);
+  }
+}
+
+setTimeout(Rohan.sayName,3*1000);
+// O/P : undefined 
+
+Because setTimeout executes separately so when setTimeout executes "Rohan.sayName" does not know its execution context. 
+
+setTimeout(Rohan.sayName.bind(Rohan),3000)
+
+// O/P : Rohan 
+Because bind will first bind the execution stack with the execution stack of "Rohan.sayName" and then call it. 
+
+setTimeout(()=> Rohan.sayName() , 3000)
+// O/P : Rohan 
+
+
+const obj = Object.create({
+  height:30;
+});
+console.log(obj.height);
+delete obj.height;
+
+console.log(obj.height)
+
+
+// O/P : 30 
+         30 
+
+Because when we create object by "Object.create" then all the properties will be stored in the prototype of object and delete does not work on prototype but if normally create object without "Object.create()" then in that case last "obj.height" will print "undefined".
+
+```
+
+
+# Hoisting : 
+Hoisting will take place in case of "var" and funtions defined with function keyword and function name. 
+<br>
+In case of "let" JS makes "Temporal Dead Zone" for the code above from the "let" declaration which does not allows JS to access "let" variable before its intialization.
+
+# Important Point from "this" keyword :
+```bash 
+In case of arrow function and IIFE function" this " keywords refers to global object. In Browser it refers to Window object. 
+
+```
 # Variables :
 
 var is globally scoped and let and const are block scoped.
