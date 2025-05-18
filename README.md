@@ -521,6 +521,8 @@ Note we can add more than one images to background But first image wil apply fir
 ```bash 
 //use max-width and min-height 
 
+// use unit em and change the font-size of parent's element. 
+
 ```
 
 # padding :
@@ -641,8 +643,10 @@ The font-variant property in CSS is used to control the usage of different font 
 
 It can be normal,italic and oblique.
 
-# font-size:
-
+# em unit :
+Note :  when we set font-size in em and and set any another property's value in em then property's value will changes acc to its own element's font-size. 
+<br>
+like : 
 if font-size :2em in a child div
 <br>
 then other property like width : 2em then it means width becomes 2 times of its own font-size.It does not depend on parent font-size.
@@ -655,7 +659,7 @@ Example:
 
   <!--In parent div the font-size is 3em means 48px-->
 
-  <div class="box1">
+  <div class="box1"> <!-- font-size:48px -->
       <p style="font-size: 2em; width:2em;background-color: aqua;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit reiciendis et hic exercitationem, mollitia iure esse quaerat expedita, voluptatem maiores, porro eos saepe deserunt est voluptates eaque nihil nisi totam?</p>
 
       <!--IN paragraph font-size is 2em means 2 * 48 px => 96px and width is 2em means 2 * 96 = 192px-->
@@ -676,6 +680,16 @@ here vh means viewport height.
 # z-index;
 
 when the two elements are overlapping then with the use of z -index ,we can specify which element will be show in upper layer or lower layer . Basically whose z -index is maximum,that will show in upper layer.
+<br>
+It only works on elements with a position value of:
+
+relative
+
+absolute
+
+fixed
+
+sticky
 
 # position : static ;
 Elements follow the normal document flow.
@@ -684,6 +698,13 @@ Ignores top, right, bottom, left, and z-index.
 
 # position:relative;
 The element is positioned relative to the browser window(normal position).
+we can set top,right,bottom,left by using inset.
+<br>
+```bash 
+position:relative;
+inset:5px; // here left,right,top,bottom will be 5px. 
+
+```
 
 # position:absolute;
 
@@ -733,10 +754,22 @@ flex-drection:row;
 <br>
 It means the starts of main axis in the flex container.
 <br>
+flex-drection:column;
+<br>
+It means the starts of cross axis in the flex container.
+<br>
 flex-drection:row-reverse;
 It means the end of main axis in the flex container.
 
 <br>
+```bash 
+<div style="display: flex;">
+  <span style="width: 23px; height: 34px;"></span>
+</div>
+
+// When parent has display flex then we can set the width and height of inline elements. 
+
+```
 
 # justify-content:
 
@@ -812,11 +845,16 @@ flex-wrap:wrap;
 The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, flex-items goes to next line if space is not available.
 
 # flex:flex-grow flex-shrink flex-basis
-flex-grow : A number specifying how much the item will grow relative to the rest of the flexible items
+flex-grow : A number specifying how much the item will grow relative to the rest of the flexible items.
+Default: 0 (do not grow)
 <br>
-flex-shrink : A number specifying how much the item will shrink relative to the rest of the flexible items
+flex-shrink : A number specifying how much the item will shrink relative to the rest of the flexible items.
+Default: 1 (can shrink).
+If set to 0, the item won't shrink even if there's not enough space.
 <br>
-flex-basis : This property specifies the initial length of a flexible item. Legal values: "auto", "inherit", or a number followed by "%", "px", "em" or any other length unit
+flex-basis : This property specifies the initial length of a flexible item. Legal values: "auto", "inherit", or a number followed by "%", "px", "em" or any other length unit.
+
+<br>
 
 
 
@@ -963,7 +1001,16 @@ The first column gets 1 part (1/3 of the available space).
 <br>
 The second column gets 2 parts (2/3 of the available space).
 
-# Some transform properties for 2d:
+# box-shadow : 
+
+```bash
+box-shadow:10px 10px 4px rgba(0,0,0,0.1)
+10px 10px: horizontal and vertical offset (shadow is 10px down and 10px to the right)
+
+4px: blur radius
+
+rgba(0,0,0,0.1): shadow color is black with 10% opacity
+```
 
 # translate(x-axis , y-axis);
 
@@ -976,6 +1023,7 @@ translateX();
 translateY();
 
 we can pass negative value to translate property.
+when translate(-50%,-50%) then it moves 50% left of its own width and 50% up of its own height.
 
 ```
 
@@ -1017,6 +1065,8 @@ rotateZ(); // rotate along Z-axis.
 # Transition
 
 ```bash
+tansition: property_name duration timing-function delays
+
 The transition-timing-function property specifies the speed curve of the transition effect.
 
 The transition-timing-function property can have the following values:
@@ -1029,6 +1079,8 @@ ease-in-out - specifies a transition effect with a slow start and end
 ```
 
 # media query:
+Media Queries used with "min-width/max-width or min-height/max-height"
+<br>
 
 ```bash
 @media (min-width:200px) and (max-width:400px){}
@@ -1044,7 +1096,12 @@ ease-in-out - specifies a transition effect with a slow start and end
 //  only : This is a keyword that prevents older browsers that don't support media queries from applying the styles. It's optional and used mostly for browser compatibility.
 
 //  screen : It tells the browser you want to apply styles when the media type is a screen . 
+// Other media types: 
 
+print: for printed pages
+screen: for computer screens, tablets, phones
+
+all : means both print and screen. 
 ```
 
 # aspect-ratio:
