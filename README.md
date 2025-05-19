@@ -525,6 +525,12 @@ Note we can add more than one images to background But first image wil apply fir
 
 ```
 
+# To fixed the content of webpage in center for every screen : 
+body{
+  max-inline-size:1000px; // The max-inline-size property specifies the maximum size of an element in the inline direction.
+  margin-inline:auto; // equally distribute space in left and right of content. 
+}
+
 # padding :
 
 It is used to fit text in a container properly.
@@ -1146,11 +1152,27 @@ for the convention of variables and methods , we use camel case.
 ```bash 
 
 // when we run any js code then two things happen :
-1. Reserve Memory for variables and function in Global Execution Context. 
-Intially in the Global Execution Context , all the variable stored with undefined value
+1. Memory Creation Phase : Reserve Memory for variables and function in Global Execution Context. 
+Intially in the Global Execution Context, all the variable stored with undefined value
 and Functions are stored with function body. 
 
-2. Code phase in which by code is executed by js engine. 
+2. Code Execution phase in which code is executed by js engine. 
+
+
+// Important Point : 
+function first(){
+  console.log("first");
+  second();
+}
+
+function second(){
+  console.log("second");
+}
+
+
+// In this case execution context of second function is created in execution context of 
+// first function and first function is in the global execution context. 
+
 
 
 ```
@@ -1233,12 +1255,70 @@ console.log(obj.height)
 Because when we create object by "Object.create" then all the properties will be stored in the prototype of object and delete does not work on prototype but if normally create object without "Object.create()" then in that case last "obj.height" will print "undefined".
 
 ```
+<br>
+<br>
+```bash 
+var declared in IIFE function will have local scope.
+
+```
+# Lexical Scope :
+Inner functions can access variables from outer functions and global execution context, but not vice versa.
+<br>
+```bash 
+var a = 90;
+let b = 40;
+function first(){
+  let b = 20;
+  console.log("first");
+  second();
+}
+
+function second(){
+  console.log(this.a);
+  console.log("second");
+  let b = 30;
+
+  function third(){
+    console.log(b);
+  }
+  third()
+}
+
+first();
+
+
+O/P : 
+first
+90
+second
+30
+
+```
+# Returning Funtion with Closure: 
+A closure is a function that remembers the variables from its outer (lexical) scope, even after that outer function has finished executing. 
+<br>
+```bash 
+function outer() {
+  let count = 0;
+
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+
+const counter = outer();  // outer() runs, returns inner
+counter(); // 1
+counter(); // 2
+counter(); // 3
+
+```
 
 
 # Hoisting : 
 Hoisting will take place in case of "var" and funtions defined with function keyword and function name. 
 <br>
-In case of "let" JS makes "Temporal Dead Zone" for the code above from the "let" declaration which does not allows JS to access "let" variable before its intialization.
+In case of "let" hositing take place but JS makes "Temporal Dead Zone" for the code above from the "let" declaration which does not allows JS to access "let" variable before its intialization.
 
 # Important Point from "this" keyword :
 ```bash 
@@ -1248,6 +1328,8 @@ In case of arrow function and IIFE function" this " keywords refers to global ob
 # Variables :
 
 var is globally scoped and let and const are block scoped.
+<br>
+var is always stored in memory of global execution context and we can access it with "window.variable_name"  
 <br>
 var can be re-declared and updated.
 <br>
@@ -1265,10 +1347,10 @@ If you re-declare a JavaScript variable, it will not lose its value.
 
 var carName = "Volvo";
 var carName; // Volvo
-<br>
-JavaScript will try to convert strings to numbers in all numeric operations:
+
 <br>
 
+// JavaScript will try to convert strings to numbers in all numeric operations:
 ```bash
 var x = "100";
 var y = "10";
@@ -1306,9 +1388,37 @@ console.log(sym1 === sym2); // false, because every Symbol is unique
 console.log(typeof symbolValue);
 
 ```
+# Important Point from math operation between variable:
+```bash 
+"5" - "2" → 3 (Strings behave like numbers unless + is used)
+
+null == 0 → false, but null + 0 → 0
+
+undefined == null → true, but undefined + 1 → NaN
+
+// Important Point from NaN: 
+console.log(NaN == NaN); // false
+console.log(NaN === NaN) // false
+
+"10abc" * 1 → NaN (not a pure numeric string)
+
+Boolean(" ") → true (non-empty string is truthy)
+
+true + 1 => 2 
+
+true + "a" => truea
+
+
+```
 
 # Non Primitive Datatypes :
 objects, array,function which is also an object
+
+# Difference between Function and Method :
+Method : Function defined in object or class.
+<br>
+Function : Funtion defined outside the object or class. 
+
 
 # Stack and Heap memory : 
 All the primitive datatypes are stored in Stack memory and in the stack memory copy of the variables values are used. 
@@ -1434,6 +1544,15 @@ const output = arr.reduce((result,currentValue) =>{
 
 // here result is previous element.
 
+
+// arr.sort()
+const arr = [100,200,30,40]
+arr.sort((a,b)=>{
+  return a - b;
+});
+
+// By default it does not sort the array. we need to use callback function. 
+
 */
 
 ```
@@ -1465,6 +1584,61 @@ let a = (dataId)=>{
 }
 a(9);
 
+```
+# spread operator :
+spread operators works with array,object and funciion. 
+<br>
+```bash 
+
+// array
+let arr = [1,3,4];
+let [a,...b] = arr;
+console.log(a,b) // 1 [3 4]
+
+// object
+const obj = {name:"abc",age:12};
+const updatedUser = {...obj,rollno:14}
+
+// function arguments
+// here it act as "...rest parameter" which combines the values into an array
+<!-- function add(...arr)
+      let sum = 0 ;
+      for(let i= 0;i<arguments.length;i++){
+        sum += arguments[i];
+      }
+} -->
+
+add(...arr); // here "...arr" actas spread operator which means it spread the array into separate each element. 
+
+```
+
+# Function currying : 
+A function that takes multiple arguments is transformed into a sequence of functions, each taking one argument at a time.
+<br>
+```bash 
+function curriedAdd(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+
+curriedAdd(2)(3); //  5
+
+
+
+// Infinite currying function
+
+function add(a){
+  return function(b){
+    if(b!== undefined){
+      return add(a+b)
+    }else{
+      return a;
+    }
+  }
+}
+
+console.log(add(3)(3)(3)())
 ```
 
 # Window
