@@ -1387,6 +1387,20 @@ console.log(sym1 === sym2); // false, because every Symbol is unique
 // how to check the detatype
 console.log(typeof symbolValue);
 
+
+
+
+
+// Primitive type ( value type)
+
+// Non primitive Data type (Referenc type ): 
+There is only "object" is non primitive datatype : 
+There different form of object in js.
+
+Object Literals
+Array
+Function
+
 ```
 # Important Point from math operation between variable:
 ```bash 
@@ -1408,6 +1422,17 @@ true + 1 => 2
 
 true + "a" => truea
 
+
+```
+# Math Object :
+The Math object in JavaScript is a built-in object that provides a collection of mathematical constants and functions.
+<br>
+```bash
+// By default Math.random() give random double value between 0 and 1. 
+const result = Math.floor(Math.random()*20)+10
+console.log(result)
+
+// Here it gives number between 10 and 20 ;
 
 ```
 
@@ -1469,6 +1494,23 @@ splice() method can be used to add,delete,replace the elements.
 splice(4) => It will delete all the items after 3rd index means(deletion starts from 4th index).
 splice() => It will do nothing.
 
+# arguments keyword :
+arguments is a special keyword (actually a local object) available inside regular functions that provides an array-like object of all the arguments passed to the function.
+<br>
+```bash 
+function showArgs() {
+  console.log(arguments);
+}
+
+showArgs(1, 'hello', true);
+// Output: [Arguments] { '0': 1, '1': 'hello', '2': true }
+
+// Indexable : arguments[0] will be equal to 1
+// available in non arrow function means available in function declared with "function". 
+// arguments.length property is available.
+
+```
+
 # Important point from functions and methods:
 
 arrow functions are used to perform small task.
@@ -1508,7 +1550,7 @@ we can pass three arguments in forEach,filter and map method but last two argume
 
 const output = arr.forEach((elementsOfArray,indexOfElement,array) =>{
 });
-
+// It does not return any thing. 
 
 
 let numbers = [10, 20, 30];
@@ -1518,6 +1560,7 @@ let result = numbers.map(function(element, index, array) {
     return element * 2 + index; // Multiply element by 2 and add its index
 });
 
+// map method store the each element after operation into an array.
 console.log(result); // Output: [20, 41, 62]
 
 
@@ -1535,14 +1578,20 @@ let evenNumbers = numbers.filter(function(element, index, array) {
 console.log(evenNumbers); // Output: [10, 20, 30]
 
 /*
-reduce method: It returns a single value.It is used when we want a single value from an array like sum,average,maximum,minimum.
+reduce method: It returns a single value. It is used when we want a single value from an array like sum,average,maximum,minimum.
 */
+// const output = arr.reduce((accumulator,currentValue,index,arr) =>{
+        return accumulator + currentValue;},initial_value);
+        
+Here intial values denotes that accomulator starts with intial value and first current value will be first element;
 
-const output = arr.reduce((result,currentValue) =>{
-        return result + currentValue;
+
+const output = arr.reduce((accumulator,currentValue) =>{
+        return accumulator + currentValue;
 });
-
-// here result is previous element.
+// here first time the value of accomulator is first element of array.
+// here accumulator is previous result.
+// first time currentvalue will be first  element of array.
 
 
 // arr.sort()
@@ -1551,7 +1600,40 @@ arr.sort((a,b)=>{
   return a - b;
 });
 
-// By default it does not sort the array. we need to use callback function. 
+// By default it does not sort the array. we need to use callback function.
+
+
+
+// some() : The .some() method in JavaScript is a very useful array method for checking if at least one element in an array meets a condition.
+
+// It loops over the elements on array and checks if any value meets a condition then it breaks loop and return true. If none elements matches condition then it returns false.
+
+
+// syntax: array.some(callback(element, index, array))
+
+const arr = [1,23,2,4]
+const numbers = arr.some((num)=>{
+  return num%2 == 0 
+})
+// It returns true and breaks loop at index 2. 
+
+// use case: To check there is any odd no in an array of even nos. 
+
+
+
+
+// every() : The .every() method in JavaScript is a very useful array method for checking if all element in an array meets a condition.
+
+// It loops over the elements on array and checks if any value do not meets a condition then it breaks loop and return false. If all elements matches condition then it returns true.
+
+
+// syntax: array.every(callback(element, index, array))
+
+const arr = [1,23,2,4]
+const numbers = arr.every((num)=>{
+  return num%2 == 0 
+})
+// It returns false and breaks loop at first index. 
 
 */
 
@@ -1600,7 +1682,8 @@ const obj = {name:"abc",age:12};
 const updatedUser = {...obj,rollno:14}
 
 // function arguments
-// here it act as "...rest parameter" which combines the values into an array
+// here "...arr" act as "...rest parameter" which combines the values into an array
+// and it works with every arrow and non arrow function.
 <!-- function add(...arr)
       let sum = 0 ;
       for(let i= 0;i<arguments.length;i++){
@@ -1608,7 +1691,7 @@ const updatedUser = {...obj,rollno:14}
       }
 } -->
 
-add(...arr); // here "...arr" actas spread operator which means it spread the array into separate each element. 
+add(...arr); // here "...arr" act as spread operator which means it spread the array into separate each element. 
 
 ```
 
@@ -1640,6 +1723,215 @@ function add(a){
 
 console.log(add(3)(3)(3)())
 ```
+# Unexpected Behaviour of array :
+
+```bash 
+1. Sparse Arrays
+
+let arr = [];
+arr[5] = "hello";
+console.log(arr);           // [ <5 empty items>, 'hello' ]
+console.log(arr.length);    // 6
+Why?
+Setting a value at a high index fills the array with "empty slots" (not undefined, but truly missing elements). The length is set based on the highest index + 1.
+
+2. Deleting Elements Doesn't Shorten the Array
+
+let arr = [1, 2, 3];
+delete arr[1];
+console.log(arr);           // [1, <1 empty item>, 3]
+console.log(arr.length);    // 3
+Why?
+delete removes the element, but leaves a hole — it doesn't reindex or shrink the array. 
+Use .splice() instead:
+arr.splice(1, 1); // removes element at index 1
+
+3. Arrays Are Objects (Sort of)
+
+let arr = [1, 2, 3];
+arr["foo"] = "bar";
+console.log(arr);           // [1, 2, 3, foo: "bar"]
+console.log(arr.length);    // 3
+Why?
+Arrays in JS are technically objects with numeric keys and a length property. Non-numeric properties are treated like normal object keys and don't affect length.
+
+4. typeof Array Returns "object"
+
+let arr = [1, 2, 3];
+console.log(typeof arr);    // "object"
+Why?
+Arrays are a type of object — to check if something is an array, use:
+
+
+Array.isArray(arr);         // true
+5. Comparing Arrays
+
+[1, 2] === [1, 2];           // false
+Why?
+Arrays are reference types. Even if contents are the same, different references make them unequal.
+
+
+let a = [1, 2];
+let b = a;
+a === b;                    // true
+
+6. sort() Can Act Weird Without a Compare Function
+
+let nums = [10, 2, 5, 1];
+nums.sort();
+console.log(nums);          // [1, 10, 2, 5]
+Why?
+.sort() converts elements to strings and compares UTF-16 code units. Use a compare function:
+
+
+nums.sort((a, b) => a - b); // [1, 2, 5, 10]
+
+7. map() on Empty Slots Doesn't Work
+
+let arr = Array(3);         // [ <3 empty items> ]
+let mapped = arr.map(x => 1);
+console.log(mapped);        // [ <3 empty items> ]
+Why?
+Empty slots are skipped in most array methods (map, forEach, reduce, etc.).
+
+Fix by using fill():
+
+let arr = Array(3).fill(0); // [0, 0, 0]
+
+8. Array Holes Can Cause Bugs
+
+[,,,].length;               // 3
+[,,,].toString();           // ",,"
+Looks like empty strings, but there are 3 "holes". Always initialize arrays carefully.
+
+const arr = [1,23,4,5,6,8];
+const [,,,a] = arr
+console.log(a); // 5
+
+const {3:a} = arr;
+console.log(a) ;
+
+```
+
+# Object : 
+```bash 
+const obj= {
+    name:"Harsh",
+    age:12
+}
+obj.rollNo  // OP : undefined
+// When the does not have particular property then it returns undefined.
+
+// How to delete object properties : 
+delete obj.age // delete operator deletes the property permanently.
+
+// To prevent object property from delete then use Object.seal();
+Object.seal(obj)
+
+// seal() prevents from deleting object's property and it also do not allow to add 
+new property to object. But we can update the existing property.
+
+// If we want that user cannot add , update or delete object properties then use "Object.freeze()"
+Object.freeze(obj)
+
+// To check the particular key exists in the object. 
+console.log("name" in obj) // true
+
+```
+
+# Important Point from Shallow copy and Deep copy : 
+```bash 
+const username  =  "John"
+let usename2 = username;
+
+// Here username and username2 points to same memory address. 
+
+
+username2 = username + "Smith";  
+// But here a new memory address will be created for the username3. 
+
+
+const arr1 = [1,33,43];
+const arr2 = arr1 ;
+
+arr2.push(12) 
+console.log(arr2); // [ 1, 33, 43, 12 ]
+console.log(arr1) //  [ 1, 33, 43, 12 ]
+
+// Here, variable arr2 also points to same memory address that is pointed by the arr1. 
+
+const obj1 = {name:"John",age:12};
+const obj2 = obj1 ;
+
+obj2.age = 15;
+console.log(obj2); //  {name:"John",age:15}
+console.log(obj1) //  {name:"John",age:15}
+
+
+
+// How to create a shallow copy of single object/array not nested object/nested array . 
+const new_obj = {}
+Object.assign(new_obj,obj1); // Now new memory address will point to new_obj. 
+
+// another way 
+const newObj = {...obj1};
+
+// We can also do this same thing with array also. 
+// we can also create shallow copy of array in some other way: 
+
+console.log([].concat(arr1)) // creates new array 
+console.log(arr1.slice()) // creates new array 
+
+// how to create deep copy of objects and array . 
+
+const newObj = JSON.parse(JSON.stringify(obj1));
+const newArr = JSON.parse(JSON.stringify(arr1));
+
+
+```
+# ES6 Imports and exports : 
+```bash 
+Note : Make sure while using ES6 imports and exports 
+// <script type="module" src="./script.js"></script>
+
+// named exports 
+
+user data = [1,33,434] // defined in data.js
+export {data};
+// export {data as d} // we can use alias
+// import {d} from './data.js';
+
+
+// named imports :
+import {data} from './data.js';
+// import {data as d} from './data.js'
+console.log(d);
+
+// export default module
+export default data ;
+
+// import default module 
+import data from './data.js';
+
+
+// Third way of imports  
+import * as something from './data.js'; // It imports all function and data
+
+console.log(something.default);  // It consoles the default imports
+ 
+console.log(something.namedData); // It consoles the named imports with "particular" name. 
+
+
+
+// when we use "module" type in script tag then all the variables will be 
+stored in "module" scope and they are globally accessible(means it cannot be accessed in 
+browser console) but can be accessed in project module. 
+
+
+```
+
+# defer attribute in script tag : 
+The defer attribute tells the browser to download the script in parallel, but execute it only after the HTML is fully parsed . 
 
 # Window
 
@@ -1702,13 +1994,13 @@ Unlike the DOM, the BOM is not standardized. Different browsers can implement BO
 <br>
 Key BOM Features:
 <br>
-window.history: Allows access to the browser’s history (e.g., window.history.back() to go back).
+window.history: Allows access to the browser's history (e.g., window.history.back() to go back).
 <br>
 window.navigator: Provides information about the browser (e.g., browser name, version).
 <br>
 window.location: Allows access to the current URL and can be used to redirect the browser.
 <br>
-window.screen: Provides information about the screen’s resolution, size, etc.
+window.screen: Provides information about the screen's resolution, size, etc.
 
 <b> Node : </b> each element in the tree structure of dom is called as node .
 <br>
@@ -1801,7 +2093,7 @@ element2.className = "text-black red";
 
 
 element2.classList.toggle("red");
-//The classList.toggle() method in JavaScript is used to add or remove a class from an element's class list. If the class is present on the element, it removes it; if it’s not present, it adds it.
+//The classList.toggle() method in JavaScript is used to add or remove a class from an element's class list. If the class is present on the element, it removes it; if it's not present, it adds it.
 
 ```
 
@@ -2180,7 +2472,7 @@ Characteristics:
 <br>
 Removes the specified resource.
 <br>
-Cannot be undone, and typically there’s no response body (just a success or failure status).
+Cannot be undone, and typically there's no response body (just a success or failure status).
 <br>
 ex: deleting a user.
 
@@ -2373,7 +2665,7 @@ In this example, the alert() function is called when the button is clicked.
 ```
 
 B. Event Handlers via DOM Properties
-This method assigns a JavaScript function to an element’s event property (e.g., onclick, onmouseover) using the DOM.
+This method assigns a JavaScript function to an element's event property (e.g., onclick, onmouseover) using the DOM.
 <br>
 Example: Setting an onclick event using a DOM property
 <br>
@@ -3245,7 +3537,7 @@ Or with a light background:
 # Border and border-radius:
 
 1. Border Classes
-   Bootstrap’s border classes can be used to add or remove borders to elements, as well as to control the border's color and thickness.
+   Bootstrap's border classes can be used to add or remove borders to elements, as well as to control the border's color and thickness.
    <br>
    .border: Adds a border around the element.
    <br>
@@ -3526,7 +3818,7 @@ This button will maintain its pressed state when clicked.
 ```
 
 7. Buttons with Icons
-   Although Bootstrap doesn’t have a dedicated icon library, you can use classes from libraries like FontAwesome or Bootstrap Icons with buttons to include icons.
+   Although Bootstrap doesn't have a dedicated icon library, you can use classes from libraries like FontAwesome or Bootstrap Icons with buttons to include icons.
    <br>
    Example (with Bootstrap Icons):
 
@@ -3637,7 +3929,7 @@ Example:
 <br>
 .fade and .show: These classes allow the alert to fade out smoothly when dismissed.
 <br>
-.btn-close: Renders a close button that triggers the alert’s dismissal.
+.btn-close: Renders a close button that triggers the alert's dismissal.
 <br>
 
 3. Alerts with Additional Content
