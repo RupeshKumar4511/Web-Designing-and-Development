@@ -1804,12 +1804,7 @@ let arr = Array(3).fill(0); // [0, 0, 0]
 [,,,].toString();           // ",,"
 Looks like empty strings, but there are 3 "holes". Always initialize arrays carefully.
 
-const arr = [1,23,4,5,6,8];
-const [,,,a] = arr
-console.log(a); // 5
 
-const {3:a} = arr;
-console.log(a) ;
 
 ```
 
@@ -1926,6 +1921,58 @@ console.log(something.namedData); // It consoles the named imports with "particu
 // when we use "module" type in script tag then all the variables will be 
 stored in "module" scope and they are globally accessible(means it cannot be accessed in 
 browser console) but can be accessed in project module. 
+
+It apply "defer" in script tag automatically.
+
+It also apply "use strict" in script.js file. 
+
+```
+
+# Destructuring : 
+```bash 
+
+// array Destructuring
+
+const arr = [1,23,4,5,6,8];
+const [,,,a] = arr;
+const [b] = arr;
+console.log(a); // 5
+console.log(b);  // 1 
+
+// Here "a and b " are just variable. 
+
+const {3:a} = arr;
+console.log(a) ; // 5 
+// this is done because array is an object internally.
+
+// Object Destructuring
+
+const obj = {
+        name:"Hero",
+        age:12,
+        address:{
+          city:"Mumbai",
+          state:"Maharastra"
+        }
+    }
+  
+const {age} = obj;
+console.log(age) ; //12
+
+// If we want to use another "variable" name to access property 
+const {name:username , age: a} = obj;
+console.log(username,a)
+
+// How to destructure nested object or multilevel Destructuring . 
+
+const {address:{city}}= obj;
+console.log(city); // Mumbai
+
+
+
+// We can also destructure the object and array in function parameter. 
+
+
 
 
 ```
@@ -2106,6 +2153,29 @@ Returns the element on which the event listener was attached — not necessarily
 <br>
 The event.clientX and event.clientY properties return the X and Y coordinates of the mouse pointer relative to the viewport.
 
+# How to Block JS thread : 
+Js is single threaded. 
+<br>
+```bash
+// without using setTimeout and setInterval 
+
+const starttime = Date.now() ;
+let currenttime = starttime
+while(starttime + 2000 > currenttime){
+  console.log("data")
+  currenttime = Date.now();
+}
+
+// This code blocks main thread for 2 second.
+// code runs in synchronous mode
+
+// XMLHttpRequest can br executes in both synchronous mode and asynchronous code.
+
+const xhr = new XMLHttpRequest();
+xhr.open('GET','https://dummyjson/posts',false); // synchronous mode 
+xhr.open('GET','https://dummyjson/posts'); // asynchronous mode 
+
+```
 # Callback hell:
 
 ```bash
@@ -2144,7 +2214,10 @@ getData(1,()=>{
 ```
 
 # Promise
-
+Promise is a special type of object. 
+<br>
+There are three state of promise: fulfilled,pending,rejected.
+<br>
 ```bash
 
 function getData2() {
@@ -2185,7 +2258,8 @@ a.catch((err)=>{
 
         setTimeout(()=>{
         console.log("data",dataId);
-        resolve("succes")
+        resolve("success");
+        reject("error");
     },3000);
 })
 }
@@ -2209,6 +2283,51 @@ getData(1).then((res) =>{
 }).then((res)=>{
     console.log(res);
 })
+
+
+
+
+
+// Important Concept
+function getData(dataId){
+    return new Promise((resolve,rejects)=>{
+
+        setTimeout(()=>{
+        console.log("data",dataId);
+        rejects()
+    },3000);
+})
+}
+
+
+// This is better way than first way to call the function asynchronously.
+getData(1).then((res) =>{
+    return getData(2);
+}).then((res)=>{
+    return getData(3);
+
+}).then((res)=>{
+    console.log(res);
+}).catch((error)=>{
+    console.log("error");
+}).then((res)=>{
+    console.log("res")
+}).finally(()=>{
+  console.log("finally") // This will execute in all cases even if the promise is rejected. 
+  // It executes when the promise is settled(not pending).
+})
+
+// O/P :
+data 1
+error
+res
+finally
+
+
+
+// Note : .then() and .catch() returns promise.
+
+
 
 
 ```
@@ -2244,93 +2363,6 @@ async function getFullData() {
 getFullData();
 ```
 
-# Prototype
-
-Prototype is a reference to a object.
-<br>
-We can set the custom Prototype to an object.
-<br>
-
-```bash
-const employee1 = {
-
-    // This an another way to create a function in objects without function keyword and key.
-    calcTax(){
-        console.log("Tax rate is 10%");
-    }
-}
-
-const employee2 = {
-    Salary : 30000
-}
-
-employee2.__proto__ = employee1;
-
-```
-
-# Classes and Object
-
-```bash
-class Car{
-
-    constructor(brand){
-      console.log("This is a constructor of Car class");
-      this.brand = brand;
-    }
-    start(){
-        console.log("start");
-    }
-
-    stop(){
-        console.log("stop")
-    }
-}
-
-let suzuki = new Car("Suzuki");
-console.log(suzuki.start());
-// start() method return undefined because if a method does not explicitly return a value then it return undefined automatically in js;
-
-console.log(suzuki.brand);
-let Nano = new Car();
-// here we do not passing any arguments but this does not show me the error .It actually assigns undefined to brand variable.
-
-Nano.brand = "Nano";  // we can change it.
-console.log(Nano.stop());
-
-
-```
-
-# Inheritance
-
-```bash
-// Inheritance
-class Person{
-
-    constructor(name){
-      this.name = name;
-    }
-
-    eat(){
-        console.log("eat food")
-    }
-}
-
-class Engineer extends Person{
-    constructor(name,branch){
-        super(name);
-        this.branch= branch;
-
-    }
-
-    work(){
-        console.log("eng work");
-    }
-}
-
-let enObj1 = new Engineer("David","cs");
-console.log(enObj1.name,enObj1.branch);
-```
-
 # JS Engine and Web api 
 
 <img src="./Image/js.jpg" alt="">
@@ -2344,9 +2376,11 @@ Here function can be of different types(like function related to DOM API, Set In
 
 All functions are stored in stack and executed by JS Engine. 
 
-Fetch related functions are executed first and Micro task queue is only for fetch related functions.
+Fetch related functions are executed first and Micro task queue is only for promise related functions.
 
-setTimeout is special funtion which requires register and firstly these are stored in task queue and Event loop always check that whether the task is empty or not and also check callstack is empty or not and also check whether execution time of function comes or not and if not then they remains in task queue and if yes then function are placed in stack on the top.
+setTimeout and setInterval is special funtion which requires register and firstly these are stored in task queue(also called callback queue) and Event loop always check that whether the task queue is empty or not and also check callstack is empty or not and also check whether execution time of callback function comes or not and if not then they remains in task queue and if yes and callstack is empty then these functions are placed in stack on the top.
+
+setTimeout, setInterval, promise related callbacks and events related callback are tracked by browser not by js engine.
 
 
 ```
@@ -2397,9 +2431,35 @@ let promise = fetch(url or endpoints, [options]);
 
 ```bash
 
+        fetch( 'https://dummyjson.com/products/add')
+        .then((res) => res.json())
+        .then(console.log)
+        .catch((error)=>console.log(error))
+
+
+
         const url = 'https://cat-fact.herokuapp.com/facts';
         const getFacts = async ()=>{
         let response =  await fetch(url);
+        console.log(response);// JSON format
+        let data = await response.json();
+        console.log(data)
+        }
+        getFacts();
+
+
+        
+        
+        const getFacts = async ()=>{
+        let response =  await fetch( 'https://dummyjson.com/products/add',
+        {
+          method:"POST",
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            title:"Headphone",
+            // other property of products
+          })
+        });
 
         console.log(response);// JSON format
 
@@ -2690,7 +2750,7 @@ Add multiple event handlers for the same event.
 Attach handlers without overwriting existing ones.
 
 Syntax:
-
+<br>
 ```bash
 element.addEventListener(event, function, useCapture);
 event: The event type (e.g., 'click', 'mouseover').
@@ -2753,6 +2813,178 @@ document.getElementById("search").addEventListener("input", debouncedSearch);
 
 ```
 
+# Factory Functions :
+A factory function in JavaScript is simply a function that returns a new object every time it's called. It's a way to create multiple similar objects without using class or new.
+<br>
+```bash 
+function makeUser(name,age){
+    return {
+        name,
+        age,
+        greet:function(){
+            console.log(`Hi I'm ${name}`);
+        }
+    }
+}
+const user1 = makeUser("John",12);
+user1.greet()
+```
+<br>
+The drawback of Factory function is that Each object created by a factory has its own copy of methods.
+<br>
+In the above example, each object gets a separate instance of greet(), which increases memory usage.
+
+# Constructor Function :
+Calling a function with the new keyword in JavaScript turns that function into a constructor function, and changes how the function behaves internally.
+<br>
+Note : when we call a function with new keyword then function will returns a new object. 
+<br>
+Always Capitalize Constructor Functions
+<br>
+If we return a primitive, it's ignored. If we return an object, it overrides the constructed one.
+<br>
+```bash 
+function CreateUser(name,age){
+    this.name = name;
+    this.age = age;
+}
+CreateUser.prototype.greet = function (){
+  return `Hi I'm ${this.name}`;
+}
+const user1 = new CreateUser("John",12);
+user1.greet()
+
+//  Using Prototype the code size becomes large. 
+```
+
+# Prototype
+
+Prototype is a reference to a object. Every Function and Object has prototype property.
+<br>
+We can set the custom Prototype to an object.
+<br>
+
+```bash
+const employee1 = {
+
+    // This an another way to create a function in objects without function keyword and key.
+    calcTax(){
+        console.log("Tax rate is 10%");
+    }
+}
+
+const employee2 = {
+    Salary : 30000
+}
+
+employee2.__proto__ = employee1;
+// we can set the functions and other properties of one object to another object as its prototype.
+
+```
+
+# Classes and Object
+Class are internally  a function in js. 
+<br>
+```bash
+class Car{
+
+    constructor(brand){
+      console.log("This is a constructor of Car class");
+      this.brand = brand;
+    }
+    start(){
+        console.log("start");
+    }
+
+    stop(){
+        console.log("stop")
+    }
+}
+
+let suzuki = new Car("Suzuki");
+console.log(suzuki.start());
+// start() method return undefined because if a method does not explicitly return a value then it return undefined automatically in js;
+
+console.log(suzuki.brand);
+let Nano = new Car();
+// here we do not passing any arguments but this does not show me the error .It actually assigns undefined to brand variable.
+
+Nano.brand = "Nano";  // we can change it.
+console.log(Nano.stop());
+
+// All the function defined in the classes will be automatically stored in prototype of object.
+
+typeof Car; // function 
+
+```
+
+# Private Properties of class : 
+We can declare any property and method as private by declaring it with "#" keyword.
+<br>
+We can access those private property and methods in non private methods inside that class.
+<br>
+```bash 
+class CreateUser{
+#age // Declare a private variable 
+
+  constructor(firstname,lastname,age){
+    this.firstname = firstname
+    this.lastname = lastname
+    this.#age = age
+  }
+
+  #hi = "hwllo"
+  getFullName(){
+    this.#getBirthYear()
+    return this.firstname + ' ' + this.lastname;
+  }
+
+  
+
+  #getBirthYear(){
+    return Date.now() - this.#age;
+  }
+
+}
+
+
+const user1 = new CreateUser("John","Smith",21);
+console.log(user1.#age); // syntax error 
+
+// But in browser we can access it.
+```
+
+# Inheritance
+
+```bash
+// Inheritance
+class Person{
+
+    constructor(name){
+      this.name = name;
+    }
+
+    eat(){
+        console.log("eat food")
+    }
+}
+
+class Engineer extends Person{
+    constructor(name,branch){
+        super(name);
+        this.branch= branch;
+
+    }
+
+    work(){
+        console.log("eng work");
+    }
+}
+
+let enObj1 = new Engineer("David","cs");
+console.log(enObj1.name,enObj1.branch);
+
+```
 
 # Bootstrap
 
