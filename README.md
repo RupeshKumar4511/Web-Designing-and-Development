@@ -1260,6 +1260,11 @@ Because when we create object by "Object.create" then all the properties will be
 ```bash 
 var declared in IIFE function will have local scope.
 
+var declared in block have global scope by default. 
+
+If block is declared inside function and it contains variable declared with "var" 
+then that variable is only accessible inside that function.  
+
 ```
 # Lexical Scope :
 Inner functions can access variables from outer functions and global execution context, but not vice versa.
@@ -1320,16 +1325,11 @@ Hoisting will take place in case of "var" and funtions defined with function key
 <br>
 In case of "let" hositing take place but JS makes "Temporal Dead Zone" for the code above from the "let" declaration which does not allows JS to access "let" variable before its intialization.
 
-# Important Point from "this" keyword :
-```bash 
-In case of arrow function and IIFE function" this " keywords refers to global object. In Browser it refers to Window object. 
-
-```
 # Variables :
 
 var is globally scoped and let and const are block scoped.
 <br>
-var is always stored in memory of global execution context and we can access it with "window.variable_name"  
+Bydefault var stored in memory of global execution context and we can access it with "window.variable_name"  
 <br>
 var can be re-declared and updated.
 <br>
@@ -1339,7 +1339,7 @@ const cannot be re-declared and cannot be updated.
 <br>
 using let keywords we can declare variables without intialization.
 like : let a;
-In this case udefined value is assigned to variables.
+In this case undefined value is assigned to variables.
 <br>
 Note : we can also declare variables using const keyword.
 <br>
@@ -1384,7 +1384,7 @@ let sym2 = Symbol('id');
 
 console.log(sym1 === sym2); // false, because every Symbol is unique
 
-// how to check the detatype
+// how to check the datatype
 console.log(typeof symbolValue);
 
 
@@ -1393,9 +1393,9 @@ console.log(typeof symbolValue);
 
 // Primitive type ( value type)
 
-// Non primitive Data type (Referenc type ): 
-There is only "object" is non primitive datatype : 
-There different form of object in js.
+// Non primitive Data type (Reference type ): 
+There is only "object" which is non primitive datatype : 
+There are different form of object in js.
 
 Object Literals
 Array
@@ -1424,6 +1424,7 @@ true + "a" => truea
 
 
 ```
+
 # Math Object :
 The Math object in JavaScript is a built-in object that provides a collection of mathematical constants and functions.
 <br>
@@ -1436,8 +1437,6 @@ console.log(result)
 
 ```
 
-# Non Primitive Datatypes :
-objects, array,function which is also an object
 
 # Difference between Function and Method :
 Method : Function defined in object or class.
@@ -1446,9 +1445,9 @@ Function : Funtion defined outside the object or class.
 
 
 # Stack and Heap memory : 
-All the primitive datatypes are stored in Stack memory and in the stack memory copy of the variables values are used. 
+All the primitive datatypes are stored in Stack memory and From stack memory, copy of the variable's values are used. 
 <br>
-All the non primitive datatypes are stored in the Heap memory and a reference is passed to variables which use it.
+All the non primitive datatypes are stored in the Heap memory and a reference is passed to variables which use it and these reference are stored in stack memory. 
 <br>
 <img src="./Image/sh.jpg" alt=""> 
 
@@ -1462,17 +1461,24 @@ every String methods returns a new String.
 It does not change in the old ones.
 
 # Important point from JS String :
+```bash 
 
 The replace() method does not change the string it is called on. It returns a new string.
+
 By default, the replace() function replaces only the first match:
+
 str = "Please visit Microsoft and Microsoft!";
+
 By default, the replace() function is case sensitive :
 var n = str.replace("MICROSOFT", “IBM");
+
 To replace case insensitive, use a regular expression with an /i flag (insensitive):
 var n = str.replace(/MICROSOFT/i, “IBM");
+
 To replace all matches, use a regular expression with a /g flag (global match):
 var n = str.replace(/Microsoft/g, “IBM");
 
+```
 # Escape Sequence characters:
 Escape sequence characters in JavaScript are special combinations of characters that start with a backslash (\).
 <br>
@@ -1485,7 +1491,8 @@ Arrays are mutable.
 Most of the array method will change in the existing array.
 <br>
 Some methods will create a new array.
-like : concat(),slice()
+<br>
+<b>like : concat(),slice() </b>
 
 <br>
 <b>Important point from Arrays method :<b>
@@ -1523,8 +1530,8 @@ There are some special method in array.
 <br>
 arr.forEach(callbackFunction);
 <br>
-<b>callbackFunction :<b> It is a function which passed as arguments to another functions.It is executed inside outer function.
-
+<b>callbackFunction :<b> It is a function which passed as arguments to another functions. It is executed inside outer function.
+<br>
 ```bash
 let arr = [23,34,43,24];
 arr.forEach((value)=>
@@ -1542,16 +1549,11 @@ arr.forEach((value)=>
 
 
 /*
-
 we can pass three arguments in forEach,filter and map method but last two arguments are optional.
-
 */
 
-
-const output = arr.forEach((elementsOfArray,indexOfElement,array) =>{
-});
+const output = arr.forEach((elementsOfArray,indexOfElement,array) =>{ });
 // It does not return any thing. 
-
 
 let numbers = [10, 20, 30];
 
@@ -1560,7 +1562,7 @@ let result = numbers.map(function(element, index, array) {
     return element * 2 + index; // Multiply element by 2 and add its index
 });
 
-// map method store the each element after operation into an array.
+// map method stores each element after every pass into an array.
 console.log(result); // Output: [20, 41, 62]
 
 
@@ -1577,21 +1579,23 @@ let evenNumbers = numbers.filter(function(element, index, array) {
 
 console.log(evenNumbers); // Output: [10, 20, 30]
 
-/*
-reduce method: It returns a single value. It is used when we want a single value from an array like sum,average,maximum,minimum.
-*/
-// const output = arr.reduce((accumulator,currentValue,index,arr) =>{
-        return accumulator + currentValue;},initial_value);
-        
-Here intial values denotes that accomulator starts with intial value and first current value will be first element;
 
+
+// reduce method: It returns a single value. It is used when we want a single value from an array like sum,average,maximum,minimum.
 
 const output = arr.reduce((accumulator,currentValue) =>{
         return accumulator + currentValue;
 });
 // here first time the value of accomulator is first element of array.
 // here accumulator is previous result.
-// first time currentvalue will be first  element of array.
+// first time currentvalue will be second element of array.
+
+
+// const output = arr.reduce((accumulator,currentValue,index,arr) =>{
+        return accumulator + currentValue;},initial_value);
+        
+// Here intial values denotes that accomulator starts with intial value and first currentValue will be first element;
+
 
 
 // arr.sort()
@@ -1600,7 +1604,7 @@ arr.sort((a,b)=>{
   return a - b;
 });
 
-// By default it does not sort the array. we need to use callback function.
+// By default "arr.sort()" does not sort the array. we need to use callback function.
 
 
 
@@ -1635,7 +1639,7 @@ const numbers = arr.every((num)=>{
 })
 // It returns false and breaks loop at first index. 
 
-*/
+
 
 ```
 
@@ -1655,7 +1659,7 @@ This is because when you pass a function reference (like a) without parentheses,
 <br>
 
 <b>Higher Order function/methods :<b>
-functions which either takes function as an argument or return function as output then it is called as Higher Order function. like forEach(),map(),filter() ,reduce() etc.
+Functions which either takes function as an argument or return function as output then it is called as Higher Order function. like forEach(),map(),filter() ,reduce() etc.
 
 # Important from Arrow function:
 
@@ -1668,7 +1672,7 @@ a(9);
 
 ```
 # spread operator :
-spread operators works with array,object and funciion. 
+spread operators works with array,object and function. 
 <br>
 ```bash 
 
@@ -1764,6 +1768,8 @@ Arrays are a type of object — to check if something is an array, use:
 
 
 Array.isArray(arr);         // true
+
+
 5. Comparing Arrays
 
 [1, 2] === [1, 2];           // false
@@ -1783,8 +1789,8 @@ console.log(nums);          // [1, 10, 2, 5]
 Why?
 .sort() converts elements to strings and compares UTF-16 code units. Use a compare function:
 
-
 nums.sort((a, b) => a - b); // [1, 2, 5, 10]
+
 
 7. map() on Empty Slots Doesn't Work
 
@@ -1808,7 +1814,7 @@ Looks like empty strings, but there are 3 "holes". Always initialize arrays care
 
 ```
 
-# Object : 
+# Object Literals: 
 ```bash 
 const obj= {
     name:"Harsh",
@@ -1823,10 +1829,10 @@ delete obj.age // delete operator deletes the property permanently.
 // To prevent object property from delete then use Object.seal();
 Object.seal(obj)
 
-// seal() prevents from deleting object's property and it also do not allow to add 
+// seal() prevents from deleting object's property and it also not allow to add 
 new property to object. But we can update the existing property.
 
-// If we want that user cannot add , update or delete object properties then use "Object.freeze()"
+// If we want that user cannot add, update or delete object properties then use "Object.freeze()"
 Object.freeze(obj)
 
 // To check the particular key exists in the object. 
@@ -1871,11 +1877,12 @@ Object.assign(new_obj,obj1); // Now new memory address will point to new_obj.
 // another way 
 const newObj = {...obj1};
 
-// We can also do this same thing with array also. 
+// We can also do the same thing with array also. 
 // we can also create shallow copy of array in some other way: 
 
 console.log([].concat(arr1)) // creates new array 
 console.log(arr1.slice()) // creates new array 
+
 
 // how to create deep copy of objects and array . 
 
@@ -1891,8 +1898,9 @@ Note : Make sure while using ES6 imports and exports
 
 // named exports 
 
-user data = [1,33,434] // defined in data.js
+const data = [1,33,434] // defined in data.js
 export {data};
+
 // export {data as d} // we can use alias
 // import {d} from './data.js';
 
@@ -1919,7 +1927,7 @@ console.log(something.namedData); // It consoles the named imports with "particu
 
 
 // when we use "module" type in script tag then all the variables will be 
-stored in "module" scope and they are globally accessible(means it cannot be accessed in 
+stored in "module" scope and they are not globally accessible(means it cannot be accessed in 
 browser console) but can be accessed in project module. 
 
 It apply "defer" in script tag automatically.
@@ -2123,6 +2131,8 @@ We can insertAdjacentHTML/Text/Element with the help of id attributes also and b
 ```bash
 box4.insertAdjacentHTML("beforebegin","<p>THis is a paragraph</p>");
 
+const new_el = document.createElement('<p>THis is a paragraph</p>');
+
 box4.insertAdjacentElement("beforebegin",new_el);
 
 box4.insertAdjacentText("afterend","hello JavaScript");
@@ -2169,7 +2179,7 @@ while(starttime + 2000 > currenttime){
 // This code blocks main thread for 2 second.
 // code runs in synchronous mode
 
-// XMLHttpRequest can br executes in both synchronous mode and asynchronous code.
+// XMLHttpRequest can be executes in both synchronous mode and asynchronous code.
 
 const xhr = new XMLHttpRequest();
 xhr.open('GET','https://dummyjson/posts',false); // synchronous mode 
@@ -2214,9 +2224,9 @@ getData(1,()=>{
 ```
 
 # Promise
-Promise is a special type of object. 
+Promise is a special type of object which is an eventual completion of task. 
 <br>
-There are three state of promise: fulfilled,pending,rejected.
+There are three state of promise: pending,fulfilled,rejected.
 <br>
 ```bash
 
@@ -2228,15 +2238,12 @@ function getData2() {
     });
 }
 
-
-
 // Remember that resolve and rejects are the functions provided by the JavaScript.
-
-
 
 let a = getData2();
 
-//executes when promise resolve.
+
+// executes when promise resolve.
 // res shows the resolve message
 a.then((res)=>{
     console.log(res);
@@ -2251,7 +2258,8 @@ a.catch((err)=>{
 ```
 
 # Promise chain
-
+Promise chaining in JavaScript refers to linking multiple .then() calls together on a Promise, where the output of one .then() becomes the input of the next. 
+<br>
 ```bash
    function getData(dataId){
     return new Promise((resolve,rejects)=>{
@@ -2299,13 +2307,10 @@ function getData(dataId){
 })
 }
 
-
-// This is better way than first way to call the function asynchronously.
 getData(1).then((res) =>{
     return getData(2);
 }).then((res)=>{
     return getData(3);
-
 }).then((res)=>{
     console.log(res);
 }).catch((error)=>{
@@ -2325,10 +2330,7 @@ finally
 
 
 
-// Note : .then() and .catch() returns promise.
-
-
-
+// Note : .then() and .catch() also returns promise.
 
 ```
 
@@ -2361,6 +2363,7 @@ async function getFullData() {
 }
 
 getFullData();
+
 ```
 
 # JS Engine and Web api 
@@ -2403,10 +2406,11 @@ onfullfilled [] : array which actually stores the response in the form of functi
 Remember that all the request which are successfull even request with response status 404 will be stored in onfullfilled array. 
 
 onRejection [] : array which stores the error of api request in the form of function 
-which fails to hit the endpoint and  then response are transfered to data variable. 
+which fails to hit the endpoint and then response are transfered to data variable. 
 
 After then response stored in the data will be transfered to the response variable which 
 are available in global memory.
+
 ```
 
 
@@ -2568,7 +2572,7 @@ A REST API can serve any client: browser, mobile app, desktop app, etc.
 
 Data is usually returned in JSON format for platform-neutrality.
 
-If servers knows that client can be a browser, a mobile app, desktop app or we can say cross palteform then server should send the data in the form of json and then in the client side firstly json converts into html code and it is called Client side rendering(CSR).
+If servers knows that client can be a browser, a mobile app, desktop app or we can say cross palteform then server send the data in the form of json and then in the client side firstly json converts into html code and it is called Client side rendering(CSR).
 
 # SSR
 
@@ -2830,16 +2834,16 @@ const user1 = makeUser("John",12);
 user1.greet()
 ```
 <br>
-The drawback of Factory function is that Each object created by a factory has its own copy of methods.
+The drawback of Factory function is that Each object created by a factory function has its own copy of methods.
 <br>
 In the above example, each object gets a separate instance of greet(), which increases memory usage.
 
 # Constructor Function :
-Calling a function with the new keyword in JavaScript turns that function into a constructor function, and changes how the function behaves internally.
+Calling a function with the new keyword turns that function into a constructor function, and changes how the function behaves internally.
 <br>
 Note : when we call a function with new keyword then function will returns a new object. 
 <br>
-Always Capitalize Constructor Functions
+Always Capitalize Constructor Functions.
 <br>
 If we return a primitive, it's ignored. If we return an object, it overrides the constructed one.
 <br>
@@ -2848,20 +2852,20 @@ function CreateUser(name,age){
     this.name = name;
     this.age = age;
 }
+
+//We can set the custom Prototype to an object.
 CreateUser.prototype.greet = function (){
   return `Hi I'm ${this.name}`;
 }
 const user1 = new CreateUser("John",12);
 user1.greet()
 
-//  Using Prototype the code size becomes large. 
+//  Using Prototype the code size becomes large.
+
 ```
 
 # Prototype
-
 Prototype is a reference to a object. Every Function and Object has prototype property.
-<br>
-We can set the custom Prototype to an object.
 <br>
 
 ```bash
@@ -2882,8 +2886,8 @@ employee2.__proto__ = employee1;
 
 ```
 
-# Classes and Object
-Class are internally  a function in js. 
+# Classes and Object : 
+Classes are internally a function in js. 
 <br>
 ```bash
 class Car{
@@ -2916,6 +2920,8 @@ console.log(Nano.stop());
 
 typeof Car; // function 
 
+Note typeof function is also a function.
+
 ```
 
 # Private Properties of class : 
@@ -2924,6 +2930,14 @@ We can declare any property and method as private by declaring it with "#" keywo
 We can access those private property and methods in non private methods inside that class.
 <br>
 ```bash 
+
+const user = {
+  name:"John",
+  '#age':23 // here age is private property (not accessible)
+}
+
+
+
 class CreateUser{
 #age // Declare a private variable 
 
@@ -2933,7 +2947,7 @@ class CreateUser{
     this.#age = age
   }
 
-  #hi = "hwllo"
+  #hi = "hello"
   getFullName(){
     this.#getBirthYear()
     return this.firstname + ' ' + this.lastname;
@@ -2952,10 +2966,125 @@ const user1 = new CreateUser("John","Smith",21);
 console.log(user1.#age); // syntax error 
 
 // But in browser we can access it.
+
 ```
 
-# Inheritance
+# getter and setter method : 
+getters and setters are special methods that let you control access to object properties in a clean and encapsulated way.
+<br>
+They look like regular properties when used, but are actually methods under the hood.
+<br>
+```bash 
+const user = {
+    firstname:"John",
+    lastname : "Smith",
+    fullName : function(){
+        return `${this.firstname} ${this.lastname}`
+    }
+}
 
+user.fullName = "Alice Smith"; // this will override the "fullName" method.
+
+
+// To overcome this drawback, we can use "getter" and "setter" method. 
+
+const user = {
+    firstname:"John",
+    lastname : "Smith",
+    get fullName (){
+        return `${this.firstname} ${this.lastname}`
+    },
+    set fullName (fullName){
+       const [firstname,lastname] = fullName.split(' ');
+       this.firstname = firstname;
+       this.lastname = lastname;
+    }
+    
+}
+console.log(user.fullName) // John Smith
+user.fullName = "Alice Smith"; //this fullName call the "set" fullName
+console.log(user.fullName) // this fullName call the "get" fullName
+
+
+
+
+
+class CreateUser {
+
+    constructor(firstname, lastname, age) {
+        this.firstname = firstname
+        this.lastname = lastname
+        this.age = age
+    }
+
+    get fullName() {
+        return this.firstname + ' ' + this.lastname;
+    }
+
+    set fullName(fullName) {
+        const [firstname, lastname] = fullName.split(' ');
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    getBirthYear() {
+        return Date.now() - this.age;
+    }
+
+}
+
+const user1 = new CreateUser("John","Smith",21);
+
+user1.fullName = "Alice Smith"; // this fullName call the "set" fullName
+console.log(user1.fullName);// this fullName call the "get" fullName
+
+
+
+
+```
+
+# Static keyword 
+A static method or property is called on the class, not on the object created from the class.
+<br>
+static block runs once when the class is evaluated(when the class is declared event not initialize).
+<br>
+```bash 
+class CreateUser{
+
+  constructor(firstname,lastname,age){
+    this.firstname = firstname
+    this.lastname = lastname
+    this.age = age
+  }
+
+  static{
+    console.log("This is static block")
+    this.message = "Hello Js"; // here this always refers to the class
+    this.greet = function(){ 
+        return "Welcome to JS world"
+    }
+  }
+
+  static myName = "Rohan";
+
+  static getFullName(){
+    return this.firstname + ' ' + this.lastname;
+  }
+  
+  getBirthYear(){
+    return Date.now() - this.age;
+  }
+
+}
+
+CreateUser.myName; 
+CreateUser.getFullName();
+
+```
+
+# Inheritance / Prototype inheritance
+Function will be inherited from its nearest prototype. 
+<br>
 ```bash
 // Inheritance
 class Person{
@@ -2971,7 +3100,7 @@ class Person{
 
 class Engineer extends Person{
     constructor(name,branch){
-        super(name);
+        super(name); // call parent constructor
         this.branch= branch;
 
     }
@@ -2985,6 +3114,132 @@ let enObj1 = new Engineer("David","cs");
 console.log(enObj1.name,enObj1.branch);
 
 ```
+# this keyword : 
+Bydefault this keywords refers to the window object in browser and inside node js it refers to "{}".
+<br>
+```bash 
+
+// how "this" behaves inside the object's regular and anonymous function
+const user = {
+    firstname: "John",
+    lastname : "Smith",
+    fullName () {
+      function getAge(){
+            console.log(this); // refers to "window" obj in browser
+        }
+
+        getAge();
+        console.log(this) // refers to user object
+    }
+}
+
+user.fullName();
+
+
+
+// how "this" keyword behaves when function calls with "new" keyword.
+function myFun(){}
+new myFun();
+// It always creates an object return it and in this case it return empty object. 
+
+
+
+// how "this" keyword behaves in "event handling"
+const h1 = document.querySelector('h1');
+h1.addEventListener('click',function(){
+  console.log(this); //  refers to the h1 element because addEventListener is attached to "h1" .
+})
+
+
+// how "this" behaves inside the object's arrow function
+const user = {
+    firstname:"John",
+    lastname : "Smith",
+    fullName: () =>{
+        console.log(this); // refers to the "window" object in browser.
+    }
+}
+
+user.fullName()
+
+
+
+Note: In case of arrow function and IIFE function" this " keywords refers to global object. In Browser it refers to Window object. 
+
+```
+
+# requestAnimationFrame :
+requestAnimationFrame() is a browser API used in JavaScript to create smooth animations by syncing your code with the browser's refresh rate. 
+<br>
+```bash 
+function paint(){
+    requestAnimationFrame(paint);
+}
+
+window.requestAnimationFrame(paint);
+
+// here paint function will call for Infinite time and it stop when changes the tab.
+```
+
+# Date : 
+Date object is used to work with dates and times — such as the current date, formatting, comparison, or even doing calculations like adding days or months.
+<br>
+```bash 
+
+let date = new Date();
+
+//date methods
+console.log(date);  // 2025-05-26T11:01:45.322Z
+console.log(date.toString()) // Mon May 26 2025 16:31:45 GMT+0530 (India Standard Time)
+console.log(date.toDateString())  //   Mon May 26 2025
+console.log(date.toLocaleString())  // 5/26/2025, 4:31:45 PM
+console.log(typeof date) // object
+
+
+//date formats
+let myCreatedDate = new Date("2025-05-26");
+console.log(myCreatedDate.toLocaleString());
+let myCreatedDate2 = new Date("05-26-2025");
+console.log(myCreatedDate2.toLocaleString());
+let myCreatedDate3 = new Date(2025,4,26); // month start from zero.
+console.log(myCreatedDate3.toLocaleString())
+let myCreatedDate4 = new Date(2025,4,26,5,3); // here 5 represents hour and 3 represents minutes
+console.log(myCreatedDate4.toLocaleString()) 
+
+// other useful methods of Date
+// getFullYear()	Gets year (e.g. 2025)
+// getMonth()	Gets month (0-11)
+// getDate()	Gets day of the month (1-31)
+// getDay()	Gets day of the week (0 = Sunday)
+// getHours() / getMinutes() / getSeconds()	Time components
+// getTime()	Gets timestamp in ms
+// setDate(), setMonth ,setFullYear() etc.	Set parts of a date
+
+
+
+
+console.log(Date.now())  
+// It gives current timestamp in millisecond. 
+//timestamp starts from "1 Jan 1970"
+
+console.log(date.getTime()) // It also gives timstamp of date
+// we can compare the date.getTime with "Date.now()";
+
+// To convert timestamp into seconds. 
+console.log(Math.floor(Date.now()/1000));
+
+
+console.log(date.getDay())
+
+
+// Very Important method 
+console.log(date.toLocaleString('default',{
+    weekday:"long"
+}))
+
+```
+
+
 
 # Bootstrap
 
