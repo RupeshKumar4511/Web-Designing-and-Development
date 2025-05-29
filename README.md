@@ -252,6 +252,7 @@ Allows transactions and indexed searches.
 IndexedDB allows you to create indexes on specific fields in your object stores, enabling quick and efficient searches.)
 <br>
 Example of Transaction :
+<br>
 ```bash 
 // Open a database
 const request = indexedDB.open("MyDatabase", 1);
@@ -288,6 +289,7 @@ Supports asynchronous operations.
 Accessible via the indexedDB object.
 <br>
 Example:
+<br>
 ```bash
 const request = indexedDB.open('myDatabase', 1);
 
