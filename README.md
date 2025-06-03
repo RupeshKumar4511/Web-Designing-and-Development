@@ -489,7 +489,7 @@ div#main{color:white;}
 # Background:
 
 1. Use Linear-gradient color
-
+<br>
 ```bash
 background-color:linear-gradient(to right,red,yellow);
 ```
@@ -497,7 +497,7 @@ background-color:linear-gradient(to right,red,yellow);
 <br>
 
 2. background-attachment :
-
+<br>
 ```bash
 background-attachment:fixed;
 
@@ -527,16 +527,18 @@ Note we can add more than one images to background But first image wil apply fir
 
 ```
 
-# To fixed the content of webpage in center for every screen : 
+# To fixed the content of webpage in center for every screen :
+```bash  
 body{
   max-inline-size:1000px; // The max-inline-size property specifies the maximum size of an element in the inline direction.
   margin-inline:auto; // equally distribute space in left and right of content. 
 }
+```
 
 # padding :
 
 It is used to fit text in a container properly.
-
+<br>
 ```bash
 padding:5px 6px
 here 5px is for top and bottom,
@@ -628,7 +630,7 @@ line-height: 34%;
 
 The CSS overflow property controls what happens to content that is too big to fit into an area.
 It works for only Block elements.
-
+<br>
 ```bash
 overflow : hidden;
 overflow: visible;
@@ -660,7 +662,7 @@ if font-size :2em in a child div
 then other property like width : 2em then it means width becomes 2 times of its own font-size.It does not depend on parent font-size.
 <br>
 Example:
-
+<br>
 ```bash
 
 <div class="container" style="font-size: 3em;">
@@ -742,7 +744,7 @@ The list-style-position property specifies the position of the list-item markers
 # float property :
 
 When we use the float property, and we want the next element below (not on right or left), we will have to use the clear property.
-
+<br>
 ```bash
 clear : left ;
 clear :right;
@@ -2156,14 +2158,98 @@ element2.classList.toggle("red");
 
 ```
 
-# event Handling :
-
+# Important Point from Event Handler Function : 
+Variables declared inside an event handler function are re-initialized every time the event is triggered.
+So, we prefer to declare variable which maintains the global state. 
+<br>
 When you click anywhere on the page, the click event is triggered.
 <br>
 event.currentTarget:
 Returns the element on which the event listener was attached — not necessarily the one that triggered the event.
 <br>
 The event.clientX and event.clientY properties return the X and Y coordinates of the mouse pointer relative to the viewport.
+<br>
+event.key -> which key was pressed (for keydown)
+<br>
+If multiple nested elements have click handlers:
+<br>
+```bash
+child.addEventListener('click', function(event) {
+  event.stopPropagation(); // stops the event from bubbling up
+});
+```
+# Form Events : 
+```bash 
+| Event      | Description                                                                             |
+| ---------- | --------------------------------------------------------------------------------------- |
+| `submit`   | Fired when a form is submitted (usually by clicking a submit button or pressing Enter). |
+| `reset`    | Fired when a form is reset using a `<button type="reset">` or `form.reset()`.           |
+| `change`   | Fired when the value of an input, select, or textarea changes **and loses focus**.      |
+| `input`    | Fired **immediately** whenever the value of an `<input>` or `<textarea>` changes.       |
+| `focus`    | Fired when an element (like an input) gains focus.                                      |
+| `blur`     | Fired when an element loses focus.                                                      |
+| `focusin`  | Like `focus`, but bubbles (can be caught on parent elements).                           |
+| `focusout` | Like `blur`, but bubbles.                                                               |
+| `invalid`  | Fired when a form field fails HTML5 validation constraints.                             |
+
+
+
+// To access the input value : 
+event.target.value;
+
+```
+<br>
+
+# Some useful Keyboard Events  :
+```bash 
+document.addEventListener('keydown', (event) => {
+  console.log(event.key);     // e.g., "a", "Enter", "ArrowUp"
+  console.log(event.code);    // e.g., "KeyA", "Enter", "ArrowUp"
+  console.log(event.ctrlKey); // true if Ctrl is held
+});
+
+
+event.shiftKey
+
+event.ctrlKey
+
+event.altKey
+
+```
+
+# Event Delegation : 
+Event Delegation is a technique where you attach a single event listener to a parent element to manage events for its child elements, even if they are added dynamically.
+```bash 
+// html 
+    <div class="add-card">+</div>
+    <div class="container"></div>
+
+
+// js code  
+
+
+let count = 0;
+const addCard = document.querySelector('.add-card');
+const container = document.querySelector('.container');
+addCard.addEventListener('click',()=>{
+    const card = document.createElement('div');
+    count++;
+    card.innerText = count;
+    container.appendChild(card);
+    card.classList.add('card')
+})
+
+container.addEventListener('click',(event)=>{
+    if(event.target != '.container'){
+        event.target.remove()
+    }
+})
+
+
+    
+  
+
+```
 
 # How to Block JS thread : 
 Js is single threaded. 
