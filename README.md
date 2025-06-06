@@ -1458,6 +1458,16 @@ All the non primitive datatypes are stored in the Heap memory and a reference is
 # Conditional Statements :
 when we want to execute a block of code based on certain conditions then we use conditional statements.
 
+# Important Point from For loop : 
+when we declare a variable inside for loop using let keyword then a new variable is created for each block of block in each iteration. 
+<br>
+```bash
+<!-- for(let i = 0 ;i <3;i++){
+  setTimeout(()=>{console.log(i)},200)}  -->
+
+  // OP: 0 1 2 
+```
+
 # String
 
 String are immutable.
