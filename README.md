@@ -1829,6 +1829,10 @@ Looks like empty strings, but there are 3 "holes". Always initialize arrays care
 ```
 
 # Object Literals: 
+when you create an object using {} in JavaScript, a new memory location is allocated to store that object. This applies to all objects created using object literal notation. Each time you use {} a unique object is created, and therefore, a unique memory space is allocated for it.
+
+<br>
+
 ```bash 
 const obj= {
     name:"Harsh",
