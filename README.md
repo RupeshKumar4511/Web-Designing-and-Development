@@ -1858,6 +1858,30 @@ console.log("name" in obj) // true
 
 ```
 
+# apply function :
+The .apply() method is a built-in method in JavaScript that allows you to call a function, but with:
+<br>
+A custom this context
+<br>
+And an array of arguments
+<br>
+Note: func.apply(this, args), you're preserving the original this context from the event.
+
+<br>
+
+```bash 
+
+function greet(greeting, punctuation) {
+  console.log(`${greeting}, ${this.name}${punctuation}`);
+}
+
+const person = { name: "Alice" };
+
+greet.apply(person, ["Hello", "!"]);
+// Output: Hello, Alice!
+
+```
+
 # Important Point from Shallow copy and Deep copy : 
 ```bash 
 const username  =  "John"
@@ -2825,6 +2849,7 @@ This method directly attaches an event handler to an HTML element's attribute, s
 <br>
 Example: Inline onclick event handler
 <br>
+
 ```bash
 <button onclick="alert('Button clicked!')">Click Me</button>
 In this example, the alert() function is called when the button is clicked.
@@ -2835,6 +2860,7 @@ This method assigns a JavaScript function to an element's event property (e.g., 
 <br>
 Example: Setting an onclick event using a DOM property
 <br>
+
 ```bash
 <button id="myButton">Click Me</button>
 
@@ -2857,6 +2883,7 @@ Attach handlers without overwriting existing ones.
 
 Syntax:
 <br>
+
 ```bash
 element.addEventListener(event, function, useCapture);
 event: The event type (e.g., 'click', 'mouseover').
@@ -2866,6 +2893,7 @@ Example: Using addEventListener for a click event
 ```
 
 <br>
+
 ```bash
 <button id="myButton">Click Me</button>
 
@@ -2877,13 +2905,14 @@ Example: Using addEventListener for a click event
 </script>
 
 ```
-
+<br>
 D. Removing Event Listeners (removeEventListener)
 <br>
 The removeEventListener() method removes an event handler that was attached using addEventListener().
 <br>
 Example: Removing an event listener
 <br>
+
 ```bash
 <button id="myButton">Click Me</button>
 <button id="removeHandler">Remove Click Event</button>
@@ -2909,6 +2938,21 @@ In this example, clicking the "Remove Click Event" button removes the event hand
 Debouncing is a programming pattern used to limit how often a function runs — especially when it's called frequently in quick succession (like typing, resizing, scrolling, etc.).
 <br>
 ```bash 
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);   // here args will carry the event
+    }, delay);
+  };
+}
+
+
+
+
+
 function handleSearchInput(e) {
   console.log("Searching for:", e.target.value);
 }
