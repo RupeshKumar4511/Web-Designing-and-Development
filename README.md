@@ -1824,6 +1824,16 @@ let arr = Array(3).fill(0); // [0, 0, 0]
 [,,,].toString();           // ",,"
 Looks like empty strings, but there are 3 "holes". Always initialize arrays carefully.
 
+9. forEach, map, filter,some and every methods skip holes automatically.
+const arr = [1, , 3];
+
+arr.forEach((x, i) => {
+  console.log(i, x);
+});
+// Logs:
+// 0 1
+// 2 3
+
 
 
 ```
