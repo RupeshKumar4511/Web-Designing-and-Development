@@ -2680,13 +2680,20 @@ ex: deleting a user.
 
 200 : success
 <br> 
-201 :  Resource successfully created (user in post/put request)
+201 :  Resource successfully created (used in post/put request)
 <br>
-400 : something missing (like required filled missing in the form)
+400 : Bad Request or something missing (like required filled missing in the form)
+<br>
+401 : Unauthorized access 
+<br>
+403 : Forbidden Example : User is authenticated but not allowed to access
 <br>
 404 : url not found(api error)
 <br>
-504 : server error
+500 : Internal server error  
+<br>
+504 : Bad Gatway Timeout , Example : If API Server waits too long for the database, load balancer or gateway may return 504 Gateway Timeout.
+
 
 # AJAX and AJAJ
 
