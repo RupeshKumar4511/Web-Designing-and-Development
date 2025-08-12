@@ -13,7 +13,7 @@ It is used to defines the text documents within the tags to structure webpages. 
 
 # Note :
 
-HTML files are saved with .html or .htm extension.
+HTML files can be saved with .html or .htm extension.
 <br>
 combination of html tags and contents are called html elements .
 <br>
@@ -42,7 +42,7 @@ attributes provide the additional information about the tags .
 
 # head tag in Boilerplate code
 
-It is used to write scripting(both client and server) to make dynamic web pages.It also contains page metadata.
+It is used to write scripting(both client and server) to make dynamic web pages. It also contains page metadata.
 
 # title tag
 
@@ -65,7 +65,7 @@ ex- div tag etc.
 In radio button name attribute of different options is same.
 
 <br>
-In form tag , action attribute is used to defines what actions need to be performed when the form is submitted.
+In form tag, action attribute is used to defines what actions need to be performed when the form is submitted.
 
 <br>
 
@@ -149,6 +149,7 @@ Accessible via the localStorage object.
 <br>
 Several Methods provided by the Localstorage:
 <br>
+
 ```bash
 1. setItem(key, value)
 Description: Stores a key-value pair in localStorage.
@@ -208,6 +209,8 @@ Similar to localStorage, but temporary.
 Accessible via the sessionStorage object.
 <br>
 Several methods provided by sessionStorage (sessionStorage has also same methods that localStorage has):
+<br>
+
 ```bash
 // Save data
 sessionStorage.setItem('username', 'JaneDoe');
@@ -224,6 +227,7 @@ sessionStorage.clear();
 <br>
 The onstorage event is triggered when changes are made to the localStorage of a web page. However, there are specific conditions and behaviors associated with this event.
 <br>
+
 ```bash 
 window.onstorage=(e) =>{
   alert("Changed");
@@ -253,6 +257,7 @@ IndexedDB allows you to create indexes on specific fields in your object stores,
 <br>
 Example of Transaction :
 <br>
+
 ```bash 
 // Open a database
 const request = indexedDB.open("MyDatabase", 1);
@@ -283,6 +288,7 @@ request.onsuccess = function (event) {
 };
 
 ```
+
 <br>
 Supports asynchronous operations.
 
@@ -290,6 +296,7 @@ Accessible via the indexedDB object.
 <br>
 Example:
 <br>
+
 ```bash
 const request = indexedDB.open('myDatabase', 1);
 
@@ -305,6 +312,7 @@ request.onupgradeneeded = function (event) {
 };
 
 ```
+
 <br>
 Note : IndexedDB is primarily designed for persistent storage, meaning that data stored in IndexedDB remains available even after the browser is closed or the device is restarted.
 <br>
