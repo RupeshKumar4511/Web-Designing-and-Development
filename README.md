@@ -474,6 +474,7 @@ Some property is not inherit by default because browser apply some properties on
 <br>
 But we can inherit property. 
 <br>
+
 ```bash 
 
 body{
@@ -498,6 +499,7 @@ div#main{color:white;}
 
 1. Use Linear-gradient color
 <br>
+
 ```bash
 background-color:linear-gradient(to right,red,yellow);
 ```
@@ -506,6 +508,7 @@ background-color:linear-gradient(to right,red,yellow);
 
 2. background-attachment :
 <br>
+
 ```bash
 background-attachment:fixed;
 
@@ -527,7 +530,8 @@ background-size: cover; /* Resize the background image to cover the entire conta
 Note we can add more than one images to background But first image wil apply first and other image will apply behind the first one.
 
 ```
-# To prevent overflow : 
+# To prevent overflow :
+
 ```bash 
 //use max-width and min-height 
 
@@ -536,6 +540,7 @@ Note we can add more than one images to background But first image wil apply fir
 ```
 
 # To fixed the content of webpage in center for every screen :
+
 ```bash  
 body{
   max-inline-size:1000px; // The max-inline-size property specifies the maximum size of an element in the inline direction.
@@ -547,6 +552,7 @@ body{
 
 It is used to fit text in a container properly.
 <br>
+
 ```bash
 padding:5px 6px
 here 5px is for top and bottom,
@@ -639,6 +645,7 @@ line-height: 34%;
 The CSS overflow property controls what happens to content that is too big to fit into an area.
 It works for only Block elements.
 <br>
+
 ```bash
 overflow : hidden;
 overflow: visible;
@@ -671,6 +678,7 @@ then other property like width : 2em then it means width becomes 2 times of its 
 <br>
 Example:
 <br>
+
 ```bash
 
 <div class="container" style="font-size: 3em;">
@@ -718,6 +726,7 @@ Ignores top, right, bottom, left, and z-index.
 The element is positioned relative to the browser window(normal position).
 we can set top,right,bottom,left by using inset.
 <br>
+
 ```bash 
 position:relative;
 inset:5px; // here left,right,top,bottom will be 5px. 
@@ -753,6 +762,7 @@ The list-style-position property specifies the position of the list-item markers
 
 When we use the float property, and we want the next element below (not on right or left), we will have to use the clear property.
 <br>
+
 ```bash
 clear : left ;
 clear :right;
@@ -780,6 +790,7 @@ flex-drection:row-reverse;
 It means the end of main axis in the flex container.
 
 <br>
+
 ```bash 
 <div style="display: flex;">
   <span style="width: 23px; height: 34px;"></span>
@@ -914,6 +925,7 @@ Define grid areas using a string of names:
 grid-template-areas: "header header" "sidebar content" "footer footer";
 <br>
 Assign grid items to areas with the grid-area property.
+<br>
 
 ```bash
 .item1 { grid-area: header; }
@@ -1035,6 +1047,7 @@ rgba(0,0,0,0.1): shadow color is black with 10% opacity
 Here element move right and left acc. to x-axis and move up and down acc. to y-axis.
 <br>
 It can also done by this way.
+<br>
 
 ```bash
 translateX();
@@ -1141,6 +1154,7 @@ The content will not be stretched; it will scale proportionally.
 # element::after 
 
 The h1::after selector in CSS is a pseudo-element that is used to insert content after an h1 element. It allows you to add content or apply additional styles without modifying the actual HTML.
+<br>
 ```bash
 h1::after {
   content: "";
