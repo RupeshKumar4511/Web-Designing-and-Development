@@ -501,7 +501,9 @@ div#main{color:white;}
 <br>
 
 ```bash
+
 background-color:linear-gradient(to right,red,yellow);
+
 ```
 
 <br>
@@ -510,9 +512,10 @@ background-color:linear-gradient(to right,red,yellow);
 <br>
 
 ```bash
+
 background-attachment:fixed;
 
-it can be fixed,scroll.
+// it can be fixed,scroll.
 
 ```
 
