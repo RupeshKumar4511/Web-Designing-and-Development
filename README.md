@@ -1158,6 +1158,7 @@ The content will not be stretched; it will scale proportionally.
 
 The h1::after selector in CSS is a pseudo-element that is used to insert content after an h1 element. It allows you to add content or apply additional styles without modifying the actual HTML.
 <br>
+
 ```bash
 h1::after {
   content: "";
@@ -1286,6 +1287,7 @@ Because when we create object by "Object.create" then all the properties will be
 ```
 <br>
 <br>
+
 ```bash 
 var declared in IIFE function will have local scope.
 
@@ -1298,6 +1300,7 @@ then that variable is only accessible inside that function.
 # Lexical Scope :
 Inner functions can access variables from outer functions and global execution context, but not vice versa.
 <br>
+
 ```bash 
 var a = 90;
 let b = 40;
@@ -1331,6 +1334,7 @@ second
 # Returning Funtion with Closure: 
 A closure is a function that remembers the variables from its outer (lexical) scope, even after that outer function has finished executing. 
 <br>
+
 ```bash 
 function outer() {
   let count = 0;
@@ -1380,6 +1384,8 @@ var carName; // Volvo
 <br>
 
 // JavaScript will try to convert strings to numbers in all numeric operations:
+<br>
+
 ```bash
 var x = "100";
 var y = "10";
@@ -1457,6 +1463,7 @@ true + "a" => truea
 # Math Object :
 The Math object in JavaScript is a built-in object that provides a collection of mathematical constants and functions.
 <br>
+
 ```bash
 // By default Math.random() give random double value between 0 and 1. 
 const result = Math.floor(Math.random()*20)+10
@@ -1486,9 +1493,10 @@ when we want to execute a block of code based on certain conditions then we use 
 # Important Point from For loop : 
 when we declare a variable inside for loop using let keyword then a new variable is created for each block of block in each iteration. 
 <br>
+
 ```bash
-<!-- for(let i = 0 ;i <3;i++){
-  setTimeout(()=>{console.log(i)},200)}  -->
+for(let i = 0 ;i <3;i++){
+  setTimeout(()=>{console.log(i)},200)} 
 
   // OP: 0 1 2 
 ```
@@ -1543,6 +1551,7 @@ splice() => It will do nothing.
 # arguments keyword :
 arguments is a special keyword (actually a local object) available inside regular functions that provides an array-like object of all the arguments passed to the function.
 <br>
+
 ```bash 
 function showArgs() {
   console.log(arguments);
@@ -1571,6 +1580,7 @@ arr.forEach(callbackFunction);
 <br>
 <b>callbackFunction :<b> It is a function which passed as arguments to another functions. It is executed inside outer function.
 <br>
+
 ```bash
 let arr = [23,34,43,24];
 arr.forEach((value)=>
@@ -1713,6 +1723,7 @@ a(9);
 # spread operator :
 spread operators works with array,object and function. 
 <br>
+
 ```bash 
 
 // array
@@ -1741,6 +1752,7 @@ add(...arr); // here "...arr" act as spread operator which means it spread the a
 # Function currying : 
 A function that takes multiple arguments is transformed into a sequence of functions, each taking one argument at a time.
 <br>
+
 ```bash 
 function curriedAdd(a) {
   return function(b) {
@@ -2246,6 +2258,7 @@ event.key -> which key was pressed (for keydown)
 <br>
 If multiple nested elements have click handlers:
 <br>
+
 ```bash
 child.addEventListener('click', function(event) {
   event.stopPropagation(); // stops the event from bubbling up
@@ -2292,6 +2305,8 @@ event.altKey
 
 # Event Delegation : 
 Event Delegation is a technique where you attach a single event listener to a parent element to manage events for its child elements, even if they are added dynamically.
+<br>
+
 ```bash 
 // html 
     <div class="add-card">+</div>
@@ -2327,6 +2342,7 @@ container.addEventListener('click',(event)=>{
 # How to Block JS thread : 
 Js is single threaded. 
 <br>
+
 ```bash
 // without using setTimeout and setInterval 
 
@@ -2389,6 +2405,7 @@ Promise is a special type of object which is an eventual completion of task.
 <br>
 There are three state of promise: pending,fulfilled,rejected.
 <br>
+
 ```bash
 
 function getData2() {
@@ -2421,6 +2438,7 @@ a.catch((err)=>{
 # Promise chain
 Promise chaining in JavaScript refers to linking multiple .then() calls together on a Promise, where the output of one .then() becomes the input of the next. 
 <br>
+
 ```bash
    function getData(dataId){
     return new Promise((resolve,rejects)=>{
@@ -2531,6 +2549,7 @@ getFullData();
 
 <img src="./Image/js.jpg" alt="">
 <br>
+
 ```bash 
 Here global stands for global execution context.
 
@@ -2552,6 +2571,7 @@ setTimeout, setInterval, promise related callbacks and events related callback a
 
 <img src="./Image/fetch.jpg" alt="">
 <br>
+
 ```bash 
 response = fetch('api/endpoint')
 when we hit any api endpoint using fetch then two things happens : 
@@ -2729,6 +2749,7 @@ AJAJ : Asynchronous javascript json
 # REST api
 REST stands for Representational State Transfer.
 <br>
+
 ```bash 
 
 1. It follows client-server archietecture.
@@ -2752,6 +2773,7 @@ server side rendering because html code is formed at server side.
 
 parse() : This function is used to convert the json data into javascript object.
 <br>
+
 ```bash 
 const jsonString = '{"name": "Alice", "age": 25, "city": "Wonderland"}';
 const obj = JSON.parse(jsonString);
@@ -2764,6 +2786,7 @@ console.log(obj.age);  // Output: 25
 
 stringify() : This function is used to convert object to json. 
 <br>
+
 ```bash 
 
 const person = {
@@ -2802,6 +2825,7 @@ oninput(this); => Here this refers to current html element.
 
 Email Validation:
 <br>
+
 ```bash 
 const emailRegex = /^[a-zA-Z0-9]+(?:[.+%\_][a-zA-Z0-9])*@[A-Za-z]+\.[a-zA-Z]{2,}$/;
 Explanation:
@@ -2856,6 +2880,7 @@ Anchors the pattern to the end of the string. This means that no other character
 
 Password Regex:
 <br>
+
 ```bash 
 
 const enhancedPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@#$_!%*?&])[A-Za-z\d@#$_!%*?&]{8,16}$/;
@@ -2979,6 +3004,8 @@ In this example, clicking the "Remove Click Event" button removes the event hand
 # Debouncing : 
 Debouncing is a programming pattern used to limit how often a function runs — especially when it's called frequently in quick succession (like typing, resizing, scrolling, etc.).
 <br>
+
+
 ```bash 
 
 function debounce(func, delay) {
@@ -3008,6 +3035,8 @@ document.getElementById("search").addEventListener("input", debouncedSearch);
 # Factory Functions :
 A factory function in JavaScript is simply a function that returns a new object every time it's called. It's a way to create multiple similar objects without using class or new.
 <br>
+
+
 ```bash 
 function makeUser(name,age){
     return {
@@ -3035,6 +3064,8 @@ Always Capitalize Constructor Functions.
 <br>
 If we return a primitive, it's ignored. If we return an object, it overrides the constructed one.
 <br>
+
+
 ```bash 
 function CreateUser(name,age){
     this.name = name;
@@ -3077,6 +3108,8 @@ employee2.__proto__ = employee1;
 # Classes and Object : 
 Classes are internally a function in js. 
 <br>
+
+
 ```bash
 class Car{
 
@@ -3117,6 +3150,8 @@ We can declare any property and method as private by declaring it with "#" keywo
 <br>
 We can access those private property and methods in non private methods inside that class.
 <br>
+
+
 ```bash 
 
 const user = {
@@ -3162,6 +3197,8 @@ getters and setters are special methods that let you control access to object pr
 <br>
 They look like regular properties when used, but are actually methods under the hood.
 <br>
+
+
 ```bash 
 const user = {
     firstname:"John",
@@ -3236,6 +3273,8 @@ A static method or property is called on the class, not on the object created fr
 <br>
 static block runs once when the class is evaluated(when the class is declared event not initialize).
 <br>
+
+
 ```bash 
 class CreateUser{
 
@@ -3273,6 +3312,8 @@ CreateUser.getFullName();
 # Inheritance / Prototype inheritance
 Function will be inherited from its nearest prototype. 
 <br>
+
+
 ```bash
 // Inheritance
 class Person{
@@ -3305,6 +3346,8 @@ console.log(enObj1.name,enObj1.branch);
 # this keyword : 
 Bydefault this keywords refers to the window object in browser and inside node js it refers to "{}".
 <br>
+
+
 ```bash 
 
 // how "this" behaves inside the object's regular and anonymous function
@@ -3359,6 +3402,8 @@ Note: In case of arrow function and IIFE function" this " keywords refers to glo
 # requestAnimationFrame :
 requestAnimationFrame() is a browser API used in JavaScript to create smooth animations by syncing your code with the browser's refresh rate. 
 <br>
+
+
 ```bash 
 function paint(){
     requestAnimationFrame(paint);
@@ -3372,6 +3417,7 @@ window.requestAnimationFrame(paint);
 # Date : 
 Date object is used to work with dates and times — such as the current date, formatting, comparison, or even doing calculations like adding days or months.
 <br>
+
 ```bash 
 
 let date = new Date();
@@ -5016,7 +5062,7 @@ runtime and these languages allows implicit type coercion, meaning it automatica
 like javascript, php etc
 
 
-# PHP :  hypertext preprocessor
+# PHP :  Hypertext Preprocessor
 
 It is a scripting language which is mostly used in backend.
 <br>
@@ -5156,6 +5202,7 @@ Note: This function is binary-safe.
 
 # Binary Safe :
 In PHP, Some functions are marked as binary safe functions. It means that the functions works correctly even when you pass binary data. Ex: A string containing non-ascii bytes, null bytes etc.To say more cleanly, A non binary safe function might be based on null terminated strings, When it sees any null character in the strings these functions ignores anything after it.
+<br>
 
 ```bash 
   $str1="web";
@@ -5178,6 +5225,7 @@ NULL
 <br>
 Tip: This function can be used to prepare a string for storage in a database and database queries.
 <br>
+
 ```bash 
 $str = addslashes('What does "yolo" mean?');
 echo($str);  //o/p =>  What does \"yolo"\ mean?
@@ -5189,6 +5237,7 @@ The stripslashes() function removes backslashes added by the addslashes() functi
 <br>
 Tip: This function can be used to clean up data retrieved from a database or from an HTML form.
 <br>
+
 ```bash 
 echo stripslashes("Who\'s Peter Griffin?");  // Who's Peter Griffin?
 
@@ -5197,6 +5246,8 @@ echo stripslashes("Who\'s Peter Griffin?");  // Who's Peter Griffin?
 The htmlentities() function converts characters to HTML entities.
 <br>
 Tip: To convert HTML entities back to characters, use the html_entity_decode() function.
+<br>
+
 ```bash 
 $str = '<a href="https://www.w3schools.com">Go to w3schools.com</a>';
 echo htmlentities($str);
@@ -5205,6 +5256,7 @@ echo htmlentities($str);
 # htmlspecialchars function :
 The htmlspecialchars(string) function converts some predefined characters to HTML entities.
 <br>
+
 ```bash
 The predefined characters are:
 
@@ -5291,6 +5343,8 @@ Here is a comprehensive list of PHP superglobal variables and their purposes:
 1. $_GLOBALS
 Purpose: Access global variables from anywhere in the script.
 Example:
+<br>
+
 ```bash
 $x = 5;
 $y = 10;
@@ -5312,6 +5366,7 @@ $_SERVER['HTTP_HOST']: Host name.
 $_SERVER['PHP_SELF']: Path of the executing script.
 $_SERVER['REQUEST_METHOD']: Request method (GET, POST, etc.).
 Example:
+<br>
 ```bash
 echo $_SERVER['PHP_SELF']; // Outputs: /example.php
 echo $_SERVER['REQUEST_METHOD']; // Outputs: GET
@@ -5320,6 +5375,8 @@ echo $_SERVER['REQUEST_METHOD']; // Outputs: GET
 3. $_GET
 Purpose: Collects data sent via URL parameters (query string).
 Example:
+<br>
+
 ```bash
 // URL: http://example.com/index.php?name=John
 echo $_GET['name']; // Outputs: John
@@ -5328,6 +5385,7 @@ echo $_GET['name']; // Outputs: John
 4. $_POST
 In PHP, the $_POST[] superglobal is used to collect data from an HTML form that has been submitted using the POST method. It holds key-value pairs where the keys are the names of the form fields, and the values are the user inputs.
 <br>
+
 ```bash
 // HTML form
 // <form method="POST" action="submit.php">
@@ -5344,6 +5402,7 @@ Keys:
 $_FILES['file']['name']: Original file name.
 $_FILES['file']['tmp_name']: Temporary file location.
 <br>
+
 ```bash
 // HTML form
 // <form method="POST" action="upload.php" enctype="multipart/form-data">
@@ -5357,6 +5416,7 @@ echo $_FILES['file']['name']; // Outputs: uploaded_file.jpg
 6. $_COOKIE
 Purpose: Contains data stored in cookies sent by the client to the server.
 <br>
+
 ```bash
 // Set a cookie
 setcookie("user", "John", time() + 3600);
@@ -5368,6 +5428,7 @@ echo $_COOKIE['user']; // Outputs: John
 7. $_SESSION
 Purpose: Used to store data that persists across multiple pages.
 <br>
+
 ```bash
 session_start();
 $_SESSION['user'] = "John";
@@ -5378,6 +5439,7 @@ echo $_SESSION['user']; // Outputs: John
 8. $_REQUEST
 Purpose: Combines the contents of $_GET, $_POST, and $_COOKIE.
 <br>
+
 ```bash
 // URL: http://example.com/index.php?name=John
 echo $_REQUEST['name']; // Outputs: John
@@ -5391,8 +5453,9 @@ echo $_ENV['HOME']; // Outputs the home directory on some systems.
 ```
 
 
-#Practical Example With htmlspecialchars
+# Practical Example With htmlspecialchars
 Form Code:
+<br>
 ```bash 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
