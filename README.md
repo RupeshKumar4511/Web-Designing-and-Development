@@ -1244,7 +1244,7 @@ for(var i =0 ;i < 10 ; i++){
 }
 
 // Here It will print ten times 10 because var is globally scoped. 
-In this case, first complete for loop runs and 3 setTimeout function will be stored in Execution stack which will be executed later. 
+In this case, first complete for-loop runs and setTimeout function will be stored in Execution stack which will be executed later. 
 
 
 
@@ -1282,7 +1282,9 @@ console.log(obj.height)
 // O/P : 30 
          30 
 
-Because when we create object by "Object.create" then all the properties will be stored in the prototype of object and delete does not work on prototype but if normally create object without "Object.create()" then in that case last "obj.height" will print "undefined".
+Because when we create object by "Object.create" then all the properties will be stored in the prototype of 
+object and delete does not work on prototype but if we normally create object without "Object.create()" then 
+in that case last "obj.height" will print "undefined".
 
 ```
 <br>
@@ -1517,13 +1519,13 @@ By default, the replace() function replaces only the first match:
 str = "Please visit Microsoft and Microsoft!";
 
 By default, the replace() function is case sensitive :
-var n = str.replace("MICROSOFT", “IBM");
+var n = str.replace("MICROSOFT", "IBM");
 
 To replace case insensitive, use a regular expression with an /i flag (insensitive):
-var n = str.replace(/MICROSOFT/i, “IBM");
+var n = str.replace(/MICROSOFT/i, "IBM");
 
 To replace all matches, use a regular expression with a /g flag (global match):
-var n = str.replace(/Microsoft/g, “IBM");
+var n = str.replace(/Microsoft/g, "IBM");
 
 ```
 # Escape Sequence characters:
@@ -1571,14 +1573,17 @@ showArgs(1, 'hello', true);
 arrow functions are used to perform small task.
 like add, multiply etc.
 <br>
-Note: arrow function cannot be called above where at which is defined (means if arrow function defined at 12th line then it cannot called before 12th line i.e. on 4th line it cannot be called.) while function defined with 'function' keyword can be called anywhere.
+Note: arrow function cannot be called above where at which is defined (means if arrow function defined at 12th 
+line then it cannot called before 12th line i.e. on 4th line it cannot be called.) while function defined with 
+'function' keyword can be called anywhere.
 
 <br>
 There are some special method in array.
 <br>
 arr.forEach(callbackFunction);
 <br>
-<b>callbackFunction :<b> It is a function which passed as arguments to another functions. It is executed inside outer function.
+<b>callbackFunction :<b> It is a function which passed as arguments to another functions. It is executed 
+inside outer function.
 <br>
 
 ```bash
@@ -1630,7 +1635,8 @@ console.log(evenNumbers); // Output: [10, 20, 30]
 
 
 
-// reduce method: It returns a single value. It is used when we want a single value from an array like sum,average,maximum,minimum.
+// reduce method: It returns a single value. It is used when we want a single value from an array like sum,
+average,maximum,minimum.
 
 const output = arr.reduce((accumulator,currentValue) =>{
         return accumulator + currentValue;
@@ -1643,7 +1649,8 @@ const output = arr.reduce((accumulator,currentValue) =>{
 // const output = arr.reduce((accumulator,currentValue,index,arr) =>{
         return accumulator + currentValue;},initial_value);
         
-// Here intial values denotes that accomulator starts with intial value and first currentValue will be first element;
+// Here intial values denotes that accomulator starts with intial value and first currentValue will be first 
+element;
 
 
 
@@ -1657,9 +1664,11 @@ arr.sort((a,b)=>{
 
 
 
-// some() : The .some() method in JavaScript is a very useful array method for checking if at least one element in an array meets a condition.
+// some() : The .some() method in JavaScript is a very useful array method for checking if at least one 
+element in an array meets a condition.
 
-// It loops over the elements on array and checks if any value meets a condition then it breaks loop and return true. If none elements matches condition then it returns false.
+// It loops over the elements on array and checks if any value meets a condition then it breaks loop and 
+return true. If none elements matches condition then it returns false.
 
 
 // syntax: array.some(callback(element, index, array))
@@ -1675,9 +1684,11 @@ const numbers = arr.some((num)=>{
 
 
 
-// every() : The .every() method in JavaScript is a very useful array method for checking if all element in an array meets a condition.
+// every() : The .every() method in JavaScript is a very useful array method for checking if all element in an 
+array meets a condition.
 
-// It loops over the elements on array and checks if any value do not meets a condition then it breaks loop and return false. If all elements matches condition then it returns true.
+// It loops over the elements on array and checks if any value do not meets a condition then it breaks loop 
+and return false. If all elements matches condition then it returns true.
 
 
 // syntax: array.every(callback(element, index, array))
@@ -2128,10 +2139,11 @@ let y = 10;
 console.assert(y < 5, "y is greater than 5"); // This will log an error because the condition is false
 ```
 
+
+
+# Browser Object model(BOM):
 <br>
 
-<br>
-# Browser Object model(BOM):
 The BOM allows JavaScript to interact with the browser itself (not just the content of the page, like the DOM). It provides objects for controlling things like browser history, navigation, and the size of the browser window.
 <br>
 Unlike the DOM, the BOM is not standardized. Different browsers can implement BOM features differently, though many BOM objects and methods are widely supported.
@@ -2512,6 +2524,85 @@ finally
 // Note : .then() and .catch() also returns promise.
 
 ```
+# Promise API 
+```bash 
+// Purpose : Run multiple promises in parallel and wait for all to fulfill, or fail fast if any rejects.
+// Use Case : All promises are required to succeed, and failure of one /
+// should fail the whole operation.
+Promise.all([
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(results => {
+  console.log(results); // [1, 2, 3]
+});
+
+Promise.all([
+  Promise.resolve(1),
+  Promise.reject('Oops'),
+  Promise.resolve(3)
+]).catch(error => {
+  console.log(error); // 'Oops' (first rejection)
+});
+
+
+
+// Purpose: Wait for all promises to finish, regardless of success or failure.
+Promise.allSettled([
+  Promise.resolve(1),
+  Promise.reject('Error'),
+  Promise.resolve(3)
+]).then(results => {
+  console.log(results);
+  /*
+  [
+    { status: 'fulfilled', value: 1 },
+    { status: 'rejected', reason: 'Error' },
+    { status: 'fulfilled', value: 3 }
+  ]
+  */
+});
+
+
+
+// Purpose: Settle as soon as any promise settles (fulfilled or rejected).
+// Use case : We only care about the fastest result, success or failure (e.g., timeout logic).
+Promise.race([
+  new Promise(res => setTimeout(() => res('First'), 100)),
+  new Promise(res => setTimeout(() => res('Second'), 200))
+]).then(result => {
+  console.log(result); // 'First'
+});
+
+Promise.race([
+  new Promise((res, rej) => setTimeout(() => rej('Fail first'), 50)),
+  new Promise(res => setTimeout(() => res('Win later'), 100))
+]).catch(error => {
+  console.log(error); // 'Fail first'
+});
+
+// Purpose: Fulfill as soon as any promise fulfills (ignore rejections unless all fail).
+// We want the first successful result and can ignore failures unless all fail.
+
+Promise.any([
+  Promise.reject('Nope'),
+  Promise.reject('Still nope'),
+  Promise.resolve('Yes!')
+]).then(result => {
+  console.log(result); // 'Yes!'
+});
+
+Promise.any([
+  Promise.reject('Error 1'),
+  Promise.reject('Error 2')
+]).catch(err => {
+  console.log(err instanceof AggregateError); // true
+  console.log(err.errors); // ['Error 1', 'Error 2']
+});
+
+
+```
+
 
 # async and await
 
@@ -2762,6 +2853,7 @@ A REST API can serve any client: browser, mobile app, desktop app, etc.
 Data is usually returned in JSON format for platform-neutrality.
 
 If servers knows that client can be a browser, a mobile app, desktop app or we can say cross palteform then server send the data in the form of json and then in the client side firstly json converts into html code and it is called Client side rendering(CSR).
+```
 
 # SSR
 
