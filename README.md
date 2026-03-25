@@ -1652,6 +1652,22 @@ const output = arr.reduce((accumulator,currentValue) =>{
 // Here intial values denotes that accomulator starts with intial value and first currentValue will be first 
 element;
 
+// Another example of reduce function : 
+const arr = [1,2,2,3];
+
+const freq = arr.reduce((acc, num) => {
+  acc[num] = (acc[num] || 0) + 1;
+  return acc;
+}, {});
+
+Scenario A: The number is new.
+If num is 1 and it's not in the object yet, acc[1] is undefined. The expression (undefined || 0) defaults to 0. Then it adds 1.
+Result: { 1: 1 }
+Scenario B: The number already exists.
+If num is 2 and the object already has { 2: 1 }, the expression (1 || 0) evaluates to 1. Then it adds 1.
+Result: { 2: 2 }
+
+In reduce(), the value you return becomes the acc for the next iteration. If you forget to return it, the next loop will try to add properties to undefined, causing an error.
 
 
 // arr.sort()
@@ -1700,10 +1716,225 @@ const numbers = arr.every((num)=>{
 // It returns false and breaks loop at first index. 
 
 
+// find : an array method used to retrieve the first element that satisfies a specific condition
+
+// syntax : 
+const result = array.find((element, index, array) => {
+  // Condition to test
+});
+
+// Example : 
+const numbers = [1,2,3,4]
+const result = numbers.find((num)=>num%2==0);
+console.log(result)// 2
+
+
+// findIndex : an array method used to retrieve the first index of element that satisfies a specific condition
+
+// syntax : 
+const result = array.findIndex((element, index, array) => {
+  // Condition to test
+});
+
+// Example : 
+const numbers = [1,2,3,4]
+const result = numbers.findIndex((num)=>num%2==0);
+console.log(result); // 1
+
+
+// includes : A simple method that checks if an array contains a specific value. It returns a boolean (true or false).
+// Syntax : 
+array.includes(valueToFind, fromIndex)
+
+// Example : 
+
+const numbers = [1,2,3,4]
+const result = numbers.includes(2);
+console.log(result)
+
+// flat : A method which creates a new array with all sub-array elements concatenated into it recursively up to a specified depth
+// syntax : 
+const newArray = arr.flat(depth);
+
+// Example : 
+const nested = [1, 2, [3, 4, [5, 6]]];
+
+// Default depth is 1
+console.log(nested.flat()); 
+// [1, 2, 3, 4, [5, 6]]
+
+// Specify depth of 2
+console.log(nested.flat(2)); 
+// [1, 2, 3, 4, 5, 6]
+
+// Use Infinity to flatten everything regardless of depth
+console.log(nested.flat(Infinity)); 
+// [1, 2, 3, 4, 5, 6]
+
+// Note : flat() automatically removes empty "holes" in sparse arrays
+const holes = [1, , 3, , 5];
+console.log(holes.flat()); // [1, 3, 5]
+
+
+
+// flatMap : flatMap() is a combination of map() followed by flat() of depth 1. It is more efficient than calling the two methods separately because it happens in a single pass. 
+
+// Syntax : 
+const newArray = arr.flatMap((element, index, array) => {
+  // Return a new value or an array
+});
+
+// Example : 
+const sentences = ["I love JS", "flatMap is cool"];
+
+const words = sentences.flatMap(s => s.split(" "));
+
+// ["I", "love", "JS", "flatMap", "is", "cool"]
+
+
+//Note : Filter Super power of flatMap ;
+const numbers = [1, 2, 3, 4];
+
+// Goal: Square the numbers, but remove odd results
+const result = numbers.flatMap(n => {
+  const squared = n * n;
+  return squared % 2 === 0 ? [squared] : []; 
+});
+
+console.log(result); // [4, 16]
+
+
+```
+# Set 
+Set in JavaScript is extremely useful in coding tests, especially for duplicates, uniqueness, and fast lookups.
+<br>
+A Set is a collection of unique values (no duplicates allowed).
+<br>
+
+```bash 
+const set = new Set([1, 2, 2, 3]);  // In place of array it can be object
+console.log(set); // {1, 2, 3}
+// we can convert array to set
+
+// It takes element as argument 
+
+set.add(4); // adds value if not present
+set.has(2); // true // It checks the existence
+set.delete(2);  // delete the element
+set.clear(); // remove all elements
+set.size; // get size of set
+
+// Iteration on set 
+for (let value of set) {
+  console.log(value);
+}
+
+
+// we can convert set to array 
+const arr = [...set];
+
+// Remove duplicates  
+const arr = [1,2,2,3,4];
+const unique = [...new Set(arr)];
+
+// check if array has duplicates 
+function hasDuplicate(arr) {
+  return new Set(arr).size !== arr.length;
+}
+
+// find intersection of two arrays 
+const a = [1,2,3];
+const b = [2,3,4];
+
+const setB = new Set(b);
+const result = a.filter(x => setB.has(x));
+
+// find union of two array 
+const union = [...new Set([...a, ...b])];
+
+// find difference of two array 
+const diff = a.filter(x => !setB.has(x));
+
+
+Note : 
+Objects inside Set are compared by reference:
+
+const set = new Set();
+set.add({a:1});
+set.add({a:1});
+
+console.log(set.size); // 2
+
+```
+# Map : 
+A Map is a collection of key-value pairs where:
+<br>
+Keys can be any type (not just strings)
+<br>
+Maintains insertion order
+<br>
+Faster and more predictable than objects for many cases
+<br>
+
+```bash 
+const map = new Map();
+const map = new Map([
+  ["name", "Rahul"],
+  ["age", 25]
+]);
+
+
+// Adds or updates value
+map.set("name", "John");
+map.set(1, "number key");
+
+// access values using keys
+map.get("name");
+
+//check existence 
+map.has("name"); // true
+
+// delete key-value pair
+map.delete("name");
+
+// remove all element 
+map.clear();
+
+// size of map 
+map.size;
+
+// other methods 
+map.keys();
+map.values();
+map.entries();
+
+
+
+// Iteration over map  
+for (let [key, value] of map) {
+  console.log(key, value);
+}
+
+
+// Important point 
+const objKey = { id: 1 };
+
+map.set(objKey, "data");
+map.get(objKey); // works
+
+// This is NOT possible in objects
+
+
+// Map → Object
+const obj = Object.fromEntries(map);
+
+// Object → Map
+const map = new Map(Object.entries(obj));
+
 
 ```
 
-<br>
+# Important JavaScript Behaviour
 
 ```bash
     function a(){
@@ -1718,7 +1949,7 @@ const numbers = arr.every((num)=>{
 This is because when you pass a function reference (like a) without parentheses, JavaScript treats it as an object. Converting a function to a string gives its source code (the code inside the function) as a string. 
 <br>
 
-<b>Higher Order function/methods :<b>
+# Higher Order function/methods 
 Functions which either takes function as an argument or return function as output then it is called as Higher Order function. like forEach(),map(),filter() ,reduce() etc.
 
 # Important from Arrow function:
