@@ -1527,6 +1527,15 @@ var n = str.replace(/MICROSOFT/i, "IBM");
 To replace all matches, use a regular expression with a /g flag (global match):
 var n = str.replace(/Microsoft/g, "IBM");
 
+To get the assci value
+ascii ch.charCodeAt(index)
+
+To get the character from ascii code
+String.fromCharCode(ascii)
+
+To check Integer : 
+Number.isInteger()
+
 ```
 # Escape Sequence characters:
 Escape sequence characters in JavaScript are special combinations of characters that start with a backslash (\).
