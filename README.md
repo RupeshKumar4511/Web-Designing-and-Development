@@ -1536,6 +1536,9 @@ String.fromCharCode(ascii)
 To check Integer : 
 Number.isInteger()
 
+// Regex : 
+let string = str.replace(/[^A-Za-z0-9]/g,"")
+
 ```
 # Escape Sequence characters:
 Escape sequence characters in JavaScript are special combinations of characters that start with a backslash (\).
@@ -1558,6 +1561,10 @@ splice() method can be used to add,delete,replace the elements.
 <br>
 splice(4) => It will delete all the items after 3rd index means(deletion starts from 4th index).
 splice() => It will do nothing.
+<br>
+To check whether the input is an array or not : 
+<br>
+Array.isArray()
 
 # arguments keyword :
 arguments is a special keyword (actually a local object) available inside regular functions that provides an array-like object of all the arguments passed to the function.
